@@ -13,13 +13,13 @@
       const wordData = {{ data|tojson|safe }};
 
       document.addEventListener("DOMContentLoaded", function () {
-        let [anagram, solution] = wordData;
-        let target = document.getElementById("word-place");
+        const [anagram, solution] = wordData;
+        const target = document.getElementById("word-place");
         target.innerText = anagram;
-        let guessForm = document.getElementById("guess-form");
+        const guessForm = document.getElementById("guess-form");
         guessForm.addEventListener("submit", function (e) {
-          let anagramGuess = document.getElementById("guess").value;
-          let answer = document.getElementById("result");
+          const anagramGuess = document.getElementById("guess").value;
+          const answer = document.getElementById("result");
           if (anagramGuess === solution) {
             answer.innerText = "CORRECT!";
           } else {
