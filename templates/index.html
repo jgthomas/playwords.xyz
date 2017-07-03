@@ -10,19 +10,17 @@
   </form>
   {% block scripts %}
     <script>
-      let word = {{ anagram|tojson|safe }};
+      const wordData = {{ data|tojson|safe }};
 
       document.addEventListener("DOMContentLoaded", function () {
-        target = document.getElementById("word-place");
-        target.innerText = word[0];
-      });
-
-      document.addEventListener("DOMContentLoaded", function () {
+        let [anagram, solution] = wordData;
+        let target = document.getElementById("word-place");
+        target.innerText = anagram;
         let guessForm = document.getElementById("guess-form");
         guessForm.addEventListener("submit", function (e) {
           let anagramGuess = document.getElementById("guess").value;
           let answer = document.getElementById("result");
-          if (anagramGuess === word[1]) {
+          if (anagramGuess === solution) {
             answer.innerText = "CORRECT!";
           } else {
             answer.innerText = "Try Again...";
