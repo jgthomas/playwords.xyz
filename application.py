@@ -17,7 +17,7 @@ def index():
     return render_template("index.html", data=data)
 
 
-@app.route('/anagram')
+@app.route('/anagram', methods=['GET'])
 def anagram():
     word = random.choice(words)
     anagram = list(word)

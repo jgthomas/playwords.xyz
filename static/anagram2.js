@@ -15,9 +15,16 @@ function get(url) {
         req.send();
     });
 }
-        
+     
 
-get('127.0.0.1:5000/anagram').then( (response) => {
+get('https://codepen.io/eclairereese/pen/BzQBzR.html').then( (result) => {
+    console.log(result);
+}).catch( (error) => {
+    console.log(`Error: ${error}`);
+})
+
+
+/*get('127.0.0.1:5000/anagram').then( (response) => {
   const data = JSON.parse(response);
   const [anagram, solution] = data;
   const target = document.getElementById("word-place");
@@ -34,4 +41,4 @@ get('127.0.0.1:5000/anagram').then( (response) => {
     e.preventDefault();
     guessForm.reset();
   });
-});
+});*/
