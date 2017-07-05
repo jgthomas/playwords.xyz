@@ -3,7 +3,7 @@
   <head>
   </head>
   <body>
-  <button id="play">Get Anagram</button>
+  <input id="play" type="button">Get Anagram</input>
   <p id="word-place"></p>
   <p id="result"></p>
   <form id="guess-form">
@@ -11,7 +11,7 @@
     <input type="submit" value="Submit">
   </form>
   {% block scripts %}
-    <script src="{{ url_for('static', filename='promises4.js') }}"></script>
+    <script src="{{ url_for('static', filename='fetchAnagram.js') }}"></script>
   {% endblock %}
   </body>
 </html>
