@@ -1,7 +1,6 @@
-/* Basic promises with AJAX request
- *
- * makes a call to a server and then logs the 
- * resulting data or error message to the console
+/* 
+ * Simple promises pulling in data from my flask
+ * route
  *
  */
 
@@ -22,11 +21,11 @@ function get(url) {
         req.send();
     });
 }
-     
 
-get('https://codepen.io/eclairereese/pen/BzQBzR.html')
-  .then( (result) => {
-    console.log(result);
+
+get('http://127.0.0.1:5000/anagram').then( (result) => {
+    const data = JSON.parse(result);
+    console.log(data);
 }).catch( (error) => {
     console.log(error);
 })

@@ -1,4 +1,5 @@
-/* Basic implementation of promises
+/* 
+ * Basic implementation of promises
  *
  * generates a random number, and then calls either
  * resolve or reject depending on the result

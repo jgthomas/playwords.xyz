@@ -3,6 +3,7 @@
   <head>
   </head>
   <body>
+  <button id="play">Get Anagram</button>
   <p id="word-place"></p>
   <p id="result"></p>
   <form id="guess-form">
@@ -10,10 +11,7 @@
     <input type="submit" value="Submit">
   </form>
   {% block scripts %}
-    <script>
-      const wordData = {{ data|tojson|safe }};
-    </script>
-    <script src="{{ url_for('static', filename='anagram.js') }}"></script>
+    <script src="{{ url_for('static', filename='promises4.js') }}"></script>
   {% endblock %}
   </body>
 </html>

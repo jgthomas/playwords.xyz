@@ -1,3 +1,11 @@
+/* 
+ * Basic promises with AJAX request
+ *
+ * makes a call to a server and then logs the 
+ * resulting data or error message to the console
+ *
+ */
+
 function get(url) {
     return new Promise( (resolve, reject) => {
         const req = new XMLHttpRequest();
@@ -15,11 +23,11 @@ function get(url) {
         req.send();
     });
 }
+     
 
-
-get('http://127.0.0.1:5000/anagram').then( (result) => {
-    const data = JSON.parse(result);
-    console.log(data);
+get('https://codepen.io/eclairereese/pen/BzQBzR.html')
+  .then( (result) => {
+    console.log(result);
 }).catch( (error) => {
     console.log(error);
 })
