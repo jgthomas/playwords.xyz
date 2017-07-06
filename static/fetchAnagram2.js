@@ -1,5 +1,6 @@
 
 
+const anagram = "http://127.0.0.1:5000/anagram";
 
 
 function displayAnagram (data) {
@@ -9,24 +10,18 @@ function displayAnagram (data) {
 }
 
 
-fetch(URL)
-.then( response => {
-    console.log(response);
-    return response.json();
-})
-.then( data => {
-    displayAnagram(data);
-})
+function fetchWrap (URL, func) {
+    fetch(URL)
+        .then( response => {
+            return response.json();
+        }).then( data => {
+            func(data);
+        })
+}
     
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("play").addEventListener("click", () => {
-        const URL = "http://127.0.0.1:5000/anagram";
-        fetch(URL).then( response => {
-            console.log(response);
-            return response.json();
-        }).then( data => {
-            displayAnagram(data);
-        })
+        fetchWrap(anagram, displayAnagram);
     });
 });
