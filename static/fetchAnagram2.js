@@ -14,7 +14,8 @@ function fetchWrap (URL, func) {
     fetch(URL)
         .then( response => {
             return response.json();
-        }).then( data => {
+        })
+        .then( data => {
             func(data);
         })
 }
