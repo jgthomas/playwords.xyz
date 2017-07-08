@@ -6,10 +6,8 @@
   <input id="play" type="button">Get Anagram</input>
   <p id="word-place"></p>
   <p id="result"></p>
-  <form id="guess-form">
-    <input id="guess" type="text" name="unscrambled" placeholder="Solve anagram">
-    <input type="submit" value="Submit">
-  </form>
+  <input id="guess" type="text" name="unscrambled" placeholder="Solve anagram">
+  <input id="guess-button" type="button">Guess</input>
   {% block scripts %}
     <script src="{{ url_for('static', filename='fetchAnagram2.js') }}"></script>
   {% endblock %}
