@@ -3,6 +3,25 @@
 const simpleAnagramURL = "http://127.0.0.1:5000/anagram";
 
 
+const player =  {
+    score: 0
+}
+
+
+const currentAnagram = {
+    anagram: "",
+    solution: ""
+}
+
+
+function incrementScore (guess, solution) {
+    if (checkAnswer(guess, solution)) {
+        player.score++;
+        document.getElementById("score").innerText = player.score;
+    }
+}
+
+
 function displayAnagram (anagram) {
     const target = document.getElementById("word-place");
     target.innerText = anagram;
@@ -46,16 +65,22 @@ function giveFeedback (anagramGuess, solution) {
 }
 
 
+function gameFlow () {
+    const guess = getGuess();
+    giveFeedback(guess, currentAnagram.solution);
+    incrementScore(guess, currentAnagram.solution);
+}
+
+
 function simpleAnagramGame (data) {
     clearAllFields();
     let [anagram, solution] = data;
-    displayAnagram(anagram);
+    currentAnagram.anagram = anagram;
+    currentAnagram.solution = solution;
+    displayAnagram(currentAnagram.anagram);
 
     const guessButton = document.getElementById("guess-button");
-    guessButton.addEventListener("click", () => {
-        const guess = getGuess();
-        giveFeedback(guess, solution);
-    });
+    guessButton.addEventListener("click", gameFlow);
 }
     
 
