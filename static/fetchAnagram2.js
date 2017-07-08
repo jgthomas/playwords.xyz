@@ -14,6 +14,20 @@ const currentAnagram = {
 }
 
 
+function resetGame () {
+    clearAllFields();
+    document.getElementById("word-place").innerText = "";
+    player.score = 0;
+    document.getElementById("score").innerText = 0;
+}
+
+
+function clearFinalFeedback () {
+    document.getElementById("solution").innerText = "";
+    document.getElementById("final-score").innerText = "";
+}
+
+
 function incrementScore (guess, solution) {
     if (checkAnswer(guess, solution)) {
         player.score++;
@@ -72,6 +86,27 @@ function gameFlow () {
 }
 
 
+function giveUp () {
+    answer = document.getElementById("solution");
+    finalScore = document.getElementById("final-score");
+    answer.innerText = currentAnagram.solution;
+    const score = player.score;
+    finalScore.innerText = `Final Score: ${score}`;
+    resetGame();
+}
+
+
+function monitorAnswer () {
+    const guess = document.getElementById("guess").value;
+    
+    if (guess === currentAnagram.solution) {
+        incrementScore(guess, currentAnagram.solution);
+        clearAllFields();
+        fetchWrap(simpleAnagramURL, simpleAnagramGame);
+    }
+}
+
+
 function simpleAnagramGame (data) {
     clearAllFields();
     let [anagram, solution] = data;
@@ -79,13 +114,24 @@ function simpleAnagramGame (data) {
     currentAnagram.solution = solution;
     displayAnagram(currentAnagram.anagram);
 
-    const guessButton = document.getElementById("guess-button");
-    guessButton.addEventListener("click", gameFlow);
+    //const guessButton = document.getElementById("guess-button");
+    //guessButton.addEventListener("click", gameFlow);
+    const guess = document.getElementById("guess");
+    guess.addEventListener("input", monitorAnswer);
 }
     
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("play").addEventListener("click", () => {
+        resetGame();
+        clearFinalFeedback();
         fetchWrap(simpleAnagramURL, simpleAnagramGame);
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("stop").addEventListener("click", () => {
+        giveUp();
     });
 });

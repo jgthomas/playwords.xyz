@@ -4,11 +4,14 @@
   </head>
   <body>
   <p id="score">0</p>
-  <input id="play" type="button">Get Anagram</input>
+  <input id="play" type="button">Play</input>
+  <input id="stop" type="button">Give Up</input>
   <p id="word-place"></p>
   <p id="result"></p>
   <input id="guess" type="text" name="unscrambled" placeholder="Solve anagram">
-  <input id="guess-button" type="button">Guess</input>
+  <p id="solution"></p>
+  <p id="final-score"></p>
+  <!--<input id="guess-button" type="button">Guess</input>-->
   {% block scripts %}
     <script src="{{ url_for('static', filename='fetchAnagram2.js') }}"></script>
   {% endblock %}
