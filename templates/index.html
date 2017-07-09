@@ -4,8 +4,8 @@
     <link rel=stylesheet href="{{ url_for('static', filename='styles.css') }}">
   </head>
   <body>
-    <div class="center score"><p id="score">0</p></div>
-  <div class="center box-margins">
+    <div class="center score fade-in"><p id="score">0</p></div>
+  <div class="center box-margins fade-in">
     <select id="word-length", name="check">
       <option name="word-length" value="any-length" selected="selected">Any Length</option>
       <option name="word-length" value="6">6 Letters</option>
@@ -16,12 +16,12 @@
     </select>
   </div>
 
-  <div id="buttons" class="center box-margins">
+  <div id="buttons" class="center box-margins fade-in">
     <button id="play" class="button" type="button">Play</button>
     <button id="stop" class="button" type="button">Stop</button>
   </div>
   <div id="word-place" class="center anagram-text box-margins">&nbsp;</div>
-  <input id="guess" class="word-box box-margins" type="text" name="unscrambled" placeholder="Solve anagram">
+  <input id="guess" class="word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Solve anagram">
   <div id="results" class="center feedback-text">
     <div id="solution"></div>
     <div id="final-score"></div>

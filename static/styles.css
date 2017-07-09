@@ -34,6 +34,20 @@
         margin-bottom: 2.5%
 }
 
+.fade-in {
+        animation: fadein 3s;
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+
 .anagram-text {
         font-size: 3em;
 }
