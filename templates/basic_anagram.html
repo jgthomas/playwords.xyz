@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+<!DOCTYPE html>
+<!--<html>
+  <head>
+    <link rel=stylesheet href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>-->
+  {% block main %}
+  <div class="center score fade-in"><p id="score">0</p></div>
+  <div class="center box-margins fade-in">
+    <select id="word-length", name="check">
+      <option name="word-length" value="any-length" selected="selected">Any Length</option>
+      <option name="word-length" value="6">6 Letters</option>
+      <option name="word-length" value="7">7 Letters</option>
+      <option name="word-length" value="8">8 Letters</option>
+      <option name="word-length" value="9">9 Letters</option>
+      <option name="word-length" value="long">Over 9 Letters</option>
+    </select>
+  </div>
+
+  <div id="buttons" class="center box-margins fade-in">
+    <button id="play" class="button" type="button">Play</button>
+    <button id="stop" class="button" type="button">Stop</button>
+  </div>
+  <div id="word-place" class="center anagram-text box-margins">&nbsp;</div>
+  <input id="guess" class="word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Solve anagram">
+  <div id="results" class="center feedback-text">
+    <div id="solution"></div>
+    <div id="final-score"></div>
+  </div>
+  {% endblock %}
+  <!--{% block scripts %}
+    <script src="{{ url_for('static', filename='fetchAnagram2.js') }}"></script>
+  {% endblock %}
+  </body>
+</html>-->

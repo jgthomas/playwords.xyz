@@ -1,5 +1,5 @@
 import random
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, url_for, session
 from words import feed_filter, load_words, data_filter, is_length, longer_than, get_all_answers
 
 
@@ -21,6 +21,26 @@ def index():
     return render_template("index.html")
 
 
+@app.route('/login')
+def login():
+    return render_template("login.html")
+
+
+@app.route('/logout')
+def logout():
+    return render_template("logout.html")
+
+
+@app.route('/register')
+def register():
+    return render_template("register.html")
+
+
+@app.route('/account')
+def account():
+    return render_template("account.html")
+
+
 @app.route('/anagram', methods=['GET', 'POST'])
 def anagram():
     if request.method == 'POST':
@@ -39,5 +59,4 @@ def anagram():
         random.shuffle(anagram)
         data = [''.join(anagram), answers]
         return jsonify(data)
-    else:
-        return render_template("index.html")
+    return render_template("basic_anagram.html")
