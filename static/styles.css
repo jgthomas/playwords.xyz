@@ -1,31 +1,46 @@
+body {
+        font-family: sans-serif;
+}
+
 .word-box {
         width: 100%;
-        height: 2em;
         display: block;
+        height: 5vh;
 }
 
 
 .button {
-    background-color:#008CBA;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.5em;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 8px;
-    outline: none;
+        background-color:#008CBA;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1.5em;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+        outline: none;
+}
+
+
+input[type="text"] {
+        font-size: 5vw;
+        border-radius: 8px;
+        outline: none;
 }
 
 
 .center {
         margin-left: auto;
         margin-right: auto;
-        width: 50%;
         text-align: center;
+}
+
+
+.full-width {
+        width: 100%;
 }
 
 
@@ -64,7 +79,7 @@ select {
     padding: 12px 20px;
     border: none;
     border-radius: 8px;
-    background-color: #f1f1
+    background-color: #f1f1;
     background: #D2D5D6;
     color: #777D80;
     font-size: 7vw;
@@ -102,14 +117,29 @@ select {
 .navlink {
         margin-right: auto;
         margin-left: auto;
-        padding: 1.5em;
         text-align: center;
         text-decoration: none;
-        width: 3.5em;
-        background-color: #008CBA;
         color: white;
-        font-size: 2em;
+        width: 100%;
+        font-size: 7vh;
+        border-radius: 8%;
 }
+
+
+.nav-margin {
+        margin-bottom: 5%;
+}
+
+
+#navlink1 {
+        background-color: #008CBA;
+}
+
+
+#navlink2 {
+        background-color: #A52A2A;
+}
+
 
 
 /* Modify for DESKTOP: */
@@ -119,8 +149,8 @@ select {
                 max-width: 600px;
                 margin-left: auto;
                 margin-right: auto;
+                height: 2em;
         }
-
 
         input[type="text"] {
                 font-size: 2em;
@@ -134,4 +164,46 @@ select {
                 margin-left: auto;
                 margin-right: auto;
         }
+
+        .navlink {
+                width: 3.5em;
+                font-size: 2em;
+        }
+
+        .flex-container {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                align-items: flex-start;
+        }
+
+        .flex-full-unit {
+                flex: 0 0 100%;
+                margin-left: auto;
+                margin-right: auto;
+                min-width: 600px;
+        }
+
+        .flex-half-unit {
+                flex: 0 0 50%;
+                margin-left: auto;
+                margin-right: auto;
+                min-width: 600px;
+        }
+
+        .flex-third-unit {
+                flex: 0 0 33%;
+                margin-left: auto;
+                margin-right: auto;
+                min-width: 500px;
+        }
+
+        .flex-quarter-unit {
+                flex: 0 0 25%;
+                margin-left: auto;
+                margin-right: auto;
+                min-width: 400px;
+        }
+
+
 }

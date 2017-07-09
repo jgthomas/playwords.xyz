@@ -1,8 +1,13 @@
 {% extends "layout.html" %}
 
 {% block main %}
-<h2 class="site-title">Anagram Games</h2>
-<div>
-  <a class="navlink" href="{{ url_for('anagram') }}">Anagram</a>
+<h1 class="site-title">Anagram Games</h1>
+<div class="flex-container">
+  <div id="navlink1" class="flex-third-unit navlink nav-margin">
+    <a class="navlink" href="{{ url_for('anagram') }}">Basic Anagrams</a>
+  </div>
+  <div id="navlink2" class="flex-third-unit navlink nav-margin">
+    <a class="navlink" href="#">Anagram Ladder</a>
+  </div>
 </div>
 {% endblock %}
