@@ -1,6 +1,6 @@
 import random
 from flask import Flask, render_template, jsonify, request
-from words import feed_filter, load_words, data_filter, is_length, longer_than
+from words import feed_filter, load_words, data_filter, is_length, longer_than, get_all_answers
 
 
 app = Flask(__name__)
@@ -33,9 +33,8 @@ def anagram():
             words = data_filter(FULL_WORD_LIST, is_length, WORD_LENGTH[length])
 
         word = random.choice(words)
-        answers = [w for w in words
-                   if len(w) == len(word)
-                   and set(w) == set(word)]
+        letters = [letter for letter in word]
+        answers = get_all_answers(words, letters, len(word))
         anagram = list(word)
         random.shuffle(anagram)
         data = [''.join(anagram), answers]

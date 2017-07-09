@@ -16,7 +16,7 @@ const currentAnagram = {
 
 function resetGame() {
     clearAllFields();
-    document.getElementById("word-place").innerText = "";
+    document.getElementById("word-place").innerText = "\u00A0";
     player.score = 0;
     document.getElementById("score").innerText = 0;
 }
