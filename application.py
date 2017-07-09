@@ -30,14 +30,14 @@ def anagram():
 
         if length == "any-length" or length == "long":
             words = data_filter(FULL_WORD_LIST, longer_than, WORD_LENGTH[length])
-            word = random.choice(words)
         else:
             words = data_filter(FULL_WORD_LIST, is_length, WORD_LENGTH[length])
-            word = random.choice(words)
 
+        word = random.choice(words)
+        answers = [w for w in words if set(w) == set(word)]
         anagram = list(word)
         random.shuffle(anagram)
-        data = [''.join(anagram), word]
+        data = [''.join(anagram), answers]
         return jsonify(data)
     else:
         return render_template("index.html")

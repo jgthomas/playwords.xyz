@@ -46,18 +46,9 @@ function clearAllFields() {
 
 
 function checkAnswer(guess, answer) {
-    if (guess === answer) {
+    if (answer.includes(guess)) {
         return true;
     }
-
-    /*if (guess.length === answer.length) {
-        const guessSorted = guess.split("").sort().join("");
-        const answerSorted = answer.split("").sort().join("");
-
-        if (guessSorted === answerSorted) {
-            return true;
-        }
-    }*/
 
     return false;
 }
