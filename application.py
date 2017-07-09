@@ -33,7 +33,9 @@ def anagram():
             words = data_filter(FULL_WORD_LIST, is_length, WORD_LENGTH[length])
 
         word = random.choice(words)
-        answers = [w for w in words if set(w) == set(word)]
+        answers = [w for w in words
+                   if len(w) == len(word)
+                   and set(w) == set(word)]
         anagram = list(word)
         random.shuffle(anagram)
         data = [''.join(anagram), answers]
