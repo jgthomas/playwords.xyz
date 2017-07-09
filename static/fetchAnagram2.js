@@ -43,8 +43,25 @@ function displayAnagram (anagram) {
 
 
 function clearAllFields () {
-    //document.getElementById("result").innerText = "";
     document.getElementById("guess").value = "";
+}
+
+
+function usesSameLetters (guess, answer) {
+    if (guess === answer) {
+        return true;
+    }
+
+    if (guess.length === answer.length) {
+        const guessSorted = guess.split("").sort().join("");
+        const answerSorted = answer.split("").sort().join("");
+
+        if (guessSorted === answerSorted) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 
@@ -56,33 +73,9 @@ function checkAnswer (guess, answer) {
 }
 
 
-function fetchWrap (URL, gameFunction) {
-    fetch(URL)
-        .then( response => { return response.json(); })
-        .then( data => { gameFunction(data); })
-}
-
-
 function getGuess () {
     const anagramGuess = document.getElementById("guess").value;
     return anagramGuess;
-}
-
-
-function giveFeedback (anagramGuess, solution) {
-    const feedbackText = document.getElementById("result");
-    if (checkAnswer(anagramGuess, solution)) {
-        feedbackText.innerText = "Correct";
-    } else {
-        feedbackText.innerText = "Try again";
-    }
-}
-
-
-function gameFlow () {
-    const guess = getGuess();
-    giveFeedback(guess, currentAnagram.solution);
-    incrementScore(guess, currentAnagram.solution);
 }
 
 
@@ -93,6 +86,13 @@ function giveUp () {
     const score = player.score;
     finalScore.innerText = `Final Score: ${score}`;
     resetGame();
+}
+
+
+function fetchWrap (URL, gameFunction) {
+    fetch(URL)
+        .then( response => { return response.json(); })
+        .then( data => { gameFunction(data); })
 }
 
 
@@ -113,9 +113,6 @@ function simpleAnagramGame (data) {
     currentAnagram.anagram = anagram;
     currentAnagram.solution = solution;
     displayAnagram(currentAnagram.anagram);
-
-    //const guessButton = document.getElementById("guess-button");
-    //guessButton.addEventListener("click", gameFlow);
     const guess = document.getElementById("guess");
     guess.addEventListener("input", monitorAnswer);
 }
