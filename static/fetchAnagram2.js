@@ -81,7 +81,10 @@ function giveUp() {
 
 function fetchWrap(URL, gameFunction) {
     fetch(URL, {method: 'POST',
-                body: JSON.stringify( {length: document.getElementById("word-length").value} ) })
+                body: JSON.stringify({
+                    length: document.getElementById("word-length").value
+                })
+    })
         .then( response => { return response.json(); })
         .then( data => { gameFunction(data); })
 }

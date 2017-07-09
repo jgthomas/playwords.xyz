@@ -42,6 +42,20 @@
         font-size: 1.5em;
 }
 
+select {
+    outline: none;
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f1f1
+    background: #D2D5D6;
+    color: #777D80;
+    font-size: 7vw;
+    border-radius: 8px;
+}
+
+
 
 /* Modify for DESKTOP: */
 @media only screen and (min-device-width: 961px) {
@@ -57,5 +71,12 @@
                 font-size: 2em;
                 border-radius: 8px;
                 outline: none;
+        }
+
+        select {
+                max-width: 600px;
+                font-size: 1.5em;
+                margin-left: auto;
+                margin-right: auto;
         }
 }

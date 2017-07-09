@@ -14,7 +14,7 @@ WORD_LENGTH = {"any-length": 0,
                "7": 7,
                "8": 8,
                "9": 9,
-               "long": 10}
+               "long": 9}
 
 
 @app.route('/')
@@ -28,7 +28,7 @@ def anagram():
         data = request.get_json(force=True)
         length = data["length"]
 
-        if WORD_LENGTH[length] == 0 or WORD_LENGTH[length] == 10:
+        if length == "any-length" or length == "long":
             words = data_filter(FULL_WORD_LIST, longer_than, WORD_LENGTH[length])
             word = random.choice(words)
         else:
