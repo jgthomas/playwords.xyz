@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel=stylesheet href="{{ url_for('static' , filename='styles.css') }}">
   </head>
   <body>
-  <p id="score">0</p>
-  <input id="play" type="button">Play</input>
-  <input id="stop" type="button">Give Up</input>
-  <p id="word-place"></p>
-  <p id="result"></p>
-  <input id="guess" type="text" name="unscrambled" placeholder="Solve anagram">
-  <p id="solution"></p>
-  <p id="final-score"></p>
-  <!--<input id="guess-button" type="button">Guess</input>-->
+  <div id="score" class="center feedback-text">0</div>
+  <div id="buttons" class="center">
+    <button id="play" class="button" type="button">Play</button>
+    <button id="stop" class="button" type="button">Stop</button>
+  </div>
+  <div id="word-place" class="center anagram-text"></div>
+  <input id="guess" class="word-box box-margins" type="text" name="unscrambled" placeholder="Solve anagram">
+  <div id="results" class="center feedback-text">
+    <div id="solution"></div>
+    <div id="final-score"></div>
+  </div>
   {% block scripts %}
     <script src="{{ url_for('static', filename='fetchAnagram2.js') }}"></script>
   {% endblock %}

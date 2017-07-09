@@ -1,0 +1,61 @@
+.word-box {
+        width: 100%;
+        height: 2em;
+        display: block;
+}
+
+
+.button {
+    background-color:#008CBA;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5em;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    outline: none;
+}
+
+
+.center {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        text-align: center;
+}
+
+
+.box-margins {
+        margin-top: 2.5%;
+        margin-bottom: 2.5%
+}
+
+.anagram-text {
+        font-size: 2em;
+}
+
+.feedback-text {
+        font-size: 1.5em;
+}
+
+
+/* Modify for DESKTOP: */
+@media only screen and (min-device-width: 961px) {
+
+        .word-box {
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+        }
+
+
+        input[type="text"] {
+                font-size: 2em;
+                border-radius: 8px;
+                outline: none;
+        }
+}

@@ -5,8 +5,6 @@ from flask import Flask, render_template, jsonify
 app = Flask(__name__)
 
 
-#words = ["boxer", "dickhead", "foolish"]
-
 word_file = "50k.txt"
 
 

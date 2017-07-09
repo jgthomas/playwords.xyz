@@ -43,7 +43,7 @@ function displayAnagram (anagram) {
 
 
 function clearAllFields () {
-    document.getElementById("result").innerText = "";
+    //document.getElementById("result").innerText = "";
     document.getElementById("guess").value = "";
 }
 
