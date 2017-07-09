@@ -45,8 +45,8 @@ function clearAllFields() {
 }
 
 
-function checkAnswer(guess, answer) {
-    if (answer.includes(guess)) {
+function checkAnswer(guess, answers) {
+    if (answers.includes(guess)) {
         return true;
     }
 
@@ -63,7 +63,7 @@ function getGuess() {
 function giveUp() {
     answer = document.getElementById("solution");
     finalScore = document.getElementById("final-score");
-    answer.innerText = currentAnagram.solution;
+    answer.innerText = currentAnagram.solution.join(", ");
     const score = player.score;
     finalScore.innerText = `Final Score: ${score}`;
     resetGame();
