@@ -1,11 +1,5 @@
 {% extends "layout.html" %}
-<!DOCTYPE html>
-<!--<html>
-  <head>
-    <link rel=stylesheet href="{{ url_for('static', filename='styles.css') }}">
-  </head>
-  <body>-->
-  {% block main %}
+{% block main %}
   <div class="center score fade-in"><p id="score">0</p></div>
   <div class="center box-margins fade-in">
     <select id="word-length", name="check">
@@ -28,9 +22,4 @@
     <div id="solution"></div>
     <div id="final-score"></div>
   </div>
-  {% endblock %}
-  <!--{% block scripts %}
-    <script src="{{ url_for('static', filename='fetchAnagram2.js') }}"></script>
-  {% endblock %}
-  </body>
-</html>-->
+{% endblock %}
