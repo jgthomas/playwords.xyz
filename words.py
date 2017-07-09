@@ -21,3 +21,7 @@ def data_filter(data, criterion=None, *comparison):
 
 def is_length(item, length):
     return len(item) == length
+
+
+def longer_than(item, length):
+    return len(item) > length
