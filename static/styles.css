@@ -35,7 +35,7 @@
 }
 
 .anagram-text {
-        font-size: 2em;
+        font-size: 3em;
 }
 
 .feedback-text {
@@ -55,6 +55,21 @@ select {
     border-radius: 8px;
 }
 
+
+.score {
+        font-size: 3em;
+        color: white;
+        background-color: #B22222;
+        border-radius: 50%;
+        width: 2em;
+        height: 2em;
+}
+
+#score {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+}
 
 
 /* Modify for DESKTOP: */
