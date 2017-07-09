@@ -2,13 +2,12 @@ import random
 from flask import Flask, render_template, jsonify, request
 from words import feed_filter, load_words, data_filter, is_length, longer_than
 
+
 app = Flask(__name__)
 
 
 WORD_FILE = "50k.txt"
 FULL_WORD_LIST = load_words(WORD_FILE)
-
-
 WORD_LENGTH = {"any-length": 0,
                "6": 6,
                "7": 7,
