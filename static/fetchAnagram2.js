@@ -14,7 +14,7 @@ const currentAnagram = {
 }
 
 
-function resetGame () {
+function resetGame() {
     clearAllFields();
     document.getElementById("word-place").innerText = "";
     player.score = 0;
@@ -22,32 +22,30 @@ function resetGame () {
 }
 
 
-function clearFinalFeedback () {
+function clearFinalFeedback() {
     document.getElementById("solution").innerText = "";
     document.getElementById("final-score").innerText = "";
 }
 
 
-function incrementScore (guess, solution) {
-    if (checkAnswer(guess, solution)) {
-        player.score++;
-        document.getElementById("score").innerText = player.score;
-    }
+function incrementScore() {
+    player.score++;
+    document.getElementById("score").innerText = player.score;
 }
 
 
-function displayAnagram (anagram) {
+function displayAnagram(anagram) {
     const target = document.getElementById("word-place");
     target.innerText = anagram;
 }
 
 
-function clearAllFields () {
+function clearAllFields() {
     document.getElementById("guess").value = "";
 }
 
 
-function usesSameLetters (guess, answer) {
+function checkAnswer(guess, answer) {
     if (guess === answer) {
         return true;
     }
@@ -65,21 +63,13 @@ function usesSameLetters (guess, answer) {
 }
 
 
-function checkAnswer (guess, answer) {
-    if (guess === answer) {
-        return true;
-    }
-    return false;
-}
-
-
-function getGuess () {
+function getGuess() {
     const anagramGuess = document.getElementById("guess").value;
     return anagramGuess;
 }
 
 
-function giveUp () {
+function giveUp() {
     answer = document.getElementById("solution");
     finalScore = document.getElementById("final-score");
     answer.innerText = currentAnagram.solution;
@@ -89,25 +79,25 @@ function giveUp () {
 }
 
 
-function fetchWrap (URL, gameFunction) {
+function fetchWrap(URL, gameFunction) {
     fetch(URL)
         .then( response => { return response.json(); })
         .then( data => { gameFunction(data); })
 }
 
 
-function monitorAnswer () {
+function monitorAnswer() {
     const guess = document.getElementById("guess").value;
     
-    if (guess === currentAnagram.solution) {
-        incrementScore(guess, currentAnagram.solution);
+    if (checkAnswer(guess, currentAnagram.solution)) {
+        incrementScore();
         clearAllFields();
         fetchWrap(simpleAnagramURL, simpleAnagramGame);
     }
 }
 
 
-function simpleAnagramGame (data) {
+function simpleAnagramGame(data) {
     clearAllFields();
     let [anagram, solution] = data;
     currentAnagram.anagram = anagram;

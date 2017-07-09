@@ -21,7 +21,12 @@ def feed_filter(feed, criterion=None, *comparison):
 
 def load_words(word_file, criterion=None, *comparison):
     with open(word_file) as filename:
-        return [word for word in feed_filter(filename)]
+        return [word for word
+                in feed_filter(filename, criterion, *comparison)]
+
+
+def is_length(item, length):
+    return len(item) == length
 
 
 @app.route('/')
