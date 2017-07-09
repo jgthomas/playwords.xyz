@@ -50,14 +50,14 @@ function checkAnswer(guess, answer) {
         return true;
     }
 
-    if (guess.length === answer.length) {
+    /*if (guess.length === answer.length) {
         const guessSorted = guess.split("").sort().join("");
         const answerSorted = answer.split("").sort().join("");
 
         if (guessSorted === answerSorted) {
             return true;
         }
-    }
+    }*/
 
     return false;
 }

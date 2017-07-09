@@ -1,5 +1,5 @@
 import random
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from words import feed_filter, load_words, data_filter, is_length
 
 app = Flask(__name__)
@@ -14,9 +14,8 @@ def index():
     return render_template("index.html")
 
 
-@app.route('/anagram', methods=['GET'])
+@app.route('/anagram', methods=['GET', 'POST'])
 def anagram():
-    #words = data_filter(word_file)
     word = random.choice(FULL_WORD_LIST)
     anagram = list(word)
     random.shuffle(anagram)
