@@ -2,6 +2,7 @@ body {
         font-family: sans-serif;
 }
 
+
 .word-box {
         width: 100%;
         display: block;
@@ -120,9 +121,21 @@ select {
         text-align: center;
         text-decoration: none;
         color: white;
-        width: 100%;
+        /*width: 100%;*/
         font-size: 7vh;
         border-radius: 8%;
+}
+
+
+.site-nav {
+        text-align: center;
+        color: white;
+        text-decoration: none;
+        width: 33.333%;
+        font-size: 5vh;
+        border-radius: 8%;
+        background-color: #008CBA;
+        margin: 1%;
 }
 
 
@@ -138,6 +151,46 @@ select {
 
 #navlink2 {
         background-color: #A52A2A;
+}
+
+
+.game-block {
+        margin-top: 5%;
+}
+
+.flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: flex-start;
+}
+
+.flex-full-unit {
+        flex: 0 0 100%;
+        margin-left: auto;
+        margin-right: auto;
+        min-width: 600px;
+}
+
+.flex-half-unit {
+        flex: 0 0 50%;
+        margin-left: auto;
+        margin-right: auto;
+        min-width: 600px;
+}
+
+.flex-third-unit {
+        flex: 0 0 33%;
+        margin-left: auto;
+        margin-right: auto;
+        min-width: 500px;
+}
+
+.flex-quarter-unit {
+        flex: 0 0 25%;
+        margin-left: auto;
+        margin-right: auto;
+        min-width: 400px;
 }
 
 
@@ -169,41 +222,5 @@ select {
                 width: 3.5em;
                 font-size: 2em;
         }
-
-        .flex-container {
-                display: flex;
-                flex-wrap: wrap;
-                flex-direction: row;
-                align-items: flex-start;
-        }
-
-        .flex-full-unit {
-                flex: 0 0 100%;
-                margin-left: auto;
-                margin-right: auto;
-                min-width: 600px;
-        }
-
-        .flex-half-unit {
-                flex: 0 0 50%;
-                margin-left: auto;
-                margin-right: auto;
-                min-width: 600px;
-        }
-
-        .flex-third-unit {
-                flex: 0 0 33%;
-                margin-left: auto;
-                margin-right: auto;
-                min-width: 500px;
-        }
-
-        .flex-quarter-unit {
-                flex: 0 0 25%;
-                margin-left: auto;
-                margin-right: auto;
-                min-width: 400px;
-        }
-
-
+        
 }
