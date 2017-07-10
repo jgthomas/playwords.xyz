@@ -1,17 +1,17 @@
-
+"use strict";
 
 const simpleAnagramURL = "http://127.0.0.1:5000/anagram";
 
 
-const player =  {
+const player = {
     score: 0
-}
+};
 
 
 const currentAnagram = {
     anagram: "",
     solution: ""
-}
+};
 
 
 function resetGame() {
@@ -61,8 +61,8 @@ function getGuess() {
 
 
 function giveUp() {
-    answer = document.getElementById("solution");
-    finalScore = document.getElementById("final-score");
+    const answer = document.getElementById("solution");
+    const finalScore = document.getElementById("final-score");
     answer.innerText = currentAnagram.solution.join(", ");
     const score = player.score;
     finalScore.innerText = `Final Score: ${score}`;
@@ -71,19 +71,19 @@ function giveUp() {
 
 
 function fetchWrap(URL, gameFunction) {
-    fetch(URL, {method: 'POST',
+    fetch(URL, {method: "POST",
                 body: JSON.stringify({
                     length: document.getElementById("word-length").value
                 })
     })
         .then( response => { return response.json(); })
-        .then( data => { gameFunction(data); })
+        .then( data => { gameFunction(data); });
 }
 
 
 function monitorAnswer() {
     const guess = document.getElementById("guess").value;
-    
+
     if (checkAnswer(guess, currentAnagram.solution)) {
         incrementScore();
         clearAllFields();
@@ -94,14 +94,14 @@ function monitorAnswer() {
 
 function simpleAnagramGame(data) {
     clearAllFields();
-    let [anagram, solution] = data;
+    const [anagram, solution] = data;
     currentAnagram.anagram = anagram;
     currentAnagram.solution = solution;
     displayAnagram(currentAnagram.anagram);
     const guess = document.getElementById("guess");
     guess.addEventListener("input", monitorAnswer);
 }
-    
+
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("play").addEventListener("click", () => {
