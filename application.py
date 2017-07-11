@@ -60,3 +60,8 @@ def anagram():
         data = [''.join(anagram), answers]
         return jsonify(data)
     return render_template("basic_anagram.html")
+
+
+@app.route('/ladder', methods=["GET", "POST"])
+def ladder():
+    return render_template("ladder.html")
