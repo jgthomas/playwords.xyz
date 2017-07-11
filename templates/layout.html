@@ -4,33 +4,38 @@
   <link rel=stylesheet href="{{ url_for('static', filename='styles2.css') }}">
 </head>
 <body>
-  <nav>
-    {% if session.user_id %}
-    <div class="flex-container">
-      <div class="flex-third-unit">
-        <a class="site-nav" href="{{ url_for('index') }}">Home</a>
+  <div class="slider-closed">
+    <nav>
+      {% if session.user_id %}
+      <div class="flex-container">
+        <div class="flex-third-unit">
+          <a class="site-nav" href="{{ url_for('index') }}">Home</a>
+        </div>
+        <div class="flex-third-unit">
+          <a class="site-nav" href="{{ url_for('account') }}">Account</a>
+        </div>
+        <div class="flex-third-unit">
+          <a class="site-nav" href="{{ url_for('logout') }}">Log Out</a>
+        </div>
       </div>
-      <div class="flex-third-unit">
-        <a class="site-nav" href="{{ url_for('account') }}">Account</a>
+      {% else %}
+      <div class="flex-container">
+        <div class="flex-third-unit site-nav">
+          <a class="site-nav" href="{{ url_for('index') }}">Home</a>
+        </div>
+        <div class="flex-third-unit site-nav">
+          <a class="site-nav" href="{{ url_for('register') }}">Register</a>
+        </div>
+        <div class="flex-third-unit site-nav">
+          <a class="site-nav" href="{{ url_for('login') }}">Log In</a>
+        </div>
       </div>
-      <div class="flex-third-unit">
-        <a class="site-nav" href="{{ url_for('logout') }}">Log Out</a>
-      </div>
-    </div>
-    {% else %}
-    <div class="flex-container">
-      <div class="flex-third-unit site-nav">
-        <a class="site-nav" href="{{ url_for('index') }}">Home</a>
-      </div>
-      <div class="flex-third-unit site-nav">
-        <a class="site-nav" href="{{ url_for('register') }}">Register</a>
-      </div>
-      <div class="flex-third-unit site-nav">
-        <a class="site-nav" href="{{ url_for('login') }}">Log In</a>
-      </div>
-    </div>
-    {% endif %}
-  </nav>
+      {% endif %}
+    </nav>
+  </div>
+  <div class="flex-container">
+    <div class="flex-two-thirds-unit site-title">AnagraMania</div>
+  </div>
   <main>
     {% block main %}
     {% endblock %}

@@ -17,6 +17,12 @@ body {
         min-width: 600px;
 }
 
+.flex-two-thirds-unit {
+        flex: 0 0 70%;
+        margin-left: auto;
+        margin-right: auto;
+}
+
 .flex-half-unit {
         flex: 0 0 40%;
         margin-left: auto;
@@ -36,6 +42,13 @@ body {
         margin-left: auto;
         margin-right: auto;
         min-width: 400px;
+}
+
+.site-title {
+        text-align: center;
+        background-color: #008CBA;
+        color: white;
+        font-size: 3em;
 }
 
 .site-nav {
@@ -154,7 +167,6 @@ select {
         animation: fadein 3s;
 }
 
-
 @keyframes fadein {
     from {
         opacity:0;
@@ -162,6 +174,19 @@ select {
     to {
         opacity:1;
     }
+}
+
+.slider {
+	overflow-y: hidden;
+	max-height: 500px;
+
+	transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.slider-closed {
+        top: -400px;
 }
 
 
