@@ -14,6 +14,12 @@ const currentAnagram = {
 };
 
 
+const anagramLadder = {
+    length: 4,
+    words: []
+}
+
+
 function resetGame() {
     clearAllFields();
     document.getElementById("word-place").innerText = "\u00A0";
@@ -81,7 +87,7 @@ function fetchWrap(URL, gameFunction) {
 }
 
 
-function monitorAnswer() {
+function simpleGameFlow() {
     const guess = document.getElementById("guess").value;
 
     if (checkAnswer(guess, currentAnagram.solution)) {
@@ -92,12 +98,34 @@ function monitorAnswer() {
 }
 
 
-function simpleAnagramGame(data) {
+function ladderGameFlow() {
+    /*const guess = document.getElementById("guess").value;
+
+    if (checkAnswer(guess, currentAnagram.solution)) {
+        anagramLadder.words.push(guess);
+        anagramLadder.length++;
+        updateDisplay();
+        clearAllFields();
+        fetchWrap(anagramLadderURL, anagramLadderParams, anagramLadderGame);*/
+    }
+}
+
+
+function setUpGame(data) {
     clearAllFields();
     const [anagram, solution] = data;
     currentAnagram.anagram = anagram;
     currentAnagram.solution = solution;
     displayAnagram(currentAnagram.anagram);
+}
+
+
+function simpleAnagramGame(data) {
+    setUpGame(data);
     const guess = document.getElementById("guess");
-    guess.addEventListener("input", monitorAnswer);
+    guess.addEventListener("input", simpleGameFlow);
+}
+
+
+function anagramLadderGame(data) {
 }
