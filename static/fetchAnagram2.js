@@ -12,6 +12,12 @@ const currentAnagram = {
 };
 
 
+const ladder = {
+    length: 3,
+    words: []
+};
+
+
 function clearAllFields() {
     document.getElementById("guess").value = "";
 }
@@ -51,7 +57,6 @@ function giveUp() {
 }
 
 
-
 function gameFlowFactory(gameURL, gameData, gameCleanUp, gameFunction) {
     function gameFlow() {
         const guess = document.getElementById("guess").value;
@@ -71,12 +76,20 @@ function simpleAnagramCleanup () {
     document.getElementById("guess").value = "";
 }
 
+function ladderCleanup () {
+}
+
 function setUpGame(data) {
     clearAllFields();
     const [anagram, solution] = data;
     currentAnagram.anagram = anagram;
     currentAnagram.solution = solution;
     displayAnagram(currentAnagram.anagram);
+}
+
+function ladderGame () {
+    setUpGame(data);
+    const guess = document.getElementById("guess");
 }
 
 function simpleAnagramGame(data) {
