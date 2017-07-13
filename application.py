@@ -46,6 +46,7 @@ def anagram():
     if request.method == 'POST':
         data = request.get_json(force=True)
         length = data["length"]
+        print(length)
 
         if length == "any-length" or length == "long":
             words = data_filter(FULL_WORD_LIST, longer_than, WORD_LENGTH[length])

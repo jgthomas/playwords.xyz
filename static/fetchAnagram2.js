@@ -1,7 +1,5 @@
 "use strict";
 
-const simpleAnagramURL = "http://127.0.0.1:5000/anagram";
-
 
 const player = {
     score: 0
@@ -12,12 +10,6 @@ const currentAnagram = {
     anagram: "",
     solution: ""
 };
-
-
-const anagramLadder = {
-    length: 4,
-    words: []
-}
 
 
 function resetGame() {
@@ -31,12 +23,6 @@ function resetGame() {
 function clearFinalFeedback() {
     document.getElementById("solution").innerText = "";
     document.getElementById("final-score").innerText = "";
-}
-
-
-function incrementScore() {
-    player.score++;
-    document.getElementById("score").innerText = player.score;
 }
 
 
@@ -60,12 +46,6 @@ function checkAnswer(guess, answers) {
 }
 
 
-function getGuess() {
-    const anagramGuess = document.getElementById("guess").value;
-    return anagramGuess;
-}
-
-
 function giveUp() {
     const answer = document.getElementById("solution");
     const finalScore = document.getElementById("final-score");
@@ -76,38 +56,36 @@ function giveUp() {
 }
 
 
-function fetchWrap(URL, gameFunction) {
-    fetch(URL, {method: "POST",
-                body: JSON.stringify({
-                    length: document.getElementById("word-length").value
-                })
-    })
-        .then( response => { return response.json(); })
-        .then( data => { gameFunction(data); });
+
+function gameFlowFactory(gameURL, gameData, gameCleanUp, gameFunction) {
+    function gameFlow() {
+        const guess = document.getElementById("guess").value;
+        if (checkAnswer(guess, currentAnagram.solution)) {
+            gameCleanUp();
+            fetchWrap(gameURL, gameData, gameFunction);
+        }
+    }
+
+    return gameFlow;
 }
 
 
-function simpleGameFlow() {
-    const guess = document.getElementById("guess").value;
-
-    if (checkAnswer(guess, currentAnagram.solution)) {
-        incrementScore();
-        clearAllFields();
-        fetchWrap(simpleAnagramURL, simpleAnagramGame);
+function gameFactory(gameFlow) {
+    function game(data) {
+        setUpGame(data);
+        const guess = document.getElementById("guess");
+        guess.addEventListener("input", gameFlow);
     }
+
+    return game;
 }
 
 
-function ladderGameFlow() {
-    /*const guess = document.getElementById("guess").value;
 
-    if (checkAnswer(guess, currentAnagram.solution)) {
-        anagramLadder.words.push(guess);
-        anagramLadder.length++;
-        updateDisplay();
-        clearAllFields();
-        fetchWrap(anagramLadderURL, anagramLadderParams, anagramLadderGame);*/
-    }
+function simpleAnagramCleanup () {
+    player.score++;
+    document.getElementById("score").innerText = player.score;
+    document.getElementById("guess").value = "";
 }
 
 
@@ -123,9 +101,9 @@ function setUpGame(data) {
 function simpleAnagramGame(data) {
     setUpGame(data);
     const guess = document.getElementById("guess");
+    const simpleGameFlow = gameFlowFactory(simpleAnagramURL,
+                                           simpleAnagramData,
+                                           simpleAnagramCleanup,
+                                           simpleAnagramGame);
     guess.addEventListener("input", simpleGameFlow);
-}
-
-
-function anagramLadderGame(data) {
 }
