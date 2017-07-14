@@ -9,6 +9,8 @@ app = Flask(__name__)
 WORD_FILE = "50k.txt"
 FULL_WORD_LIST = load_words(WORD_FILE)
 WORD_LENGTH = {"any-length": 0,
+               "4": 4,
+               "5": 5,
                "6": 6,
                "7": 7,
                "8": 8,
@@ -59,10 +61,13 @@ def anagram():
         anagram = list(word)
         random.shuffle(anagram)
         data = [''.join(anagram), answers]
+        print(jsonify(data))
         return jsonify(data)
     return render_template("basic_anagram.html")
 
 
 @app.route('/ladder', methods=["GET", "POST"])
 def ladder():
+    if request.method == "POST":
+        anagram()
     return render_template("ladder.html")

@@ -12,3 +12,7 @@
     <div id="final-score"></div>
   </div>
 {% endblock %}
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ url_for('static', filename='ladderListener.js') }}"></script>
+{% endblock %}
