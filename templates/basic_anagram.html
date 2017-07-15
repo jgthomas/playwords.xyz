@@ -25,5 +25,6 @@
 {% endblock %}
 {% block scripts %}
   {{ super() }}
-  <script src="{{ url_for('static', filename='anagramListeners.js') }}"></script>
+  <script src="{{ url_for('static', filename='sharedGame.js') }}"></script>
+  <script src="{{ url_for('static', filename='anagramGame.js') }}"></script>
 {% endblock %}
