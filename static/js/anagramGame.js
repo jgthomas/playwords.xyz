@@ -12,8 +12,8 @@ function anagramData () {
 
 function anagramCleanup () {
     player.score++;
-    document.getElementById("score").innerText = player.score;
-    document.getElementById("guess").value = "";
+    updateScoreDisplay(player.score);
+    clearGuessBox();
 }
 
 

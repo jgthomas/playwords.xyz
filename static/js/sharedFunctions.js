@@ -12,14 +12,15 @@ const currentAnagram = {
 };
 
 
-function clearAllFields() {
+function clearGuessBox() {
     document.getElementById("guess").value = "";
 }
 
-function resetGame() {
-    clearAllFields();
+function clearAnagramWord() {
     document.getElementById("word-place").innerText = "\u00A0";
-    player.score = 0;
+}
+
+function clearScoreDisplay() {
     document.getElementById("score").innerText = 0;
 }
 
@@ -29,8 +30,29 @@ function clearFinalFeedback() {
 }
 
 function displayAnagram(anagram) {
-    const target = document.getElementById("word-place");
-    target.innerText = anagram;
+    document.getElementById("word-place").innerText = anagram;
+}
+
+function displayAnswer() {
+    const answer = document.getElementById("solution");
+    answer.innerText = currentAnagram.solution.join(", ");
+}
+
+function displayFinalScore() {
+    const finalScore = document.getElementById("final-score");
+    finalScore.innerText = `Final Score: ${player.score}`;
+}
+
+function updateScoreDisplay(score) {
+    document.getElementById("score").innerText = score;
+}
+
+
+function resetGame() {
+    clearGuessBox();
+    clearAnagramWord();
+    clearScoreDisplay();
+    player.score = 0;
 }
 
 function checkAnswer(guess, answers) {
@@ -42,17 +64,13 @@ function checkAnswer(guess, answers) {
 }
 
 function giveUp() {
-    const answer = document.getElementById("solution");
-    const finalScore = document.getElementById("final-score");
-    answer.innerText = currentAnagram.solution.join(", ");
-    const score = player.score;
-    finalScore.innerText = `Final Score: ${score}`;
+    displayAnswer();
+    displayFinalScore();
     resetGame();
 }
 
-
 function setUpGame(data) {
-    clearAllFields();
+    clearGuessBox();
     const [anagram, solution] = data;
     currentAnagram.anagram = anagram;
     currentAnagram.solution = solution;
@@ -69,7 +87,6 @@ function fetchWrap(fetchURL, fetchData, gameFunction) {
             gameFunction(data); 
         });
 }
-
 
 function gameFlowFactory(gameURL, gameData, gameCleanUp, gameFunction) {
     function gameFlow() {

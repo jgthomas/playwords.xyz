@@ -2,8 +2,8 @@
 
 
 const ladder = {
-    length: 4,
-    words: []
+    wordLength: 4,
+         words: []
 };
 
 
@@ -12,7 +12,7 @@ const ladderURL = "http://127.0.0.1:5000/ladder";
 
 function ladderData () {
     return {method: "POST",
-              body: JSON.stringify({length: ladder.length.toString()})
+              body: JSON.stringify({length: ladder.wordLength.toString()})
     };
 }
 
@@ -21,12 +21,12 @@ function ladderCleanup () {
     const guess = document.getElementById("guess")
     ladder.words.push(guess.value);
     guess.value = "";
-    document.getElementById("score").innerText = ladder.length;
-    ladder.length++;
+    ladder.wordLength++;
 }
 
 
 function ladderGame(data) {
+    updateScoreDisplay(ladder.wordLength);
     setUpGame(data);
     const guess = document.getElementById("guess");
     const ladderGameFlow = gameFlowFactory(ladderURL,
@@ -38,7 +38,7 @@ function ladderGame(data) {
 
 
 function ladderGameEnd() {
-    ladder.length = 4;
+    ladder.wordLength = 4;
 }
 
 
