@@ -1,6 +1,5 @@
 "use strict";
 
-
 const anagramURL = "http://127.0.0.1:5000/anagram";
 
 
@@ -9,13 +8,11 @@ function anagramData () {
     return {method: "POST", body: JSON.stringify({length: wordLength})};
 }
 
-
 function anagramCleanup () {
     player.score++;
     updateScoreDisplay(player.score);
     clearGuessBox();
 }
-
 
 function anagramGame(data) {
     setUpGame(data);
@@ -25,6 +22,12 @@ function anagramGame(data) {
                                             anagramCleanup,
                                             anagramGame);
     guess.addEventListener("input", anagramGameFlow);
+}
+
+function anagramGiveUp() {
+    displayAnswer(currentAnagram.solution);
+    displayFinalScore("Final score", player.score);
+    resetGame();
 }
 
 
@@ -39,6 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("stop").addEventListener("click", () => {
-        giveUp();
+        anagramGiveUp();
     });
 });

@@ -1,11 +1,9 @@
 "use strict";
 
-
 const ladder = {
     wordLength: 4,
          words: []
 };
-
 
 const ladderURL = "http://127.0.0.1:5000/ladder";
 
@@ -16,14 +14,12 @@ function ladderData () {
     };
 }
 
-
 function ladderCleanup () {
     const guess = document.getElementById("guess")
     ladder.words.push(guess.value);
     guess.value = "";
     ladder.wordLength++;
 }
-
 
 function ladderGame(data) {
     updateScoreDisplay(ladder.wordLength);
@@ -36,9 +32,11 @@ function ladderGame(data) {
     guess.addEventListener("input", ladderGameFlow);
 }
 
-
-function ladderGameEnd() {
+function ladderGiveUp() {
+    displayAnswer(ladder.words);
+    displayFinalScore("Longest word", ladder.wordLength);
     ladder.wordLength = 4;
+    resetGame();
 }
 
 
@@ -53,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("stop").addEventListener("click", () => {
-        giveUp();
-        ladderGameEnd();
+        ladderGiveUp();
     });
 });

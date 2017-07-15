@@ -12,6 +12,21 @@ const currentAnagram = {
 };
 
 
+function displayAnagram(anagram) {
+    document.getElementById("word-place").innerText = anagram;
+}
+
+function displayAnswer(answerWords) {
+    const answer = document.getElementById("solution");
+    answer.innerText = answerWords.join(", ");
+}
+
+function displayFinalScore(message, score) {
+    const finalScore = document.getElementById("final-score");
+    finalScore.innerText = `${message}: ${score}`;
+}
+
+
 function clearGuessBox() {
     document.getElementById("guess").value = "";
 }
@@ -29,31 +44,11 @@ function clearFinalFeedback() {
     document.getElementById("final-score").innerText = "";
 }
 
-function displayAnagram(anagram) {
-    document.getElementById("word-place").innerText = anagram;
-}
-
-function displayAnswer() {
-    const answer = document.getElementById("solution");
-    answer.innerText = currentAnagram.solution.join(", ");
-}
-
-function displayFinalScore() {
-    const finalScore = document.getElementById("final-score");
-    finalScore.innerText = `Final Score: ${player.score}`;
-}
 
 function updateScoreDisplay(score) {
     document.getElementById("score").innerText = score;
 }
 
-
-function resetGame() {
-    clearGuessBox();
-    clearAnagramWord();
-    clearScoreDisplay();
-    player.score = 0;
-}
 
 function checkAnswer(guess, answers) {
     if (answers.includes(guess)) {
@@ -61,12 +56,6 @@ function checkAnswer(guess, answers) {
     }
 
     return false;
-}
-
-function giveUp() {
-    displayAnswer();
-    displayFinalScore();
-    resetGame();
 }
 
 function setUpGame(data) {
@@ -77,14 +66,24 @@ function setUpGame(data) {
     displayAnagram(currentAnagram.anagram);
 }
 
+function resetGame() {
+    clearGuessBox();
+    clearAnagramWord();
+    clearScoreDisplay();
+    player.score = 0;
+}
+
 
 function fetchWrap(fetchURL, fetchData, gameFunction) {
     fetch(fetchURL, fetchData())
         .then( (response) => {
             return response.json(); 
         })
-        .then( (data) => { 
+        .then( (data) => {
             gameFunction(data); 
+        })
+        .catch( (error) => {
+            console.log(error)
         });
 }
 
