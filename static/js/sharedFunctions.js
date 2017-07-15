@@ -51,6 +51,15 @@ function giveUp() {
 }
 
 
+function setUpGame(data) {
+    clearAllFields();
+    const [anagram, solution] = data;
+    currentAnagram.anagram = anagram;
+    currentAnagram.solution = solution;
+    displayAnagram(currentAnagram.anagram);
+}
+
+
 function fetchWrap(fetchURL, fetchData, gameFunction) {
     fetch(fetchURL, fetchData())
         .then( (response) => {
@@ -72,13 +81,4 @@ function gameFlowFactory(gameURL, gameData, gameCleanUp, gameFunction) {
     }
 
     return gameFlow;
-}
-
-
-function setUpGame(data) {
-    clearAllFields();
-    const [anagram, solution] = data;
-    currentAnagram.anagram = anagram;
-    currentAnagram.solution = solution;
-    displayAnagram(currentAnagram.anagram);
 }

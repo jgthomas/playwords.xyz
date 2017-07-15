@@ -1,30 +1,30 @@
 "use strict";
 
 
-const simpleAnagramURL = "http://127.0.0.1:5000/anagram";
+const anagramURL = "http://127.0.0.1:5000/anagram";
 
 
-function simpleAnagramData () {
+function anagramData () {
     const wordLength = document.getElementById("word-length").value;
     return {method: "POST", body: JSON.stringify({length: wordLength})};
 }
 
 
-function simpleAnagramCleanup () {
+function anagramCleanup () {
     player.score++;
     document.getElementById("score").innerText = player.score;
     document.getElementById("guess").value = "";
 }
 
 
-function simpleAnagramGame(data) {
+function anagramGame(data) {
     setUpGame(data);
     const guess = document.getElementById("guess");
-    const simpleGameFlow = gameFlowFactory(simpleAnagramURL,
-                                           simpleAnagramData,
-                                           simpleAnagramCleanup,
-                                           simpleAnagramGame);
-    guess.addEventListener("input", simpleGameFlow);
+    const anagramGameFlow = gameFlowFactory(anagramURL,
+                                            anagramData,
+                                            anagramCleanup,
+                                            anagramGame);
+    guess.addEventListener("input", anagramGameFlow);
 }
 
 
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("play").addEventListener("click", () => {
         resetGame();
         clearFinalFeedback();
-        fetchWrap(simpleAnagramURL, simpleAnagramData, simpleAnagramGame);
+        fetchWrap(anagramURL, anagramData, anagramGame);
     });
 });
 
