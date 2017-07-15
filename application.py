@@ -1,22 +1,14 @@
 import random
 from flask import Flask, render_template, jsonify, request, url_for, session
-from words import feed_filter, load_words, data_filter, is_length, longer_than, get_all_answers
+from words import (feed_filter, load_words, data_filter,
+                   is_length, longer_than, get_all_answers)
+from constants import WORD_FILE, WORD_LENGTH
 
 
 app = Flask(__name__)
 
 
-WORD_FILE = "static/wordlist/50k.txt"
 FULL_WORD_LIST = load_words(WORD_FILE)
-WORD_LENGTH = {"any-length": 0,
-               "4": 4,
-               "5": 5,
-               "6": 6,
-               "7": 7,
-               "8": 8,
-               "9": 9,
-               "long": 9}
-
 
 def get_word(length):
     if length == "any-length" or length == "long":
