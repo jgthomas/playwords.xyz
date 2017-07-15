@@ -1,15 +1,7 @@
 "use strict";
 
-
-const player = {
-    score: 0
-};
-
-
-const currentAnagram = {
-    anagram: "",
-    solution: ""
-};
+const player = {score: 0};
+const currentAnagram = {anagram: "", solution: ""};
 
 
 function displayAnagram(anagram) {
@@ -58,6 +50,10 @@ function checkAnswer(guess, answers) {
     return false;
 }
 
+function saveWord(word, storageLocation) {
+    storageLocation.push(word);
+}
+
 function setUpGame(data) {
     clearGuessBox();
     const [anagram, solution] = data;
@@ -83,7 +79,7 @@ function fetchWrap(fetchURL, fetchData, gameFunction) {
             gameFunction(data); 
         })
         .catch( (error) => {
-            console.log(error)
+            console.log(error);
         });
 }
 

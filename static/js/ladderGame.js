@@ -1,10 +1,6 @@
 "use strict";
 
-const ladder = {
-    wordLength: 4,
-         words: []
-};
-
+const ladder = {wordLength: 4, words: []};
 const ladderURL = "http://127.0.0.1:5000/ladder";
 
 
@@ -15,9 +11,9 @@ function ladderData () {
 }
 
 function ladderCleanup () {
-    const guess = document.getElementById("guess")
-    ladder.words.push(guess.value);
-    guess.value = "";
+    const guess = document.getElementById("guess").value
+    saveWord(guess, ladder.words);
+    clearGuessBox();
     ladder.wordLength++;
 }
 
