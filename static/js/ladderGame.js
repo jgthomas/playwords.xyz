@@ -29,9 +29,11 @@ function ladderGame(data) {
 }
 
 function ladderGiveUp() {
-    displayAnswer(ladder.words);
-    displayFinalScore("Longest word", ladder.wordLength);
+    const score = ladder.wordLength - 1;
+    displayAnswer(currentAnagram.solution);
+    displayFinalScore("Longest word", score);
     ladder.wordLength = 4;
+    ladder.words = [];
     resetGame();
 }
 

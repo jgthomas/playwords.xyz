@@ -27,6 +27,7 @@ function anagramGame(data) {
 function anagramGiveUp() {
     displayAnswer(currentAnagram.solution);
     displayFinalScore("Final score", player.score);
+    player.score = 0;
     resetGame();
 }
 

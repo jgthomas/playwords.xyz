@@ -66,7 +66,6 @@ function resetGame() {
     clearGuessBox();
     clearAnagramWord();
     clearScoreDisplay();
-    player.score = 0;
 }
 
 
