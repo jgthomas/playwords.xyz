@@ -6,7 +6,7 @@ from words import feed_filter, load_words, data_filter, is_length, longer_than, 
 app = Flask(__name__)
 
 
-WORD_FILE = "50k.txt"
+WORD_FILE = "static/wordlist/50k.txt"
 FULL_WORD_LIST = load_words(WORD_FILE)
 WORD_LENGTH = {"any-length": 0,
                "4": 4,
