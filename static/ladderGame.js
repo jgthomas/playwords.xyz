@@ -11,13 +11,15 @@ const ladderURL = "http://127.0.0.1:5000/ladder";
 
 
 function ladderData () {
-    return {method: "POST", body: JSON.stringify({length: ladder.length.toString()})};
+    return {method: "POST",
+              body: JSON.stringify({length: ladder.length.toString()})
+    };
 }
 
 
 function ladderCleanup () {
-    const guess = document.getElementById("guess").value;
-    ladder.word.push(guess);
+    const guess = document.getElementById("guess")
+    ladder.words.push(guess.value);
     guess.value = "";
     document.getElementById("score").innerText = ladder.length;
     ladder.length++;
@@ -35,6 +37,11 @@ function ladderGame(data) {
 }
 
 
+function ladderGameEnd() {
+    ladder.length = 4;
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("play").addEventListener("click", () => {
         resetGame();
@@ -47,5 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("stop").addEventListener("click", () => {
         giveUp();
+        ladderGameEnd();
     });
 });

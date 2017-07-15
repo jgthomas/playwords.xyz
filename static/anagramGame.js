@@ -10,6 +10,13 @@ function simpleAnagramData () {
 }
 
 
+function simpleAnagramCleanup () {
+    player.score++;
+    document.getElementById("score").innerText = player.score;
+    document.getElementById("guess").value = "";
+}
+
+
 function simpleAnagramGame(data) {
     setUpGame(data);
     const guess = document.getElementById("guess");
@@ -26,5 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
         resetGame();
         clearFinalFeedback();
         fetchWrap(simpleAnagramURL, simpleAnagramData, simpleAnagramGame);
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("stop").addEventListener("click", () => {
+        giveUp();
     });
 });

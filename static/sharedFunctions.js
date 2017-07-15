@@ -75,13 +75,6 @@ function gameFlowFactory(gameURL, gameData, gameCleanUp, gameFunction) {
 }
 
 
-function simpleAnagramCleanup () {
-    player.score++;
-    document.getElementById("score").innerText = player.score;
-    document.getElementById("guess").value = "";
-}
-
-
 function setUpGame(data) {
     clearAllFields();
     const [anagram, solution] = data;

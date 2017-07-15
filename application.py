@@ -18,6 +18,20 @@ WORD_LENGTH = {"any-length": 0,
                "long": 9}
 
 
+def get_word(length):
+    if length == "any-length" or length == "long":
+        words = data_filter(FULL_WORD_LIST, longer_than, WORD_LENGTH[length])
+    else:
+        words = data_filter(FULL_WORD_LIST, is_length, WORD_LENGTH[length])
+    word = random.choice(words)
+    letters = [letter for letter in word]
+    answers = get_all_answers(words, letters, len(word))
+    anagram = list(word)
+    random.shuffle(anagram)
+    data = [''.join(anagram), answers]
+    return jsonify(data)
+
+
 @app.route('/')
 def index():
     return render_template("index.html")
@@ -48,26 +62,14 @@ def anagram():
     if request.method == 'POST':
         data = request.get_json(force=True)
         length = data["length"]
-        print(length)
-
-        if length == "any-length" or length == "long":
-            words = data_filter(FULL_WORD_LIST, longer_than, WORD_LENGTH[length])
-        else:
-            words = data_filter(FULL_WORD_LIST, is_length, WORD_LENGTH[length])
-
-        word = random.choice(words)
-        letters = [letter for letter in word]
-        answers = get_all_answers(words, letters, len(word))
-        anagram = list(word)
-        random.shuffle(anagram)
-        data = [''.join(anagram), answers]
-        print(jsonify(data))
-        return jsonify(data)
-    return render_template("basic_anagram.html")
+        return get_word(length)
+    return render_template("anagram.html")
 
 
 @app.route('/ladder', methods=["GET", "POST"])
 def ladder():
     if request.method == "POST":
-        anagram()
+        data = request.get_json(force=True)
+        length = data["length"]
+        return get_word(length)
     return render_template("ladder.html")
