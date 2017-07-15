@@ -2,48 +2,6 @@ body {
         font-family: sans-serif;
 }
 
-.flex-container {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: center;
-}
-
-.flex-full-unit {
-        flex: 0 0 100%;
-        margin-left: auto;
-        margin-right: auto;
-        min-width: 600px;
-}
-
-.flex-two-thirds-unit {
-        flex: 0 0 70%;
-        margin-left: auto;
-        margin-right: auto;
-}
-
-.flex-half-unit {
-        flex: 0 0 40%;
-        margin-left: auto;
-        margin-right: auto;
-        min-width: 400px;
-}
-
-.flex-third-unit {
-        flex: 0 0 30%;
-        margin-left: auto;
-        margin-right: auto;
-        /*min-width: 500px;*/
-}
-
-.flex-quarter-unit {
-        flex: 0 0 25%;
-        margin-left: auto;
-        margin-right: auto;
-        min-width: 400px;
-}
-
 .site-title {
         text-align: center;
         background-color: #008CBA;
@@ -62,17 +20,7 @@ body {
         margin: 1%;
 }
 
-.game-nav {
-        text-align: center;
-        text-decoration: none;
-        color: white;
-        font-size: 6vh;
-        border-radius: 8%;
-        width: 100%;
-        display: block;
-        padding: 1%;
-        margin-bottom: 2%;
-}
+
 
 a.site-nav {
         text-decoration: none;
@@ -80,17 +28,7 @@ a.site-nav {
         display: block;
 }
 
-.game-link-block {
-        margin-top: 5%;
-}
 
-#navlink1 {
-        background-color: darkred;
-}
-
-#navlink2 {
-        background-color: darkslateblue;
-}
 
 .center {
         margin-left: auto;
@@ -181,7 +119,96 @@ select {
 }
 
 
-/* Modify for DESKTOP: */
+/*
+ * Homepage
+ *
+ */
+.game-link-block {
+        margin-top: 5%;
+}
+
+.game-nav {
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        font-size: 6vh;
+        border-radius: 8%;
+        width: 100%;
+        display: block;
+        padding: 1%;
+        margin-bottom: 2%;
+}
+
+#navlink1 {
+        background-color: darkred;
+}
+
+#navlink2 {
+        background-color: darkslateblue;
+}
+
+#navlink3 {
+        background-color: dodgerblue;
+}
+
+#navlink4 {
+        background-color: chocolate;
+}
+
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+ }
+
+.game {
+    flex: 1 0 500px;
+    box-sizing: border-box;
+    margin: 1rem .25em;
+}
+
+@media screen and (min-width: 40em) {
+    .game {
+       max-width: calc(100% -  1em);
+    }
+}
+
+@media screen and (min-width: 70em) {
+    .game {
+       max-width: calc(50% -  1em);
+    }
+}
+
+@media screen and (min-width: 100em) {
+    .game {
+        max-width: calc(33% - 1em);
+    }
+}
+
+@media only screen and (max-device-width: 1366px) {
+        .game {
+                max-width: calc(33% - 1em);
+        }
+}
+
+@media only screen and (max-device-width: 1024px) {
+        .game {
+                max-width: calc(50% - 1em);
+        }
+}
+
+@media only screen and (max-device-width: 420px) {
+        .game {
+                max-width: calc(100% - 1em);
+        }
+}
+
+
+/*
+ * Adjustments for desktop
+ *
+ */
 @media only screen and (min-device-width: 961px) {
 
         select {

@@ -1,12 +1,18 @@
 {% extends "layout.html" %}
 
 {% block main %}
-<div class="flex-container game-link-block">
-  <div id="navlink1" class="flex-half-unit game-nav">
+<div class="games game-link-block">
+  <div id="navlink1" class="game game-nav">
     <a class="game-nav" href="{{ url_for('anagram') }}">Anagram</a>
   </div>
-  <div id="navlink2" class="flex-half-unit game-nav">
+  <div id="navlink2" class="game game-nav">
     <a class="game-nav" href="{{ url_for('ladder') }}">Ladder</a>
+  </div>
+  <div id="navlink3" class="game game-nav">
+    <a class="game-nav" href="#">Grid</a>
+  </div>
+  <div id="navlink4" class="game game-nav">
+    <a class="game-nav" href="#">Scrabble</a>
   </div>
 </div>
 {% endblock %}
