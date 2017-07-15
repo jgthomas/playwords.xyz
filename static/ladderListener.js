@@ -1,3 +1,10 @@
+"use strict";
+
+
+const ladder = {
+    length: 4,
+    words: []
+};
 
 
 const ladderURL = "http://127.0.0.1:5000/ladder";
