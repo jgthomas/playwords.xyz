@@ -43,11 +43,15 @@ function updateScoreDisplay(score) {
 
 
 function checkAnswer(guess, answers) {
-    if (answers.includes(guess)) {
+    if (answers.includes(guess.toLowerCase())) {
         return true;
     }
 
     return false;
+}
+
+function getAnswer(answerWords) {
+    return answerWords.join(", ");
 }
 
 function saveWord(word, storageLocation) {
@@ -65,7 +69,6 @@ function setUpGame(data) {
 function resetGame() {
     clearGuessBox();
     clearAnagramWord();
-    clearScoreDisplay();
 }
 
 

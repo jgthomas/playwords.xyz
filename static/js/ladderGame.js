@@ -1,7 +1,8 @@
 "use strict";
 
 const ladder = {wordLength: 4, words: []};
-const ladderURL = "http://127.0.0.1:5000/ladder";
+//const ladderURL = "http://127.0.0.1:5000/ladder";
+const ladderURL = "https://1ff4ef42.ngrok.io/ladder";
 
 
 function ladderData () {
@@ -30,16 +31,16 @@ function ladderGame(data) {
 
 function ladderGiveUp() {
     const score = ladder.wordLength - 1;
-    displayAnswer(currentAnagram.solution);
-    displayFinalScore("Longest word", score);
     ladder.wordLength = 4;
     ladder.words = [];
     resetGame();
+    displayAnagram(getAnswer(currentAnagram.solution));
 }
 
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("play").addEventListener("click", () => {
+        clearScoreDisplay();
         resetGame();
         clearFinalFeedback();
         fetchWrap(ladderURL, ladderData, ladderGame);
