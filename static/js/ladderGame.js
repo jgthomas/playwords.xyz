@@ -1,8 +1,8 @@
 "use strict";
 
 const ladder = {wordLength: 4, words: []};
-//const ladderURL = "http://127.0.0.1:5000/ladder";
-const ladderURL = "https://1ff4ef42.ngrok.io/ladder";
+const ladderURL = "http://127.0.0.1:5000/ladder";
+//const ladderURL = "https://1ff4ef42.ngrok.io/ladder";
 
 
 function ladderData () {
