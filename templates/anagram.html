@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 {% block main %}
-  <div class="center score fade-in"><p id="score" class="vertical-center">0</p></div>
+  <h2 class="site-title fade-in">Solve as many anagrams as you can</h2>
+  <div class="center score fade-in">
+    <div id="score" class="vertical-center">0</div>
+  </div>
   <div class="center box-margins fade-in">
     <select id="word-length", name="check">
       <option name="word-length" value="any-length" selected="selected">Any Length</option>

@@ -9,9 +9,8 @@ body {
 
 .site-title {
         text-align: center;
-        background-color: #008CBA;
-        color: white;
-        font-size: 3em;
+        color: #008CBA;
+        font-size: 500%;
 }
 
 
@@ -55,7 +54,7 @@ a.site-nav {
 
 
 /*
- * Game page shared elements
+ * Game page elements
  *
  */
 .score {
@@ -68,7 +67,7 @@ a.site-nav {
 }
 
 .button {
-        background-color:#008CBA;
+        background-color: #008CBA;
         border: none;
         color: white;
         text-align: center;
@@ -85,6 +84,8 @@ a.site-nav {
 
 .anagram-text {
         font-size: 600%;
+        color: grey;
+        font-weight: bold;
 }
 
 input[type="text"] {
@@ -105,6 +106,14 @@ input[type="text"] {
 
 .feedback-text {
         font-size: 600%;
+}
+
+#solution {
+        color: #008CBA;
+}
+
+#final-score {
+        color: #B22222;
 }
 
 #results {
@@ -272,16 +281,16 @@ select {
                 margin: 2.5%;
         }
 
-        .anagram-text {
-                font-size: 300%;
-        }
-
-        .feedback-text {
+         .feedback-text {
                 font-size: 300%;
         }
 
         .box-margins {
                 margin-top: 2.5%;
                 margin-bottom: 2.5%
+        }
+
+        .site-title {
+                font-size: 300%;
         }
 }
