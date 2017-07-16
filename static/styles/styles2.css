@@ -1,4 +1,9 @@
+/*
+ * Site-level settings
+ *
+ */
 body {
+        font-size: 16px;
         font-family: sans-serif;
 }
 
@@ -9,6 +14,11 @@ body {
         font-size: 3em;
 }
 
+
+/*
+ * Site-navigation
+ *
+ */
 .main-site-nav {
         display: none;
 }
@@ -20,8 +30,6 @@ body {
         margin: 1%;
 }
 
-
-
 a.site-nav {
         text-decoration: none;
         color: white;
@@ -29,7 +37,10 @@ a.site-nav {
 }
 
 
-
+/*
+ * General formatting
+ *
+ */
 .center {
         margin-left: auto;
         margin-right: auto;
@@ -42,13 +53,18 @@ a.site-nav {
         transform: translateY(-50%);
 }
 
+
+/*
+ * Game page shared elements
+ *
+ */
 .score {
-        font-size: 3em;
+        font-size: 400%;
         color: white;
         background-color: #B22222;
         border-radius: 50%;
-        width: 2em;
-        height: 2em;
+        width: 3em;
+        height: 3em;
 }
 
 .button {
@@ -81,9 +97,13 @@ a.site-nav {
 
 input[type="text"] {
         font-size: 5vw;
+        font-size: 600%;
         border-radius: 8px;
         outline: none;
-        width: 100%;
+        width: 80%;
+        height: 1.5em;
+        margin-left: auto;
+        margin-right: auto;
 }
 
 select {
@@ -105,6 +125,11 @@ select {
         height: 5vh;
 }
 
+
+/*
+ * Game load effects
+ *
+ */
 .fade-in {
         animation: fadein 3s;
 }
@@ -131,7 +156,7 @@ select {
         text-align: center;
         text-decoration: none;
         color: white;
-        font-size: 6vh;
+        font-size: 200%;
         border-radius: 8%;
         width: 100%;
         display: block;
@@ -230,5 +255,11 @@ select {
                 margin-left: auto;
                 margin-right: auto;
                 height: 2em;
+        }
+
+        .score {
+                width: 2em;
+                height: 2em;
+                font-size: 3em;
         }
 }
