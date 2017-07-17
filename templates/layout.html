@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
+{% block head %}
   <link rel=stylesheet href="{{ url_for('static', filename='styles/styles2.css') }}">
-</head>
+{% endblock %}
 <body>
   <nav class="main-site-nav">
     {% if session.user_id %}

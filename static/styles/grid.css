@@ -1,0 +1,11 @@
+.word-grid {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: flex-start;
+}
+
+
+.letter-square {
+        flex: 0 0 33%;
+}

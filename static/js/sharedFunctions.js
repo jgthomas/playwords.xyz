@@ -72,38 +72,38 @@ function updateScoreDisplay(score) {
 
 
 /*
- * Storing and retrieving all answers
+ * Storing and retrieving answers
  *
  */
-function storeAnswer(word, storageLocation) {
+function storeAnswer(word, storage) {
     const firstLetter = word.charAt(0);
-    if (storageLocation[firstLetter]) {
-        storageLocation[firstLetter].push(word);
+    if (storage[firstLetter]) {
+        storage[firstLetter].push(word);
     } else {
-        storageLocation[firstLetter] = [word];
+        storage[firstLetter] = [word];
     }
 }
 
-function wordsWithFirst(letter, storageLocation) {
-    return storageLocation[letter];
+function startsWith(letter, storage) {
+    return storage[letter];
 }
 
-function getAnswerRow(letter, storageLocation) {
+function letterAnswers(letter, storage) {
     const letterRow = document.getElementById(letter);
-    letterRow.textContent = wordsWithFirst(letter, storageLocation).sort().join("   ");
+    letterRow.textContent = startsWith(letter, storage).sort().join("   ");
 }
 
-function getAllAnswerRows(letters, storageLocation) {
+function allLetterAnswers(letters, storage) {
     letters.forEach( (letter) => {
-        if (storageLocation[letter]) {
-            getAnswerRow(letter, storageLocation);
+        if (storage[letter]) {
+            letterAnswers(letter, storage);
         }
     });
 }
 
-function resetAnswers(storageLocation) {
-    for (const prop of Object.keys(storageLocation)) {
-        delete storageLocation[prop];
+function resetAnswers(storage) {
+    for (const prop of Object.keys(storage)) {
+        delete storage[prop];
     }
 }
 
@@ -121,10 +121,6 @@ function checkAnswer(guess, answers) {
 }
 
 
-
-
-
-
 /*
  * T.B.D.
  *
@@ -133,8 +129,8 @@ function getAnswer(answerWords) {
     return answerWords.join(", ");
 }
 
-function saveWord(word, storageLocation) {
-    storageLocation.push(word);
+function saveWord(word, storage) {
+    storage.push(word);
 }
 
 
