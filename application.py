@@ -65,3 +65,7 @@ def ladder():
         length = data["length"]
         return get_word(length)
     return render_template("ladder.html")
+
+@app.route('/grid')
+def grid():
+    return render_template("grid.html")

@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block main %}
+  <div id="a"></div>
+  <div id="b"></div>
+  <div id="c"></div>
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ url_for('static', filename='js/grid.js') }}"></script>
+{% endblock %}
