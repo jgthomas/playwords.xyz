@@ -1,21 +1,25 @@
 .game-layout {
         display: flex;
-        flex-flow: row;
+        /*flex-flow: row;*/
+        flex-wrap: wrap-reverse;
+        /*flex-direction: row;*/
 }
 
 #word-grid {
-        flex: 1;
+        flex: 0 0 33%;
         background-color: red;
         text-align: center;
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
         align-items: flex-start;
+        min-width: 500px;
 }
 
 #answers {
-        flex: 2;
+        flex: 0 0 66%;
         background-color: blue;
+        min-width: 500px;
 }
 
 .letter-square {
