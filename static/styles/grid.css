@@ -1,11 +1,32 @@
-.word-grid {
+.game-layout {
+        display: flex;
+        flex-flow: row;
+}
+
+#word-grid {
+        flex: 1;
+        background-color: red;
+        text-align: center;
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
         align-items: flex-start;
 }
 
+#answers {
+        flex: 2;
+        background-color: blue;
+}
 
 .letter-square {
-        flex: 0 0 33%;
+        flex: 0 0 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 0;
+        padding-bottom: 15%;
+        padding-top: 15%;
+        margin: 1.5%;
+        background-color: yellow;
+        font-size: 2em;
 }
