@@ -1,8 +1,6 @@
 .game-layout {
         display: flex;
-        /*flex-flow: row;*/
         flex-wrap: wrap-reverse;
-        /*flex-direction: row;*/
 }
 
 #word-grid {
@@ -14,12 +12,16 @@
         flex-direction: row;
         align-items: flex-start;
         min-width: 500px;
+        margin-right: auto;
+        margin-left: auto;
 }
 
 #answers {
-        flex: 0 0 66%;
+        flex: 9999 0 66%;
         background-color: blue;
         min-width: 500px;
+        margin-right: auto;
+        margin-left: auto;
 }
 
 .letter-square {
