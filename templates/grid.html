@@ -4,6 +4,7 @@
   <link rel=stylesheet href="{{ url_for('static', filename='styles/grid.css') }}">
 {% endblock %}
 {% block main %}
+  <input id="guess" class="above-entry word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
   <div class="game-layout">
     <div id="word-grid">
       <div id="letter1" class="letter-square"></div>
@@ -17,7 +18,7 @@
       <div id="letter9" class="letter-square"></div>
     </div>
     <div id="answers">
-      <h2 class="grid-title">Answers</h2>
+      <h2 class="grid-title">Words Found</h2>
       <div id="a"></div>
       <div id="b"></div>
       <div id="c"></div>
@@ -46,7 +47,7 @@
       <div id="z"></div>
     </div>
   </div>
-  <input id="guess" class="word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
+  <input id="guess" class="below-entry word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
 {% endblock %}
 {% block scripts %}
   {{ super() }}

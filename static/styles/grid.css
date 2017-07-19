@@ -45,3 +45,28 @@
         color: darkslategray;
         font-weight: bold;
 }
+
+.above-entry {
+        display: none;
+}
+
+
+/*
+ * Adjustments for desktop
+ *
+ */
+@media only screen and (min-device-width: 961px) {
+
+        .game-layout {
+                flex-wrap: wrap;
+        }
+
+        .above-entry {
+                display: block;
+                margin-bottom: 1em;
+        }
+
+        .below-entry {
+                display: none;
+        }
+}
