@@ -5,7 +5,7 @@
 
 #word-grid {
         flex: 0 0 33%;
-        background-color: red;
+        background-color: dimgray;
         text-align: center;
         display: flex;
         flex-wrap: wrap;
@@ -14,25 +14,34 @@
         min-width: 500px;
         margin-right: auto;
         margin-left: auto;
+        margin-bottom: 0.5em;
+        justify-content: center;
+        align-items: center;
 }
 
 #answers {
         flex: 9999 0 66%;
-        background-color: blue;
         min-width: 500px;
         margin-right: auto;
         margin-left: auto;
+        margin-bottom: 0.5em;
+}
+
+.grid-title {
+        text-align: center;
 }
 
 .letter-square {
-        flex: 0 0 30%;
+        flex: 0 0 31%;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 0;
-        padding-bottom: 15%;
-        padding-top: 15%;
-        margin: 1.5%;
-        background-color: yellow;
-        font-size: 2em;
+        padding-bottom: 15.5%;
+        padding-top: 15.5%;
+        margin: 0.75%;
+        background-color: ghostwhite;
+        font-size: 3em;
+        color: darkslategray;
+        font-weight: bold;
 }
