@@ -1,6 +1,8 @@
 .game-layout {
         display: flex;
         flex-wrap: wrap-reverse;
+        flex-direction: column-reverse;
+        margin-top: 0.5em;
 }
 
 #word-grid {
@@ -25,10 +27,6 @@
         margin-right: auto;
         margin-left: auto;
         margin-bottom: 0.5em;
-}
-
-.grid-title {
-        text-align: center;
 }
 
 .letter-square {
@@ -59,6 +57,7 @@
 
         .game-layout {
                 flex-wrap: wrap;
+                flex-direction: column;
         }
 
         .above-entry {
