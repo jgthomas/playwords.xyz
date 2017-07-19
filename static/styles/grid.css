@@ -5,6 +5,29 @@
         margin-top: 0.5em;
 }
 
+#rules {
+        flex: 0 0 16%;
+        background-color: yellow;
+        display: none;
+}
+
+.sidebar-header {
+        text-align: center;
+}
+
+.sidebar-section {
+        margin-bottom: 5em;
+}
+
+.sidebar-phrase {
+        text-align: center;
+}
+
+.sidebar-count {
+        text-align: center;
+        font-size: 2em;
+}
+
 #word-grid {
         flex: 0 0 33%;
         background-color: dimgray;
@@ -13,21 +36,21 @@
         flex-wrap: wrap;
         flex-direction: row;
         align-items: flex-start;
-        min-width: 500px;
+        min-width: 800px;
         margin-right: auto;
         margin-left: auto;
         margin-bottom: 0.5em;
         justify-content: center;
         align-items: center;
+        border-radius: 3%;
 }
 
 #answers {
-        flex: 9999 0 66%;
-        min-width: 500px;
+        flex: 0 0 33%;
+        min-width: 800px;
         margin-right: auto;
         margin-left: auto;
         margin-bottom: 0.5em;
-        margin-top: 2em;
 }
 
 .letter-square {
@@ -58,7 +81,20 @@
 
         .game-layout {
                 flex-wrap: wrap;
-                flex-direction: column;
+                flex-direction: row;
+        }
+
+        /*#rules {
+                display: block;
+        }*/
+
+        #word-grid {
+                min-width: 500px;
+                margin-top: 2em;
+        }
+
+        #answers {
+                min-width: 500px;
         }
 
         .above-entry {

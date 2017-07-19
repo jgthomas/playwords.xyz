@@ -4,21 +4,30 @@
   <link rel=stylesheet href="{{ url_for('static', filename='styles/grid.css') }}">
 {% endblock %}
 {% block main %}
-  <input id="guess" class="above-entry word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
   <div class="game-layout fade-in">
-    <div id="word-grid">
-      <div id="letter1" class="letter-square"></div>
-      <div id="letter2" class="letter-square"></div>
-      <div id="letter3" class="letter-square"></div>
-      <div id="letter4" class="letter-square"></div>
-      <div id="letter5" class="letter-square"></div>
-      <div id="letter6" class="letter-square"></div>
-      <div id="letter7" class="letter-square"></div>
-      <div id="letter8" class="letter-square"></div>
-      <div id="letter9" class="letter-square"></div>
+    <div id="rules">
+      <div class="sidebar-section">
+        <h2 class="sidebar-header">Rules</h2>
+        <p class="sidebar-phrase">Four letters plus</p>
+        <p class="sidebar-phrase">Use middle letter</p>
+      </div>
+      <div class="sidebar-section">
+        <h2 class="sidebar-header">Guide</h2>
+        <p class="sidebar-phrase">Average</p>
+        <div class="sidebar-count">0</div>
+        <p class="sidebar-phrase">Good</p>
+        <div class="sidebar-count">0</div>
+        <p class="sidebar-phrase">Excellent</p>
+        <div class="sidebar-count">0</div>
+      </div>
+      <div class="sidebar-section">
+        <h2 class="sidebar-header">Found</h2>
+        <div class="sidebar-count">0</div>
+      </div>
     </div>
     <div id="answers">
-      <div id="a"></div>
+      <input id="guess" class="above-entry word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
+      <div id="a">aardvark &nbsp; animal</div>
       <div id="b"></div>
       <div id="c"></div>
       <div id="d"></div>
@@ -45,6 +54,18 @@
       <div id="y"></div>
       <div id="z"></div>
     </div>
+    <div id="word-grid">
+      <div id="letter1" class="letter-square"></div>
+      <div id="letter2" class="letter-square"></div>
+      <div id="letter3" class="letter-square"></div>
+      <div id="letter4" class="letter-square"></div>
+      <div id="letter5" class="letter-square"></div>
+      <div id="letter6" class="letter-square"></div>
+      <div id="letter7" class="letter-square"></div>
+      <div id="letter8" class="letter-square"></div>
+      <div id="letter9" class="letter-square"></div>
+    </div>
+
   </div>
   <input id="guess" class="below-entry word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
 {% endblock %}
