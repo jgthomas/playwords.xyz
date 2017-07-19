@@ -63,6 +63,7 @@
         .above-entry {
                 display: block;
                 margin-bottom: 1em;
+                margin-top: 1em;
         }
 
         .below-entry {
