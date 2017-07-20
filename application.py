@@ -70,6 +70,6 @@ def ladder():
 def grid():
     return render_template("grid.html")
 
-@app.route('/scrabble')
-def scrabble():
-    return render_template("scrabble.html")
+@app.route('/rack')
+def rack():
+    return render_template("rack.html")
