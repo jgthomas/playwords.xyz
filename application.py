@@ -1,8 +1,18 @@
 import random
-from flask import Flask, render_template, jsonify, request, url_for, session
+
+from flask import (Flask,
+                   render_template,
+                   jsonify,
+                   request,
+                   url_for, session)
+
 from words import (feed_filter, load_words, data_filter,
                    is_length, longer_than, get_all_answers)
-from constants import WORD_FILE, WORD_LENGTH
+
+from constants import (WORD_FILE,
+                       WORD_LENGTH,
+                       NINE_LETTER_WORD_FILE,
+                       DICTIONARY_FILE)
 
 
 app = Flask(__name__)

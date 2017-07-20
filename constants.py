@@ -1,5 +1,7 @@
 
 WORD_FILE = "static/wordlist/50k.txt"
+NINE_LETTER_WORD_FILE = "static/nine_letter_words.txt"
+DICTIONARY_FILE = "static/sowpods.txt"
 
 WORD_LENGTH = {"any-length": 0,
                "long": 9,
