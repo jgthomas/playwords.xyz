@@ -11,12 +11,25 @@
         display: none;
 }
 
+#new-rules {
+        /*flex: 0 0 16%;*/
+        /*display: inline-block;*/
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        border-bottom: 3px;
+        border-bottom-style: solid;
+        border-bottom-color: dimgray;
+        margin-bottom: 2em;
+}
+
 .sidebar-header {
         text-align: center;
 }
 
 .sidebar-section {
-        margin-bottom: 5em;
+        margin-right 2em;
+        display: inline-block;
 }
 
 .sidebar-phrase {
