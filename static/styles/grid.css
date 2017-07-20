@@ -5,15 +5,7 @@
         margin-top: 0.5em;
 }
 
-#rules {
-        flex: 0 0 16%;
-        background-color: yellow;
-        display: none;
-}
-
 #new-rules {
-        /*flex: 0 0 16%;*/
-        /*display: inline-block;*/
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -25,6 +17,7 @@
 
 .sidebar-header {
         text-align: center;
+        font-weight: bold;
 }
 
 .sidebar-section {
@@ -103,10 +96,6 @@
                 flex-wrap: wrap-reverse;
                 flex-direction: row;
         }
-
-        /*#rules {
-                display: block;
-        }*/
 
         #word-grid {
                 min-width: 500px;
