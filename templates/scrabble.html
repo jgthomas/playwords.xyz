@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block head %}
+  {{ super() }}
+  <link rel=stylesheet href="{{ url_for('static', filename='styles/scrabble.css') }}">
+{% endblock %}
+{% block main %}
+  <div class="rack box-shadow-3d">
+    <div id="letter1" class="tile">Q</div>
+    <div id="letter2" class="tile">U</div>
+    <div id="letter3" class="tile">E</div>
+    <div id="letter4" class="tile">R</div>
+    <div id="letter5" class="tile">I</div>
+    <div id="letter6" class="tile">E</div>
+    <div id="letter7" class="tile rightmost">S</div>
+  </div>
+{% endblock %}

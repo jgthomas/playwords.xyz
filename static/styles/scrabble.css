@@ -1,0 +1,52 @@
+.rack {
+        width: 80%;
+        height: 6em;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        min-width: 500px;
+        margin-top: 1em;
+}
+
+.tile {
+        flex: 1 0 0;
+        border-right: 2px;
+        border-right-style: solid;
+        border-right-color: slategray;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 2em;
+        color: dimgray;
+        font-weight: bold;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        background-color: ivory;
+}
+
+.rightmost {
+        border: none;
+}
+
+.box-shadow-3d{
+    box-shadow: 1px 1px 0px #999,
+                2px 2px 0px #999,
+                3px 3px 0px #999,
+                4px 4px 0px #999,
+                5px 5px 0px #999,
+                6px 6px 0px #999;
+}
+
+/*
+ * Adjustments for desktop
+ *
+ */
+@media only screen and (min-device-width: 961px) {
+
+        .rack {
+                width: 50%;
+        }
+}
