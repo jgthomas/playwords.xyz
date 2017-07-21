@@ -41,6 +41,17 @@ def contains(char, string):
 
 
 def exact_match(x, y):
+    """
+    Return True if x is made of the same elements as y, including repeats.
+
+    Examples:
+    >>> exact_match("stop", "pots")
+    >>> True
+
+    >>> exact_match("settee", "tsetse")
+    >>> False
+
+    """
     return all(x_elem == y_elem for x_elem, y_elem in zip(sorted(x), sorted(y)))
 
 
