@@ -33,11 +33,15 @@ def longer_than(item, length):
 
 
 def is_subset(item, reference):
-    return set(item) <= set(reference)
+    return set(item).issubset(reference)
 
 
 def contains(char, string):
     return char in set(string)
+
+
+def exact_match(x, y):
+    return all(x_elem == y_elem for x_elem, y_elem in zip(sorted(x), sorted(y)))
 
 
 def can_be_made(string, reference):
@@ -55,10 +59,6 @@ def can_be_made(string, reference):
     if count == 0:
         return True
     return False
-
-
-def exact_letter_match(x, y):
-    return all(x_let == y_let for x_let, y_let in zip(sorted(x), sorted(y)))
 
 
 def get_all_answers(words, letters, length):
