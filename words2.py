@@ -3,30 +3,29 @@
 from pyfunctory.factories import make_partial, filter_by, compose
 from pyfunctory.atoms import (contains,
                               is_length,
-                              longer_than,
                               is_subset,
                               can_be_made)
 
 
 def length_is(length):
-    """ Return a generator filtering by specific length. """
+    """ Generator filtering by length of word. """
     return filter_by(make_partial(is_length, length))
 
 def letter_in(letter):
-    """ Return a generator filtering by presence of letter. """
+    """ Generator filtering by presence of letter. """
     return filter_by(make_partial(contains, letter))
 
 def letter_types(letters):
-    """ Return a generator filtering by sets of letters. """
+    """ Generator filtering by letter sets. """
     return filter_by(make_partial(is_subset, letters))
 
 def all_letters_in(letters):
-    """ Return a generator filtering by letters, duplicates included. """
+    """ Generator filtering by individual letters, duplicates included. """
     return filter_by(make_partial(can_be_made, letters))
 
 
 def answer_words(word):
-    """ Return combined generators to get all answer words. """
+    """ Combined generators to get all answer words. """
     return compose(letter_types(word), all_letters_in(word))
 
 
