@@ -39,8 +39,7 @@ def anagram_answers(length, word, source):
     >>> ["opts", "pots", "tops", "stop"]
 
     """
-    answer_filter = compose(length_is(length),
-                            answer_words(word))
+    answer_filter = compose(length_is(length), answer_words(word))
     return list(answer_filter(source))
 
 
