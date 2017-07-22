@@ -19,6 +19,7 @@ app = Flask(__name__)
 
 
 FULL_WORD_LIST = load_words(WORD_FILE)
+NINE_LETTER_LIST = load_words(NINE_LETTER_WORD_FILE)
 
 def get_word(length):
     if length == "any-length" or length == "long":

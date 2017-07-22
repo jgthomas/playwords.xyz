@@ -37,6 +37,16 @@ function displayFinalScore(message, score) {
     finalScore.innerText = `${message}: ${score}`;
 }
 
+function displayWord (word) {
+    const baseID = "letter";
+    let countID = 1;
+    word.forEach( (letter) => {
+        const ID = `${baseID}${countID}`
+        const square = document.getElementById(ID);
+        square.textContent = letter;
+        countID += 1;
+    });
+}
 
 
 
