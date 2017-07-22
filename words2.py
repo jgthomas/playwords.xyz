@@ -12,10 +12,6 @@ def length_is(length):
     """ Return a generator filtering by specific length. """
     return filter_by(make_partial(is_length, length))
 
-def length_over(length):
-    """ Return a generator filtering by length threshold. """
-    return filter_by(make_partial(longer_than, length))
-
 def letter_in(letter):
     """ Return a generator filtering by presence of letter. """
     return filter_by(make_partial(contains, letter))
