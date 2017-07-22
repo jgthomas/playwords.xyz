@@ -1,6 +1,5 @@
 
 
-import operator
 from pyfunctory.factories import make_partial, filter_by, compose
 from pyfunctory.atoms import (contains,
                               is_length,
