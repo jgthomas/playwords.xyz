@@ -20,3 +20,5 @@ WORD_LENGTH = {"any-length": 0,
                "14": 14,
                "15": 15,
                "16": 16}
+
+PLURAL_SPECIAL_CASES = ["news"]

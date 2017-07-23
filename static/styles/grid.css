@@ -34,6 +34,11 @@
         font-size: 2em;
 }
 
+#score {
+        color: #B22222;
+        font-weight: bold;
+}
+
 #word-grid {
         flex: 0 0 33%;
         background-color: dimgray;

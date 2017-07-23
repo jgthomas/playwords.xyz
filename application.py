@@ -7,7 +7,7 @@ from flask import (Flask,
                    url_for, session)
 
 from pyfunctory.process import load_data
-from words import get_word, make_anagram, data, anagram_answers, puzzle_answers
+from words import get_word, make_anagram, data, anagram_answers, puzzle_answers, plural_filter
 
 from constants import (WORD_FILE,
                        WORD_LENGTH,

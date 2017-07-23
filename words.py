@@ -1,7 +1,8 @@
 
 
 import random
-from constants import WORD_LENGTH, SHORT
+from constants import WORD_LENGTH, SHORT, PLURAL_SPECIAL_CASES
+from pyfunctory.nuggets import match_factory, ends_ss
 from pyfunctory.process import filter_data
 from pyfunctory.factories import make_partial, filter_by, compose
 from pyfunctory.atoms import (contains,
@@ -61,6 +62,20 @@ def data(anagram, answers):
     return ["".join(anagram), answers]
 
 
+def plural_filter(answers, source):
+    """ Return list of all plurals to filter. """
+    all_words = set(source)
+    plurals = [word for word in answers
+               if word.endswith("s") 
+               and word[:-1] in all_words
+               and len(word) in range(4, 10)]
+    plurals = [word for word in plurals
+               if word not in PLURAL_SPECIAL_CASES]
+    not_match = match_factory(ends_ss, match=False)
+    plurals = filter_data(plurals, not_match)
+    return plurals
+
+
 def anagram_answers(length, word, source):
     """
     Return all words that can be made using ALL the letters in word.
@@ -94,4 +109,7 @@ def puzzle_answers(word, source, letter=None):
                                 answer_words(word))
     else:
         answer_filter = answer_words(word)
-    return list(answer_filter(source))
+    answers = list(answer_filter(source))
+    plurals = plural_filter(answers, source)
+    answers = [word for word in answers if word not in plurals]
+    return answers
