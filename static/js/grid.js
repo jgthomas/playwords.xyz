@@ -54,7 +54,9 @@ function gridGame(data) {
 function gridGiveUp() {
     sortFinalAnswers(currentAnagram.solution, finalAnswers);
     allLetterAnswers(LETTERS, finalAnswers, true);
+    resetAnswers(gridAnswers);
     resetAnswers(finalAnswers);
+    player.score = 0;
 }
 
 
