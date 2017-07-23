@@ -1,7 +1,7 @@
 
 
 import random
-from constants import WORD_LENGTH
+from constants import WORD_LENGTH, SHORT
 from pyfunctory.process import filter_data
 from pyfunctory.factories import make_partial, filter_by, compose
 from pyfunctory.atoms import (contains,
@@ -14,6 +14,10 @@ from pyfunctory.atoms import (contains,
 def length_is(length):
     """ Generator filtering by length of word. """
     return filter_by(make_partial(is_length, length))
+
+def length_over(length):
+    """ Generator filtering by length of word. """
+    return filter_by(make_partial(longer_than, length))
 
 def letter_in(letter):
     """ Generator filtering by presence of letter. """
@@ -85,7 +89,9 @@ def puzzle_answers(word, source, letter=None):
 
     """
     if letter:
-        answer_filter = compose(letter_in(letter), answer_words(word))
+        answer_filter = compose(length_over(SHORT),
+                                letter_in(letter),
+                                answer_words(word))
     else:
         answer_filter = answer_words(word)
     return list(answer_filter(source))

@@ -20,6 +20,7 @@ app = Flask(__name__)
 
 FULL_WORD_LIST = load_data(WORD_FILE)
 NINE_LETTER_LIST = load_data(NINE_LETTER_WORD_FILE)
+DICTIONARY = load_data(DICTIONARY_FILE)
 
 
 @app.route('/')
@@ -68,9 +69,16 @@ def ladder():
         return jsonify(data(anagram, answers))
     return render_template("ladder.html")
 
-@app.route('/grid')
+
+@app.route('/grid', methods=["GET", "POST"])
 def grid():
+    if request.method == "POST":
+        anagram = make_anagram(random.choice(NINE_LETTER_LIST))
+        middle_letter = anagram[len(anagram) // 2]
+        answers = puzzle_answers(anagram, DICTIONARY, letter=middle_letter)
+        return jsonify(data(anagram, answers))
     return render_template("grid.html")
+
 
 @app.route('/rack')
 def rack():

@@ -37,17 +37,17 @@ function displayFinalScore(message, score) {
     finalScore.innerText = `${message}: ${score}`;
 }
 
-function displayWord (word) {
+function displayWord(word) {
+    const letters = word.split("");
     const baseID = "letter";
     let countID = 1;
-    word.forEach( (letter) => {
+    letters.forEach( (letter) => {
         const ID = `${baseID}${countID}`
         const square = document.getElementById(ID);
         square.textContent = letter;
         countID += 1;
     });
 }
-
 
 
 /*
@@ -100,7 +100,7 @@ function startsWith(letter, storage) {
 
 function letterAnswers(letter, storage) {
     const letterRow = document.getElementById(letter);
-    letterRow.textContent = startsWith(letter, storage).sort().join("   ");
+    letterRow.textContent = startsWith(letter, storage).sort().join("  \u00A0");
 }
 
 function allLetterAnswers(letters, storage) {
@@ -117,9 +117,14 @@ function resetAnswers(storage) {
     }
 }
 
+function removeFoundAnswer(answer, storage) {
+    const index = storage.indexOf(answer);
+    storage.splice(index, 1);
+}
+
 
 /*
- * Checking, storing and retrieving answers
+ * Checking answers
  *
  */
 function checkAnswer(guess, answers) {
@@ -148,11 +153,15 @@ function saveWord(word, storage) {
  * Shared gameflow
  *
  */
-function setUpGame(data) {
-    clearGuessBox();
+function storeAnagramSolution(data) {
     const [anagram, solution] = data;
     currentAnagram.anagram = anagram;
     currentAnagram.solution = solution;
+}
+
+function setUpGame(data) {
+    clearGuessBox();
+    storeAnagramSolution(data);
     displayAnagram(currentAnagram.anagram);
 }
 
@@ -179,12 +188,14 @@ function fetchWrap(fetchURL, fetchData, gameFunction) {
         });
 }
 
-function gameFlowFactory(gameURL, gameData, gameCleanUp, gameFunction) {
+function gameFlowFactory(gameURL, gameData, gameCleanUp, gameFunction, repeat = true) {
     function gameFlow() {
         const guess = document.getElementById("guess").value;
         if (checkAnswer(guess, currentAnagram.solution)) {
             gameCleanUp();
-            fetchWrap(gameURL, gameData, gameFunction);
+            if (repeat) {
+                fetchWrap(gameURL, gameData, gameFunction);
+            }
         }
     }
 
