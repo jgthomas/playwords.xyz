@@ -4,11 +4,11 @@
   <link rel=stylesheet href="{{ url_for('static', filename='styles/grid.css') }}">
 {% endblock %}
 {% block main %}
-  <input id="guess" class="above-entry word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
-  <div id="buttons" class="center box-margins fade-in">
-    <button id="again" class="button" type="button">Again</button>
-    <button id="stop" class="button" type="button">Stop</button>
+  <div id="buttons" class="center fade-in">
+    <button id="again" class="button grid-game-button" type="button">Again</button>
+    <button id="stop" class="button grid-game-button" type="button">Stop</button>
   </div>
+  <input id="guess" class="above-entry word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
   <div class="game-layout fade-in">
     <div id="answers">
       <div id="new-rules">

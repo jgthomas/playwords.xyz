@@ -133,4 +133,9 @@
         .below-entry {
                 display: none;
         }
+
+        .grid-game-button {
+                margin: 1%;
+                height: 2em;
+        }
 }

@@ -9,14 +9,6 @@ const LETTERS = ["a", "b", "c", "d", "e", "f",
                  "m", "n", "o", "p", "q", "r",
                  "s", "t", "u", "v", "w", "x", "y", "z"];
 
-const ANSWERS = ["answer_a", "answer_b", "answer_c",
-                 "answer_d", "answer_e", "answer_f",
-                 "answer_g", "answer_h", "answer_i",
-                 "answer_j", "answer_k", "answer_l",
-                 "answer_m", "answer_n", "answer_o",
-                 "answer_p", "answer_q", "answer_r",
-                 "answer_s", "answer_t", "answer_u",
-                 "answer_v", "answer_w", "answer_x", "answer_y", "answer_z"];
 
 /*
  * Game and player objects
