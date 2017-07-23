@@ -66,6 +66,10 @@
         margin-bottom: 0.5em;
 }
 
+.final-answer-letter {
+        color: royalblue;
+}
+
 .letter-square {
         flex: 0 0 31%;
         display: flex;
@@ -114,6 +118,10 @@
         .answer-letter {
                 font-size: 1.25em;
                 margin-bottom: 0.5em;
+        }
+
+        .final-answer-letter {
+                color: royalblue;
         }
 
         .above-entry {

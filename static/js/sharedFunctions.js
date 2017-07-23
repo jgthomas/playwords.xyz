@@ -9,6 +9,14 @@ const LETTERS = ["a", "b", "c", "d", "e", "f",
                  "m", "n", "o", "p", "q", "r",
                  "s", "t", "u", "v", "w", "x", "y", "z"];
 
+const ANSWERS = ["answer_a", "answer_b", "answer_c",
+                 "answer_d", "answer_e", "answer_f",
+                 "answer_g", "answer_h", "answer_i",
+                 "answer_j", "answer_k", "answer_l",
+                 "answer_m", "answer_n", "answer_o",
+                 "answer_p", "answer_q", "answer_r",
+                 "answer_s", "answer_t", "answer_u",
+                 "answer_v", "answer_w", "answer_x", "answer_y", "answer_z"];
 
 /*
  * Game and player objects
@@ -37,9 +45,9 @@ function displayFinalScore(message, score) {
     finalScore.innerText = `${message}: ${score}`;
 }
 
-function displayWord(word) {
+function displayWord(word, base = "letter") {
     const letters = word.split("");
-    const baseID = "letter";
+    const baseID = base;
     let countID = 1;
     letters.forEach( (letter) => {
         const ID = `${baseID}${countID}`
@@ -71,6 +79,20 @@ function clearFinalFeedback() {
     document.getElementById("final-score").innerText = "";
 }
 
+function clearAllAnswers(letters) {
+    letters.forEach( (letter) => {
+        const userAnswer = document.getElementById(letter);
+        const restAnswer = document.getElementById(`answer_${letter}`);
+        if (userAnswer) {
+            userAnswer.textContent = "";
+        }
+        if (restAnswer) {
+            restAnswer.textContent = "";
+        }
+    });
+}
+
+
 
 /*
  * Page updating functions
@@ -94,19 +116,29 @@ function storeAnswer(word, storage) {
     }
 }
 
+function sortFinalAnswers(solutions, storage) {
+    solutions.forEach( (solution) => {
+        storeAnswer(solution, storage);
+    });
+}
+
 function startsWith(letter, storage) {
     return storage[letter];
 }
 
-function letterAnswers(letter, storage) {
-    const letterRow = document.getElementById(letter);
+function letterAnswers(letter, storage, gameEnd = false) {
+    if (gameEnd) {
+        var letterRow = document.getElementById(`answer_${letter}`);
+    } else {
+        var letterRow = document.getElementById(letter);
+    }
     letterRow.textContent = startsWith(letter, storage).sort().join("  \u00A0");
 }
 
-function allLetterAnswers(letters, storage) {
+function allLetterAnswers(letters, storage, gameEnd = false) {
     letters.forEach( (letter) => {
         if (storage[letter]) {
-            letterAnswers(letter, storage);
+            letterAnswers(letter, storage, gameEnd);
         }
     });
 }

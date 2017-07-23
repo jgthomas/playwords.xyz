@@ -5,6 +5,10 @@
 {% endblock %}
 {% block main %}
   <input id="guess" class="above-entry word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
+  <div id="buttons" class="center box-margins fade-in">
+    <button id="again" class="button" type="button">Again</button>
+    <button id="stop" class="button" type="button">Stop</button>
+  </div>
   <div class="game-layout fade-in">
     <div id="answers">
       <div id="new-rules">
@@ -15,15 +19,15 @@
         </div>
         <div class="sidebar-section">
           <p class="sidebar-header">Average</p>
-          <p class="sidebar-count">0</p>
+          <p id="average" class="sidebar-count">0</p>
         </div>
         <div class="sidebar-section">
           <p class="sidebar-header">Good</p>
-          <p class="sidebar-count">0</p>
+          <p id="good" class="sidebar-count">0</p>
         </div>
         <div class="sidebar-section">
           <p class="sidebar-header">Excellent</p>
-          <p class="sidebar-count">0</p>
+          <p id="excellent" class="sidebar-count">0</p>
         </div>
         <div class="sidebar-section">
           <p class="sidebar-header">Found</p>
@@ -55,7 +59,33 @@
       <div id="w" class="answer-letter"></div>
       <div id="x" class="answer-letter"></div>
       <div id="y" class="answer-letter"></div>
-      <div id="z" class="answer-letter"></div>
+      <div id="answer_a" class="answer-letter final-answer-letter"></div>
+      <div id="answer_b" class="answer-letter final-answer-letter"></div>
+      <div id="answer_c" class="answer-letter final-answer-letter"></div>
+      <div id="answer_d" class="answer-letter final-answer-letter"></div>
+      <div id="answer_e" class="answer-letter final-answer-letter"></div>
+      <div id="answer_f" class="answer-letter final-answer-letter"></div>
+      <div id="answer_g" class="answer-letter final-answer-letter"></div>
+      <div id="answer_h" class="answer-letter final-answer-letter"></div>
+      <div id="answer_i" class="answer-letter final-answer-letter"></div>
+      <div id="answer_j" class="answer-letter final-answer-letter"></div>
+      <div id="answer_k" class="answer-letter final-answer-letter"></div>
+      <div id="answer_l" class="answer-letter final-answer-letter"></div>
+      <div id="answer_m" class="answer-letter final-answer-letter"></div>
+      <div id="answer_n" class="answer-letter final-answer-letter"></div>
+      <div id="answer_o" class="answer-letter final-answer-letter"></div>
+      <div id="answer_p" class="answer-letter final-answer-letter"></div>
+      <div id="answer_q" class="answer-letter final-answer-letter"></div>
+      <div id="answer_r" class="answer-letter final-answer-letter"></div>
+      <div id="answer_s" class="answer-letter final-answer-letter"></div>
+      <div id="answer_t" class="answer-letter final-answer-letter"></div>
+      <div id="answer_u" class="answer-letter final-answer-letter"></div>
+      <div id="answer_v" class="answer-letter final-answer-letter"></div>
+      <div id="answer_w" class="answer-letter final-answer-letter"></div>
+      <div id="answer_x" class="answer-letter final-answer-letter"></div>
+      <div id="answer_y" class="answer-letter final-answer-letter"></div>
+      <div id="answer_z" class="answer-letter final-answer-letter"></div>
+      <div id="answer_z" class="answer-letter final-answer-letter"></div>
     </div>
     <div id="word-grid">
       <div id="letter1" class="letter-square"></div>

@@ -1,12 +1,7 @@
 "use strict";
 
-const nineLetter = ["l", "e", "s", "i", "c", "t", "o", "e", "n"];
-const words = {"a": ["apple", "asshat"],
-               "b": ["brazil", "brag"],
-               "c": ["comedy", "clown", "chancer"]};
-
-
 const gridAnswers = {};
+const finalAnswers = {};
 const gridURL = "http://127.0.0.1:5000/grid";
 const gridLength = 9;
 
@@ -15,6 +10,17 @@ function gridData() {
     return {method: "POST",
               body: JSON.stringify({length: gridLength.toString()})
     };
+}
+
+
+function categoryGuides() {
+    const numOfAnswers = currentAnagram.solution.length;
+    const average = 0.25;
+    const good = 0.4;
+    const excellent = 0.5;
+    document.getElementById("average").textContent = Math.ceil(numOfAnswers * average);
+    document.getElementById("good").textContent = Math.ceil(numOfAnswers * good);
+    document.getElementById("excellent").textContent = Math.ceil(numOfAnswers * excellent);
 }
 
 
@@ -31,8 +37,10 @@ function gridCleanup() {
 
 
 function gridGame(data) {
+    clearScoreDisplay();
     storeAnagramSolution(data);
     displayWord(currentAnagram.anagram);
+    categoryGuides();
     const guess = document.getElementById("guess");
     const gridGameFlow = gameFlowFactory(gridURL,
                                          gridData,
@@ -44,7 +52,25 @@ function gridGame(data) {
 
 
 function gridGiveUp() {
+    sortFinalAnswers(currentAnagram.solution, finalAnswers);
+    allLetterAnswers(LETTERS, finalAnswers, true);
+    resetAnswers(finalAnswers);
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("again").addEventListener("click", () => {
+        fetchWrap(gridURL, gridData, gridGame);
+        clearAllAnswers(LETTERS);
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("stop").addEventListener("click", () => {
+        gridGiveUp();
+    });
+});
 
 
 document.addEventListener("DOMContentLoaded", () => {
