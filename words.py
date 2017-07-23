@@ -16,7 +16,7 @@ def length_is(length):
     return filter_by(make_partial(is_length, length))
 
 def length_over(length):
-    """ Generator filtering by length of word. """
+    """ Generator filtering word of length or greater. """
     return filter_by(make_partial(longer_than, length))
 
 def letter_in(letter):
