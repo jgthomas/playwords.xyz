@@ -27,17 +27,21 @@ function displayAnagram(anagram) {
     document.getElementById("word-place").innerText = anagram;
 }
 
-function displayAnswer(answerWords) {
+/*function displayAnswer(answerWords) {
     const answer = document.getElementById("solution");
     answer.innerText = answerWords.join(", ");
-}
+}*/
 
-function displayFinalScore(message, score) {
+/*function displayFinalScore(message, score) {
     const finalScore = document.getElementById("final-score");
     finalScore.innerText = `${message}: ${score}`;
-}
+}*/
 
 function displayWord(word, base = "letter") {
+    /*
+     * Output letters into a grid or rack structure.
+     *
+     * */
     const letters = word.split("");
     const baseID = base;
     let countID = 1;
@@ -72,6 +76,10 @@ function clearFinalFeedback() {
 }
 
 function clearAllAnswers(letters) {
+    /*
+     * Clear all letter rows of answers.
+     *
+     * */
     letters.forEach( (letter) => {
         const userAnswer = document.getElementById(letter);
         const restAnswer = document.getElementById(`answer_${letter}`);
@@ -109,6 +117,11 @@ function storeAnswer(word, storage) {
 }
 
 function sortFinalAnswers(solutions, storage) {
+    /*
+     * Sort all the remaining unguessed words into
+     * an object, for output at end of game.
+     *
+     * */
     solutions.forEach( (solution) => {
         storeAnswer(solution, storage);
     });
@@ -119,6 +132,10 @@ function startsWith(letter, storage) {
 }
 
 function letterAnswers(letter, storage, gameEnd = false) {
+    /*
+     * Update the row of answers for words beginning with letter.
+     *
+     * */
     if (gameEnd) {
         var letterRow = document.getElementById(`answer_${letter}`);
     } else {
@@ -128,6 +145,10 @@ function letterAnswers(letter, storage, gameEnd = false) {
 }
 
 function allLetterAnswers(letters, storage, gameEnd = false) {
+    /*
+     * Update all rows of answers for words beginning with every letter.
+     *
+     * */
     letters.forEach( (letter) => {
         if (storage[letter]) {
             letterAnswers(letter, storage, gameEnd);
@@ -142,6 +163,11 @@ function resetAnswers(storage) {
 }
 
 function removeFoundAnswer(answer, storage) {
+    /*
+     * Remove each answer as found to prevent duplicates
+     * and keep storage full of unguessed words for final output.
+     *
+     * */
     const index = storage.indexOf(answer);
     storage.splice(index, 1);
 }
@@ -152,6 +178,10 @@ function removeFoundAnswer(answer, storage) {
  *
  */
 function checkAnswer(guess, answers) {
+    /*
+     * Check the supplied guess is in the answers array.
+     *
+     * */
     if (answers.includes(guess.toLowerCase())) {
         return true;
     }
