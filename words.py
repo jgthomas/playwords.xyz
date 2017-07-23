@@ -1,89 +1,91 @@
-def feed_filter(feed, criterion=None, *comparison):
-    for element in feed:
-        element = element.strip()
-        if criterion:
-            if not criterion(element, *comparison):
-                continue
-        if not element:
-            continue
-        yield element
 
 
-def load_words(word_file, criterion=None, *comparison):
-    with open(word_file) as filename:
-        return [word for word
-                in feed_filter(filename, criterion, *comparison)]
+import random
+from constants import WORD_LENGTH
+from pyfunctory.process import filter_data
+from pyfunctory.factories import make_partial, filter_by, compose
+from pyfunctory.atoms import (contains,
+                              is_length,
+                              longer_than,
+                              is_subset,
+                              can_be_made)
 
 
-def data_filter(data, criterion=None, *comparison):
-    return [element for element
-            in feed_filter(data, criterion, *comparison)]
+def length_is(length):
+    """ Generator filtering by length of word. """
+    return filter_by(make_partial(is_length, length))
+
+def letter_in(letter):
+    """ Generator filtering by presence of letter. """
+    return filter_by(make_partial(contains, letter))
+
+def letter_types(letters):
+    """ Generator filtering by letter sets. """
+    return filter_by(make_partial(is_subset, letters))
+
+def all_letters_in(letters):
+    """ Generator filtering by individual letters, duplicates included. """
+    return filter_by(make_partial(can_be_made, letters))
 
 
-def is_length(item, length):
-    return len(item) == length
+def answer_words(word):
+    """ Combined generators to get all answer words. """
+    return compose(letter_types(word), all_letters_in(word))
 
 
-def same_letters(word, target):
-    return set(word) == set(target)
+def exact_length(length):
+    return make_partial(is_length, length)
+
+def over_length(length):
+    return make_partial(longer_than, length)
 
 
-def longer_than(item, length):
-    return len(item) > length
+def get_word(length, source):
+    word_length = WORD_LENGTH[length]
+    if length == "any-length" or length == "long":
+        words = filter_data(source, over_length(word_length))
+    else:
+        words = filter_data(source, exact_length(word_length))
+    return random.choice(words)
 
 
-def is_subset(item, reference):
-    return set(item).issubset(reference)
+def make_anagram(word):
+    return random.sample(list(word), len(word))
 
 
-def contains(char, string):
-    return char in set(string)
+def data(anagram, answers):
+    return ["".join(anagram), answers]
 
 
-def exact_match(x, y):
+def anagram_answers(length, word, source):
     """
-    Return True if x is made of the same elements as y, including repeats.
+    Return all words that can be made using ALL the letters in word.
+
+    Example:
+    >>> anagram_answers(4, "stop", a_word_list)
+    >>> ["opts", "pots", "tops", "stop"]
+
+    """
+    answer_filter = compose(length_is(length), answer_words(word))
+    return list(answer_filter(source))
+
+
+def puzzle_answers(word, source, letter=None):
+    """
+    Return all words, of any length, that can be made using the letters in word.
+
+    If letter is specified, all answers must also include that letter.
 
     Examples:
-    >>> exact_match("stop", "pots")
-    >>> True
+    >>> puzzle_answers("master", a_word_list)
+    >>> ["mast", "steam", "stem", "stream", ...]
 
-    >>> exact_match("settee", "tsetse")
-    >>> False
-
-    """
-    return all(x_elem == y_elem for x_elem, y_elem in zip(sorted(x), sorted(y)))
-
-
-def can_be_made(string, reference):
-    """
-    Return True if string can be made
-    from the characters in reference
+    >>> puzzle_answers("master", a_word_list, "r")
+    >>> ["ream", "mare", "rest", "stream", ...]
 
     """
-    reference = reference.copy()
-    count = len(string)
-    for character in string:
-        if character in reference:
-            reference.remove(character)
-            count -= 1
-    if count == 0:
-        return True
-    return False
-
-
-def get_all_answers(words, letters, length):
-    """
-    Return all possible words made from the anagram letters.
-
-    Applies three filters to the words:
-
-    1. Remove words of the wrong length
-    2. Remove words that contain letters not found in the anagram
-    3. Letter-by-letter comparison, taking duplicates into account
-
-    """
-    answers = data_filter(words, is_length, length)
-    answers = data_filter(answers, same_letters, letters)
-    answers = data_filter(answers, can_be_made, letters)
-    return answers
+    if letter:
+        answer_filter = compose(letter_in(letter), answer_words(word))
+    else:
+        answer_filter = answer_words(word)
+    return list(answer_filter(source))
