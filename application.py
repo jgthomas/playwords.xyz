@@ -8,6 +8,8 @@ from flask import (Flask,
 
 from words import (feed_filter, load_words, data_filter,
                    is_length, longer_than, get_all_answers)
+from pyfunctory.process import load_data
+from words2 import get_word, make_anagram, data, anagram_answers, puzzle_answers
 
 from constants import (WORD_FILE,
                        WORD_LENGTH,
@@ -21,18 +23,18 @@ app = Flask(__name__)
 FULL_WORD_LIST = load_words(WORD_FILE)
 NINE_LETTER_LIST = load_words(NINE_LETTER_WORD_FILE)
 
-def get_word(length):
-    if length == "any-length" or length == "long":
-        words = data_filter(FULL_WORD_LIST, longer_than, WORD_LENGTH[length])
-    else:
-        words = data_filter(FULL_WORD_LIST, is_length, WORD_LENGTH[length])
-    word = random.choice(words)
-    letters = [letter for letter in word]
-    answers = get_all_answers(words, letters, len(word))
-    anagram = list(word)
-    random.shuffle(anagram)
-    data = [''.join(anagram), answers]
-    return jsonify(data)
+#def get_word(length):
+#    if length == "any-length" or length == "long":
+#        words = data_filter(FULL_WORD_LIST, longer_than, WORD_LENGTH[length])
+#    else:
+#        words = data_filter(FULL_WORD_LIST, is_length, WORD_LENGTH[length])
+#    word = random.choice(words)
+#    letters = [letter for letter in word]
+#    answers = get_all_answers(words, letters, len(word))
+#    anagram = list(word)
+#    random.shuffle(anagram)
+#    data = [''.join(anagram), answers]
+#    return jsonify(data)
 
 
 @app.route('/')
@@ -63,18 +65,22 @@ def account():
 @app.route('/anagram', methods=['GET', 'POST'])
 def anagram():
     if request.method == 'POST':
-        data = request.get_json(force=True)
-        length = data["length"]
-        return get_word(length)
+        submitted = request.get_json(force=True)
+        length = submitted["length"]
+        anagram = make_anagram(get_word(length, FULL_WORD_LIST))
+        answers = anagram_answers(len(anagram), anagram, FULL_WORD_LIST)
+        return jsonify(data(anagram, answers))
     return render_template("anagram.html")
 
 
 @app.route('/ladder', methods=["GET", "POST"])
 def ladder():
     if request.method == "POST":
-        data = request.get_json(force=True)
-        length = data["length"]
-        return get_word(length)
+        submitted = request.get_json(force=True)
+        length = submitted["length"]
+        anagram = make_anagram(get_word(length, FULL_WORD_LIST))
+        answers = anagram_answers(len(anagram), anagram, FULL_WORD_LIST)
+        return jsonify(data(anagram, answers))
     return render_template("ladder.html")
 
 @app.route('/grid')

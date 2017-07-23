@@ -1,8 +1,12 @@
 
 
+import random
+from constants import WORD_LENGTH
+from pyfunctory.process import filter_data
 from pyfunctory.factories import make_partial, filter_by, compose
 from pyfunctory.atoms import (contains,
                               is_length,
+                              longer_than,
                               is_subset,
                               can_be_made)
 
@@ -27,6 +31,30 @@ def all_letters_in(letters):
 def answer_words(word):
     """ Combined generators to get all answer words. """
     return compose(letter_types(word), all_letters_in(word))
+
+
+def by_length(length):
+    return make_partial(is_length, length)
+
+def over_length(length):
+    return make_partial(longer_than, length)
+
+
+def get_word(length, source):
+    word_length = WORD_LENGTH[length]
+    if length == "any-length" or length == "long":
+        words = filter_data(source, over_length(word_length))
+    else:
+        words = filter_data(source, by_length(word_length))
+    return random.choice(words)
+
+
+def make_anagram(word):
+    return random.sample(list(word), len(word))
+
+
+def data(anagram, answers):
+    return ["".join(anagram), answers]
 
 
 def anagram_answers(length, word, source):
