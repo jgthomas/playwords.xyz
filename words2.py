@@ -33,7 +33,7 @@ def answer_words(word):
     return compose(letter_types(word), all_letters_in(word))
 
 
-def by_length(length):
+def exact_length(length):
     return make_partial(is_length, length)
 
 def over_length(length):
@@ -45,7 +45,7 @@ def get_word(length, source):
     if length == "any-length" or length == "long":
         words = filter_data(source, over_length(word_length))
     else:
-        words = filter_data(source, by_length(word_length))
+        words = filter_data(source, exact_length(word_length))
     return random.choice(words)
 
 

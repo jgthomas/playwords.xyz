@@ -6,8 +6,6 @@ from flask import (Flask,
                    request,
                    url_for, session)
 
-from words import (feed_filter, load_words, data_filter,
-                   is_length, longer_than, get_all_answers)
 from pyfunctory.process import load_data
 from words2 import get_word, make_anagram, data, anagram_answers, puzzle_answers
 
@@ -20,21 +18,8 @@ from constants import (WORD_FILE,
 app = Flask(__name__)
 
 
-FULL_WORD_LIST = load_words(WORD_FILE)
-NINE_LETTER_LIST = load_words(NINE_LETTER_WORD_FILE)
-
-#def get_word(length):
-#    if length == "any-length" or length == "long":
-#        words = data_filter(FULL_WORD_LIST, longer_than, WORD_LENGTH[length])
-#    else:
-#        words = data_filter(FULL_WORD_LIST, is_length, WORD_LENGTH[length])
-#    word = random.choice(words)
-#    letters = [letter for letter in word]
-#    answers = get_all_answers(words, letters, len(word))
-#    anagram = list(word)
-#    random.shuffle(anagram)
-#    data = [''.join(anagram), answers]
-#    return jsonify(data)
+FULL_WORD_LIST = load_data(WORD_FILE)
+NINE_LETTER_LIST = load_data(NINE_LETTER_WORD_FILE)
 
 
 @app.route('/')
