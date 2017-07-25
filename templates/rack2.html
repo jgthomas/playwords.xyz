@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block head %}
+  {{ super() }}
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel=stylesheet href="{{ url_for('static', filename='styles/rack2.css') }}">
+{% endblock %}
+{% block main %}
+  <div class="outer-wrap">
+    <div class="rack box-shadow-3d">
+      <div id="letter1" class="tile">Q</div>
+      <div id="letter2" class="tile">U</div>
+      <div id="letter3" class="tile">E</div>
+      <div id="letter4" class="tile">R</div>
+      <div id="letter5" class="tile">I</div>
+      <div id="letter6" class="tile">E</div>
+      <div id="letter7" class="tile rightmost">S</div>
+    </div>
+    <input id="guess" class="above-entry word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
+    <div class="wrapper">
+      <div class="box box-title word-title">Word</div>
+      <div class="box box-title best-title">Best</div>
+      <div class="box">
+        <div class="flex-bit">
+          <div class="flex-word">tact</div>
+          <div class="flex-score">6</div>
+        </div>
+      </div>
+      <div class="box right-column">
+        <div class="flex-bit">
+          <div class="flex-word">extract</div>
+          <div class="flex-score">66</div>
+        </div>
+      </div>
+      <div class="box">
+        <div class="flex-bit">
+          <div class="flex-word">masters</div>
+          <div class="flex-score">60</div>
+        </div>
+      </div>
+      <div class="box right-column">
+        <div class="flex-bit">
+          <div class="flex-word tick">&#10004;</div>
+          <div class="flex-score tick">&#10004;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

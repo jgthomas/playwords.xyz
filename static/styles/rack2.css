@@ -1,0 +1,129 @@
+body {
+  font-size: 16px;
+}
+
+.rack {
+        width: 95%;
+        height: 6em;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 1em;
+        margin-bottom: 1em;
+}
+
+.tile {
+        flex: 1 0 0;
+        border-right: 2px;
+        border-right-style: solid;
+        border-right-color: slategray;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 2em;
+        color: dimgray;
+        font-weight: bold;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        background-color: ivory;
+}
+
+.rightmost {
+        border: none;
+}
+
+.box-shadow-3d{
+    box-shadow: 1px 1px 0px #999,
+                2px 2px 0px #999,
+                3px 3px 0px #999,
+                4px 4px 0px #999,
+                5px 5px 0px #999,
+                6px 6px 0px #999;
+}
+
+.outer-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  align-self: center;
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex-bit {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-word {
+  flex: 3;
+}
+
+.flex-score {
+  flex: 1;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #fff;
+  color: #444;
+  align-self: center;
+  min-width: 100%
+}
+
+.box {
+  border-style: solid;
+  border-left-width: 1px;
+  border-right-width: 0;
+  border-bottom-width: 1px;
+  border-top-width: 0;
+  border-color: #444;
+  padding: 20px;
+  font-size: 150%;
+  text-align: center;
+}
+
+.right-column {
+  border-right-width: 1px;
+}
+
+.box-title {
+  background-color: #444;
+  color: #fff;
+}
+
+.word-title {
+  grid-area: 1 / 1 / 1 / 2;
+}
+
+.best-title {
+  grid-area: 1 / 2 / 1 / 3;
+}
+
+.tick {
+  color: green;
+}
+
+@media only screen and (max-width: 1100px) {
+        .outer-wrap {
+                width: 65%;
+        }
+}
+
+@media only screen and (max-width: 800px) {
+        .outer-wrap {
+                width: 85%;
+        }
+}
+
+@media only screen and (max-width: 680px) {
+        .outer-wrap {
+                width: 95%;
+        }
+}

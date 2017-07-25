@@ -82,4 +82,4 @@ def grid():
 
 @app.route('/rack')
 def rack():
-    return render_template("rack.html")
+    return render_template("rack2.html")
