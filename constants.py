@@ -1,4 +1,8 @@
 
+
+import string
+
+
 WORD_FILE = "static/wordlist/50k.txt"
 NINE_LETTER_WORD_FILE = "static/wordlist/nine_letter_words.txt"
 DICTIONARY_FILE = "static/wordlist/sowpods.txt"
@@ -22,3 +26,5 @@ WORD_LENGTH = {"any-length": 0,
                "16": 16}
 
 PLURAL_SPECIAL_CASES = ["news"]
+
+LETTERS = [letter for letter in string.ascii_lowercase]

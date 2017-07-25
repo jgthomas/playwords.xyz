@@ -12,7 +12,8 @@ from words import get_word, make_anagram, data, anagram_answers, puzzle_answers,
 from constants import (WORD_FILE,
                        WORD_LENGTH,
                        NINE_LETTER_WORD_FILE,
-                       DICTIONARY_FILE)
+                       DICTIONARY_FILE,
+                       LETTERS)
 
 
 app = Flask(__name__)
@@ -80,6 +81,11 @@ def grid():
     return render_template("grid.html")
 
 
-@app.route('/rack')
+@app.route('/rack', methods=["GET", "POST"])
 def rack():
+    if request.method == "POST":
+        # draw random letters
+        # get all words and scores that can be made
+        # get high score and word
+        # pass letters, all answers, high score + word to JS
     return render_template("rack2.html")
