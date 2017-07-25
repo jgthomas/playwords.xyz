@@ -7,13 +7,14 @@ from flask import (Flask,
                    url_for, session)
 
 from pyfunctory.process import load_data
-from words import get_word, make_anagram, data, anagram_answers, puzzle_answers, plural_filter
+from words import get_word, make_anagram, data, anagram_answers, puzzle_answers, plural_filter, draw_letters, high_score
 
 from constants import (WORD_FILE,
                        WORD_LENGTH,
                        NINE_LETTER_WORD_FILE,
                        DICTIONARY_FILE,
-                       LETTERS)
+                       LETTERS,
+                       SCORES)
 
 
 app = Flask(__name__)
@@ -85,7 +86,9 @@ def grid():
 def rack():
     if request.method == "POST":
         # draw random letters
+        letters = draw_letters(LETTERS)
         # get all words and scores that can be made
+        answers = puzzle_answers(letters, DICTIONARY)
         # get high score and word
         # pass letters, all answers, high score + word to JS
     return render_template("rack2.html")

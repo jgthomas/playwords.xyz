@@ -54,12 +54,32 @@ def get_word(length, source):
     return random.choice(words)
 
 
+def draw_letters(pouch, rack_length=7):
+    def random_draw(x):
+        return x.pop(random.randrange(len(x)))
+    letters = pouch.copy()
+    return [random_draw(letters) for letter in range(rack_length)]
+
+
 def make_anagram(word):
     return random.sample(list(word), len(word))
 
 
 def data(anagram, answers):
     return ["".join(anagram), answers]
+
+
+def get_score(word, letter_scores):
+    score = sum(letter_scores[letter] for letter in word)
+    if len(word) >= 7:
+        score += 50
+    return score
+
+
+def high_scorer(words, letter_scores):
+    scored = [(word, get_score(word, letter_scores)) for word in words]
+    word, score = max(scored, key=lambda x: x[1])
+    return word
 
 
 def plural_filter(answers, source):
@@ -91,9 +111,11 @@ def anagram_answers(length, word, source):
 
 def puzzle_answers(word, source, letter=None):
     """
-    Return all words, of any length, that can be made using the letters in word.
+    Return all words, of any length, that can be
+    made using the letters in word.
 
-    If letter is specified, all answers must also include that letter.
+    If letter is specified, all answers must also
+    include that letter.
 
     Examples:
     >>> puzzle_answers("master", a_word_list)
