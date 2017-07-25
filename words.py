@@ -68,7 +68,7 @@ def plural_filter(answers, source):
     plurals = [word for word in answers
                if word.endswith("s") 
                and word[:-1] in all_words
-               and len(word) in range(4, 10)]
+               and len(word) in range(4, 9)]
     plurals = [word for word in plurals
                if word not in PLURAL_SPECIAL_CASES]
     not_match = match_factory(ends_ss, match=False)
