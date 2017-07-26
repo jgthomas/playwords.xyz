@@ -83,7 +83,15 @@ def high_scorer(words, letter_scores):
 
 
 def plural_filter(answers, source):
-    """ Return list of all plurals to filter. """
+    """
+    Return answers with plurals filtered out.
+
+    >>> answers = ["cats", "bass", "master", "masters", "news", "cleevage", "cleevages"]
+    >>> source = ["cat", "cats", "bas", "master", "masters", "news", "new", "cleevage", "cleevages"]
+    >>> plural_filter(answers, source)
+    ['bass', 'master', 'news', 'cleevage', 'cleevages']
+
+    """
     all_words = set(source)
     plurals = [word for word in answers
                if word.endswith("s") 
@@ -93,7 +101,7 @@ def plural_filter(answers, source):
                if word not in PLURAL_SPECIAL_CASES]
     not_match = match_factory(ends_ss, match=False)
     plurals = filter_data(plurals, not_match)
-    return plurals
+    return [word for word in answers if word not in plurals]
 
 
 def anagram_answers(length, word, source):
