@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block head %}
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel=stylesheet href="{{ url_for('static', filename='styles/inputs.css') }}">
+  <link rel=stylesheet href="{{ url_for('static', filename='styles/ladder.css') }}">
+{% endblock %}
+{% block main %}
+    <div class="button-row">
+      <button id="play" class="play button" type="button">Play</button>
+      <button id="stop" class="stop button" type="button">Stop</button>
+    </div>
+    <div class="outer-wrap">
+      <div class="left">
+        <div class="ladder">
+          <div id="length4" class="ladder-length ladder-box">4</div>
+          <div id="word4" class="ladder-word ladder-box">word</div>
+          <div id="length5"class="ladder-length ladder-box">5</div>
+          <div id="word5" class="ladder-word ladder-box">motor</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="right-box">
+          <div id="word-place" class="anagram right-inner box-margins">&nbsp;</div>
+          <input id="guess" class="guess right-inner box-margins" type="text" name="unscrambled" placeholder="Solve anagram">
+        </div>
+      </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ url_for('static', filename='js/ladderGame.js') }}"></script>
+{% endblock %}

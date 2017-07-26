@@ -19,7 +19,7 @@ function ladderCleanup () {
 }
 
 function ladderGame(data) {
-    updateScoreDisplay(ladder.wordLength);
+    //updateScoreDisplay(ladder.wordLength);
     setUpGame(data);
     const guess = document.getElementById("guess");
     const ladderGameFlow = gameFlowFactory(ladderURL,
@@ -40,9 +40,9 @@ function ladderGiveUp() {
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("play").addEventListener("click", () => {
-        clearScoreDisplay();
+        //clearScoreDisplay();
         resetGame();
-        clearFinalFeedback();
+        //clearFinalFeedback();
         fetchWrap(ladderURL, ladderData, ladderGame);
     });
 });

@@ -7,7 +7,7 @@ from flask import (Flask,
                    url_for, session)
 
 from pyfunctory.process import load_data
-from words import get_word, make_anagram, data, anagram_answers, puzzle_answers, plural_filter, draw_letters, high_score
+from words import get_word, make_anagram, data, anagram_answers, puzzle_answers, plural_filter, draw_letters, high_scorer
 
 from constants import (WORD_FILE,
                        WORD_LENGTH,
@@ -69,7 +69,7 @@ def ladder():
         anagram = make_anagram(get_word(length, FULL_WORD_LIST))
         answers = anagram_answers(len(anagram), anagram, FULL_WORD_LIST)
         return jsonify(data(anagram, answers))
-    return render_template("ladder.html")
+    return render_template("ladder2.html")
 
 
 @app.route('/grid', methods=["GET", "POST"])
