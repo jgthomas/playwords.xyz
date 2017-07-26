@@ -106,9 +106,12 @@ body {
   border-right-width: 1px;
   border-left-width: 1px;
   border-top-width: 1px;
-  /*background-color: moccasin;*/
   margin-left: 8%;
   margin-right: 8%;
+}
+
+.hidden-rung {
+  display: none;
 }
 
 .ladder-word-odd {
@@ -123,30 +126,39 @@ body {
 
 /* Rungs */
 
-#length4 {
-  grid-area: 1 / 1; 
-}
+#length4 { grid-area: 1 / 1; }
+#word4   { grid-area: 1 / 2; border-top-width: 0; }
+#length5 { grid-area: 2 / 1; }
+#word5   { grid-area: 2 / 2; }
+#length6 { grid-area: 3 / 1; }
+#word6   { grid-area: 3 / 2; }
+#length7 { grid-area: 4 / 1; }
+#word7   { grid-area: 4 / 2; }
+#length8 { grid-area: 5 / 1; }
+#word8   { grid-area: 5 / 2; }
+#length9 { grid-area: 6 / 1; }
+#word9   { grid-area: 6 / 2; }
+#length10 { grid-area: 7 / 1; }
+#word10   { grid-area: 7 / 2; }
+#length11 { grid-area: 8 / 1; }
+#word11   { grid-area: 8 / 2; }
+#length12 { grid-area: 9 / 1; }
+#word12   { grid-area: 9 / 2; }
+#length13 { grid-area: 10 / 1; }
+#word13   { grid-area: 10 / 2; }
+#length14 { grid-area: 11 / 1; }
+#word14   { grid-area: 11 / 2; }
+#length15 { grid-area: 12 / 1; }
+#word15   { grid-area: 12 / 2; }
+#length16 { grid-area: 13 / 1; }
+#word16   { grid-area: 13 / 2; }
+#length17 { grid-area: 14 / 1; }
+#word17   { grid-area: 14 / 2; }
+#length18 { grid-area: 15 / 1; }
+#word18   { grid-area: 15 / 2; }
 
-#word4 {
-  grid-area: 1 / 2;
-  border-top-width: 0;
-}
 
-#length5 {
-  grid-area: 2 / 1;
-}
 
-#word5 {
-  grid-area: 2 / 2;
-}
-
-#length6 {
-  grid-area: 3 / 1;
-}
-
-#word6 {
-  grid-area: 3 / 2;
-}
 
 /* Right: anagram, guess, rules */
 

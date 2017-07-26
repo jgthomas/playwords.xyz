@@ -1,6 +1,6 @@
 "use strict";
 
-const ladder = {wordLength: 4, words: []};
+const ladder = {wordLength: 4, words: [], lengths: []};
 const ladderURL = "http://127.0.0.1:5000/ladder";
 //const ladderURL = "https://1ff4ef42.ngrok.io/ladder";
 
@@ -11,10 +11,33 @@ function ladderData () {
     };
 }
 
+function storeLength(number, storage) {
+    ladder.lengths.push(number);
+}
+
+function displayLadderRung(number, word) {
+    const wordLength = document.getElementById(`length${number}`);
+    const wordRung = document.getElementById(`word${number}`);
+    wordLength.classList.toggle("hidden-rung");
+    wordRung.textContent = word;
+    wordRung.classList.toggle("hidden-rung");
+}
+
+function clearAllLadderRungs(numbers) {
+    numbers.forEach( (number) => {
+        const wordLength = document.getElementById(`length${number}`);
+        const wordRung = document.getElementById(`word${number}`);
+        wordLength.classList.toggle("hidden-rung");
+        wordRung.classList.toggle("hidden-rung");
+    });
+}
+
 function ladderCleanup () {
     const guess = document.getElementById("guess").value
     saveWord(guess, ladder.words);
+    displayLadderRung(ladder.wordLength, guess);
     clearGuessBox();
+    storeLength(ladder.wordLength, ladder.lengths);
     ladder.wordLength++;
 }
 
@@ -35,6 +58,8 @@ function ladderGiveUp() {
     ladder.words = [];
     resetGame();
     displayAnagram(getAnswer(currentAnagram.solution));
+    clearAllLadderRungs(ladder.lengths);
+    ladder.lengths = [];
 }
 
 
