@@ -1,6 +1,6 @@
 
 
-rackURL = "127.0.0.1:5000/rack2";
+rackURL = "http://127.0.0.1:5000/rack2";
 const rackLength = 7;
 
 

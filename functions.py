@@ -50,4 +50,5 @@ def get_score(word, letter_scores):
 
 def high_scorer(words, letter_scores):
     scored = [(word, get_score(word, letter_scores)) for word in words]
+    print(scored)
     return max(scored, key=lambda x: x[1])

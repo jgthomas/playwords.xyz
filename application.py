@@ -92,16 +92,21 @@ def grid():
     return render_template("grid.html")
 
 
-@app.route('/rack', methods=["GET", "POST"])
+@app.route('/rack2', methods=["GET", "POST"])
 def rack():
     if request.method == "POST":
+        # get length
+        submitted = request.get_json(force=True)
+        length = submitted["length"]
+        anagram = make_anagram(get_word(length, FULL_WORD_LIST))
         # draw random letters
-        letters = draw_letters(LETTERS)
+        letters = ''.join(draw_letters(LETTERS))
+        print(letters)
         # get all words and scores that can be made
-        answers = puzzle_answers(letters, DICTIONARY)
+        answers = puzzle_answers(length, letters, DICTIONARY)
+        print(answers)
         # get high score and word
         high = high_scorer(answers, SCORES)
         # pass letters, all answers, high score + word to JS
-        print(jsonify(data(letters, answers)))
         return jsonify(data(letters, answers))
     return render_template("rack2.html")
