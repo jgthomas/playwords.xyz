@@ -100,5 +100,8 @@ def rack():
         # get all words and scores that can be made
         answers = puzzle_answers(letters, DICTIONARY)
         # get high score and word
+        high = high_scorer(answers, SCORES)
         # pass letters, all answers, high score + word to JS
+        print(jsonify(data(letters, answers)))
+        return jsonify(data(letters, answers))
     return render_template("rack2.html")
