@@ -7,7 +7,16 @@ from flask import (Flask,
                    url_for, session)
 
 from pyfunctory.process import load_data
-from words import get_word, make_anagram, data, anagram_answers, puzzle_answers, plural_filter, draw_letters, high_scorer
+
+from words import (anagram_answers,
+                   puzzle_answers,
+                   plural_filter)
+
+from functions import (get_word,
+                       make_anagram,
+                       data,
+                       draw_letters,
+                       high_scorer)
 
 from constants import (WORD_FILE,
                        WORD_LENGTH,
@@ -78,6 +87,7 @@ def grid():
         anagram = make_anagram(random.choice(NINE_LETTER_LIST))
         middle_letter = anagram[len(anagram) // 2]
         answers = puzzle_answers(anagram, DICTIONARY, letter=middle_letter)
+        answers = plural_filter(answers, DICTIONARY)
         return jsonify(data(anagram, answers))
     return render_template("grid.html")
 
