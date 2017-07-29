@@ -1,6 +1,7 @@
 
 
 import random
+import operator
 
 from pyfunctory.process import filter_data
 from pyfunctory.factories import make_partial
@@ -65,8 +66,6 @@ def get_score(word, letter_scores, bonus_level):
 
 def high_scorer(words, letter_scores, bonus_level):
     scored = [(word, get_score(word, letter_scores, bonus_level)) for word in words]
-    #print(scored)
-    high = max(scored, key=lambda x: x[1])[1]
-    #print(high)
-    top_words = [x[0] for x in scored if x[1] == high]
-    return [high, top_words]
+    high_score = max(operator.itemgetter(1)(list(zip(*scored))))
+    top_words = [word for word, score in scored if score == high_score]
+    return [high_score, top_words]
