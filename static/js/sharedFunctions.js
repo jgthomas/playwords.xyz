@@ -68,21 +68,35 @@ function updateScoreDisplay(score) {
 }
 
 
-/*
- * Page clearing functions
+/**
+ * Reset the answer input field.
  *
+ * @return {undefined} SIDE-EFFECTS ONLY
  */
 function clearGuessBox() {
     document.getElementById("guess").value = "";
 }
 
+
+/**
+ * Remove the currently displayed anagram.
+ *
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
 function clearAnagramWord() {
     document.getElementById("word-place").innerText = "\u00A0";
 }
 
+
+/**
+ * Reset the displayed score to zero.
+ *
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
 function clearScoreDisplay() {
     document.getElementById("score").innerText = 0;
 }
+
 
 function clearFinalFeedback() {
     document.getElementById("solution").innerText = "";
@@ -107,14 +121,6 @@ function clearAllAnswers(letters) {
 }
 
 
-
-
-
-
-/*
- * Storing and retrieving answers
- *
- */
 function storeAnswer(word, storage) {
     const firstLetter = word.charAt(0);
     if (storage[firstLetter]) {
@@ -135,15 +141,28 @@ function sortFinalAnswers(solutions, storage) {
     });
 }
 
+
+/**
+ * Get all answers beginning with supplied letter
+ *
+ * @param {string} letter - Initial letter of the words to retrieve.
+ * @param {object} storage - Object in which words are stored.
+ * @return {array} words in storage starting with letter.
+ */
 function startsWith(letter, storage) {
     return storage[letter];
 }
 
+
+/**
+ * Display answers beginning with the supplied letter.
+ *
+ * @param {string} letter - Initial letter of the words to display.
+ * @param {object} storage - Object in which words are stored.
+ * @param {boolean} gameEnd - Indicates whether game is over.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
 function letterAnswers(letter, storage, gameEnd = false) {
-    /*
-     * Update the row of answers for words beginning with letter.
-     *
-     * */
     if (gameEnd) {
         var letterRow = document.getElementById(`answer_${letter}`);
     } else {
@@ -152,11 +171,19 @@ function letterAnswers(letter, storage, gameEnd = false) {
     letterRow.textContent = startsWith(letter, storage).sort().join("  \u00A0");
 }
 
+
+/**
+ * Display answers beginning with every letter of the alphabet.
+ *
+ * Iterate through each letter in the alphabet. If there are any
+ * answers in storage beginning with a letter, display those words.
+ *
+ * @param {array} letters - The letters of the alphabet.
+ * @param {object} storage - Location where words are stored.
+ * @param {boolean} gameEnd - Indicates whether game is over.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
 function allLetterAnswers(letters, storage, gameEnd = false) {
-    /*
-     * Update all rows of answers for words beginning with every letter.
-     *
-     * */
     letters.forEach( (letter) => {
         if (storage[letter]) {
             letterAnswers(letter, storage, gameEnd);
@@ -164,24 +191,33 @@ function allLetterAnswers(letters, storage, gameEnd = false) {
     });
 }
 
+
+/**
+ * Remove all stored answers.
+ *
+ * Delete all properties (key: letter, value: array) of the object.
+ *
+ * @param {object} storage - Object in which words are stored.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
 function resetAnswers(storage) {
     for (const prop of Object.keys(storage)) {
         delete storage[prop];
     }
 }
 
+
+/**
+ * Remove each answer when entered by player.
+ *
+ * @param {string} answer - Correct answer supplied by player.
+ * @param {object} storage - Object in which answers are stored.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
 function removeFoundAnswer(answer, storage) {
-    /*
-     * Remove each answer as found to prevent duplicates
-     * and keep storage full of unguessed words for final output.
-     *
-     * */
     const index = storage.indexOf(answer);
     storage.splice(index, 1);
 }
-
-
-
 
 
 /*
@@ -197,15 +233,21 @@ function saveWord(word, storage) {
 }
 
 
-/*
- * Shared gameflow
+/**
+ * Store anagram and its solutions.
  *
+ * The currently active anagram and its solutions are placed in
+ * the 'working memory' of the currentAnagram object.
+ *
+ * @param {array} data - Contiains anagram string and array of answers.
+ * @return {undefined} SIDE-EFFECTS ONLY
  */
 function storeAnagramSolution(data) {
     const [anagram, solution] = data;
     currentAnagram.anagram = anagram;
     currentAnagram.solution = solution;
 }
+
 
 function setUpGame(data) {
     clearGuessBox();
