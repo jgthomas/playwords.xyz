@@ -6,7 +6,7 @@ from pyfunctory.process import filter_data
 from pyfunctory.factories import make_partial
 from pyfunctory.atoms import is_length, longer_than
 
-from constants import WORD_LENGTH
+from constants import WORD_LENGTH, BONUS
 
 
 def exact_length(length):
@@ -46,18 +46,22 @@ def make_anagram(word):
     return random.sample(list(word), len(word))
 
 
-def data(anagram, answers):
-    return ["".join(anagram), answers]
+#def data(anagram, answers):
+#    return ["".join(anagram), answers]
 
 
-def get_score(word, letter_scores):
+def data(anagram, *answers):
+    return ["".join(anagram), *[a for a in answers]]
+
+
+def get_score(word, letter_scores, bonus_level):
+    """ Return score for each word in the solution. """
     score = sum(letter_scores[letter] for letter in word)
-    if len(word) >= 7:
-        score += 50
+    if len(word) >= bonus_level:
+        score += BONUS
     return score
 
 
-def high_scorer(words, letter_scores):
-    scored = [(word, get_score(word, letter_scores)) for word in words]
-    print(scored)
+def high_scorer(words, letter_scores, bonus_level):
+    scored = [(word, get_score(word, letter_scores, bonus_level)) for word in words]
     return max(scored, key=lambda x: x[1])

@@ -23,7 +23,8 @@ from constants import (WORD_FILE,
                        NINE_LETTER_WORD_FILE,
                        DICTIONARY_FILE,
                        LETTERS,
-                       SCORES)
+                       SCORES,
+                       RACK_HIGH)
 
 
 app = Flask(__name__)
@@ -95,19 +96,13 @@ def grid():
 @app.route('/rack2', methods=["GET", "POST"])
 def rack():
     if request.method == "POST":
-        # get length
         submitted = request.get_json(force=True)
-        length = submitted["length"]
-        print(length)
-        anagram = make_anagram(get_word(length, FULL_WORD_LIST))
-        # draw random letters
-        letters = draw_letters(LETTERS, int(length))
-        print(letters)
-        # get all words and scores that can be made
+        length = int(submitted["length"])
+        letters = draw_letters(LETTERS, length)
         answers = puzzle_answers(letters, DICTIONARY)
         print(answers)
-        # get high score and word
-        high = high_scorer(answers, SCORES)
-        # pass letters, all answers, high score + word to JS
+        high = high_scorer(answers, SCORES, RACK_HIGH)
+        print(high)
+        print(data(letters, answers, high))
         return jsonify(data(letters, answers))
     return render_template("rack2.html")

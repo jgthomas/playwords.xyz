@@ -9,6 +9,9 @@ DICTIONARY_FILE = "static/wordlist/sowpods.txt"
 
 SHORT = 3
 
+RACK_HIGH = 7
+BONUS = 50
+
 WORD_LENGTH = {"any-length": 0,
                "long": 9,
                "4": 4,
