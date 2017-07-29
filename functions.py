@@ -51,6 +51,7 @@ def make_anagram(word):
 
 
 def data(anagram, *answers):
+    """ Combine all data into single list for conversion to JSON. """
     return ["".join(anagram), *[a for a in answers]]
 
 
@@ -64,4 +65,8 @@ def get_score(word, letter_scores, bonus_level):
 
 def high_scorer(words, letter_scores, bonus_level):
     scored = [(word, get_score(word, letter_scores, bonus_level)) for word in words]
-    return max(scored, key=lambda x: x[1])
+    #print(scored)
+    high = max(scored, key=lambda x: x[1])[1]
+    #print(high)
+    top_words = [x[0] for x in scored if x[1] == high]
+    return [high, top_words]
