@@ -57,6 +57,17 @@ function checkAnswer(guess, answers) {
 }
 
 
+/**
+ * Update the displayed score.
+ *
+ * @param {number} score - The score to display.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
+function updateScoreDisplay(score) {
+    document.getElementById("score").innerText = score;
+}
+
+
 /*
  * Page clearing functions
  *
@@ -97,13 +108,7 @@ function clearAllAnswers(letters) {
 
 
 
-/*
- * Page updating functions
- *
- */
-function updateScoreDisplay(score) {
-    document.getElementById("score").innerText = score;
-}
+
 
 
 /*
