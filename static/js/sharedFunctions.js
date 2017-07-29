@@ -22,7 +22,7 @@ function displayAnagram(anagram) {
 
 
 /**
- * Output letters into a grid or rack structure.
+ * Display letters in a grid or rack structure.
  *
  * @param {string} word - The letters to display.
  * @param {string} base - Stem of the ID where letter displayed.
@@ -121,6 +121,13 @@ function clearAllAnswers(letters) {
 }
 
 
+/**
+ * Store each answer entered by player.
+ *
+ * @param {string} word - Supplied answer.
+ * @param {object} storage - Object in which answers are stored.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
 function storeAnswer(word, storage) {
     const firstLetter = word.charAt(0);
     if (storage[firstLetter]) {
@@ -130,12 +137,14 @@ function storeAnswer(word, storage) {
     }
 }
 
+
+/**
+ * Sort all the remaining unguessed words into storage object.
+ *
+ * @param {array} solutions - All answers.
+ * @param {object} storage - Object in which answers are stored.
+ */
 function sortFinalAnswers(solutions, storage) {
-    /*
-     * Sort all the remaining unguessed words into
-     * an object, for output at end of game.
-     *
-     * */
     solutions.forEach( (solution) => {
         storeAnswer(solution, storage);
     });
@@ -239,7 +248,7 @@ function saveWord(word, storage) {
  * The currently active anagram and its solutions are placed in
  * the 'working memory' of the currentAnagram object.
  *
- * @param {array} data - Contiains anagram string and array of answers.
+ * @param {array} data - Contains anagram string and array of answers.
  * @return {undefined} SIDE-EFFECTS ONLY
  */
 function storeAnagramSolution(data) {
@@ -261,9 +270,13 @@ function resetGame() {
 }
 
 
-/*
- * Factory and wrapper functions
+/**
+ * Make AJAX request to server.
  *
+ * @param {string} fetchURL - The URL to which AJAX requests should be directed.
+ * @param {object} fetchData - Parameters for the fetch request.
+ * @param {function} gameFunction - Callback to which response is passed.
+ * @return {object} JSON passed to callback function.
  */
 function fetchWrap(fetchURL, fetchData, gameFunction) {
     fetch(fetchURL, fetchData())
@@ -280,7 +293,7 @@ function fetchWrap(fetchURL, fetchData, gameFunction) {
 
 
 /**
- * Create main loop-function for an anagram game.
+ * Create main loop-function for game.
  *
  * Factory function: Takes in a number of functions and data objects and
  * combines them into a main game loop in the returned function.
