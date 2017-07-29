@@ -98,12 +98,13 @@ def rack():
         # get length
         submitted = request.get_json(force=True)
         length = submitted["length"]
+        print(length)
         anagram = make_anagram(get_word(length, FULL_WORD_LIST))
         # draw random letters
-        letters = ''.join(draw_letters(LETTERS))
+        letters = draw_letters(LETTERS, int(length))
         print(letters)
         # get all words and scores that can be made
-        answers = puzzle_answers(length, letters, DICTIONARY)
+        answers = puzzle_answers(letters, DICTIONARY)
         print(answers)
         # get high score and word
         high = high_scorer(answers, SCORES)

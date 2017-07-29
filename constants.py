@@ -39,5 +39,6 @@ SCORES = {'a': 1, 'c': 3, 'b': 3, 'e': 1, 'd': 2, 'g': 2,
          'r': 1, 'u': 1, 't': 1, 'w': 4, 'v': 4, 'y': 4,
          'x': 8, 'z': 10}
 
-LETTERS = [letter * LETTER_FREQUENCY[letter]
-           for letter in string.ascii_lowercase]
+
+LETTERS = [letter for letter in string.ascii_lowercase
+           for i in range(LETTER_FREQUENCY[letter])]

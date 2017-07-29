@@ -27,13 +27,22 @@ def get_word(length, source):
 
 
 def draw_letters(pouch, rack_length=7):
+    """ 
+    Return a random selection of letters. 
+
+    pouch        :  source of letters
+    rack_length  :  number of letters to return
+    
+    """
     def random_draw(x):
         return x.pop(random.randrange(len(x)))
     letters = pouch.copy()
-    return [random_draw(letters) for letter in range(rack_length)]
+    draw = "".join(random_draw(letters) for letter in range(rack_length))
+    return draw
 
 
 def make_anagram(word):
+    """ Return new string with the letters shuffled. """
     return random.sample(list(word), len(word))
 
 
