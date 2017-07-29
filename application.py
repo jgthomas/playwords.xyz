@@ -66,7 +66,7 @@ def anagram():
         submitted = request.get_json(force=True)
         length = submitted["length"]
         anagram = make_anagram(get_word(length, FULL_WORD_LIST))
-        answers = anagram_answers(len(anagram), anagram, FULL_WORD_LIST)
+        answers = anagram_answers(len(anagram), anagram, DICTIONARY)
         return jsonify(data(anagram, answers))
     return render_template("anagram.html")
 
@@ -77,7 +77,7 @@ def ladder():
         submitted = request.get_json(force=True)
         length = submitted["length"]
         anagram = make_anagram(get_word(length, FULL_WORD_LIST))
-        answers = anagram_answers(len(anagram), anagram, FULL_WORD_LIST)
+        answers = anagram_answers(len(anagram), anagram, DICTIONARY)
         return jsonify(data(anagram, answers))
     return render_template("ladder2.html")
 
@@ -100,9 +100,7 @@ def rack():
         length = int(submitted["length"])
         letters = draw_letters(LETTERS, length)
         answers = puzzle_answers(letters, DICTIONARY)
-        #print(answers)
         high = high_scorer(answers, SCORES, RACK_HIGH)
-        #print(high)
         print(data(letters, answers, high))
         return jsonify(data(letters, answers))
     return render_template("rack2.html")
