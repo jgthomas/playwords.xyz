@@ -231,6 +231,20 @@ function fetchWrap(fetchURL, fetchData, gameFunction) {
         });
 }
 
+
+/**
+ * Create main loop-function for an anagram game.
+ *
+ * Factory function: Takes in a number of functions and data objects and
+ * combines them into a main game loop in the returned function.
+ *
+ * @param {string} gameURL - The URL to which AJAX requests should be directed.
+ * @param {object} gameData - Parameters for the fetch request.
+ * @param {function} gameCleanup - Runs after each correct answer.
+ * @param {function} gameFunction - Sets up the game.
+ * @param {boolean} repeat - If true, loop re-runs after each correct answer.
+ * @return {function} gameFlow - Main game loop.
+ */
 function gameFlowFactory(gameURL, gameData, gameCleanUp, gameFunction, repeat = true) {
     function gameFlow() {
         const guess = document.getElementById("guess").value;
