@@ -10,16 +10,14 @@ from pyfunctory.atoms import is_length, longer_than
 from constants import WORD_LENGTH, BONUS
 
 
-def exact_length(length):
-    return make_partial(is_length, length)
-
-
-def over_length(length):
-    return make_partial(longer_than, length)
-
-
 def get_word(length, source):
+    def exact_length(length):
+        return make_partial(is_length, length)
+    def over_length(length):
+        return make_partial(longer_than, length)
+
     word_length = WORD_LENGTH[length]
+
     if length == "any-length" or length == "long":
         words = filter_data(source, over_length(word_length))
     else:
@@ -65,6 +63,7 @@ def get_score(word, letter_scores, bonus_level):
 
 
 def high_scorer(words, letter_scores, bonus_level):
+    """ Return highest score and all words with that score. """
     scored = [(word, get_score(word, letter_scores, bonus_level)) for word in words]
     high_score = max(operator.itemgetter(1)(list(zip(*scored))))
     top_words = [word for word, score in scored if score == high_score]

@@ -102,5 +102,5 @@ def rack():
         answers = puzzle_answers(letters, DICTIONARY)
         high = high_scorer(answers, SCORES, RACK_HIGH)
         print(data(letters, answers, high))
-        return jsonify(data(letters, answers))
+        return jsonify(data(letters, answers, high))
     return render_template("rack2.html")
