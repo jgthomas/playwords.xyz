@@ -17,6 +17,8 @@ function rackCleanup() {
 
 function rackGame(data) {
     console.log(data);
+    const [letters, answers, high_score, high_words] = data;
+    displayWord(letters);
 }
 
 
