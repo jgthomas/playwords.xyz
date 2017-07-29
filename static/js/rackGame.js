@@ -9,6 +9,8 @@ const RACK_SCORES = {'a': 1, 'c': 3, 'b': 3, 'e': 1, 'd': 2, 'g': 2,
 const RACK_BONUS = 50;
 const RACK_LENGTH = 7;
 
+const rack = {round: 1};
+
 const rackURL = "http://127.0.0.1:5000/rack2";
 
 
@@ -42,7 +44,7 @@ function scoreWord(word) {
 
 function rackCleanup() {
     const word = document.getElementById("guess").value
-    const score = word.split('').map(getLetterScore).reduce( (x, y) => { return x + y; })
+    const score = scoreWord(word);
 }
 
 
