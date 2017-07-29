@@ -1,47 +1,34 @@
 "use strict";
 
-/*
- * Constants
- *
- */
 const LETTERS = ["a", "b", "c", "d", "e", "f",
                  "g", "h", "i", "j", "k", "l",
                  "m", "n", "o", "p", "q", "r",
                  "s", "t", "u", "v", "w", "x", "y", "z"];
 
-
-/*
- * Game and player objects
- *
- */
 const player = {score: 0};
 const wordStorage = {};
 const currentAnagram = {anagram: "", solution: ""};
 
 
-/*
- * Page display functions
+/**
+ * Display single anagram on the screen.
  *
+ * @param {string} anagram - The jumbled word to display.
+ * @return {undefined} SIDE-EFFECTS ONLY
  */
 function displayAnagram(anagram) {
     document.getElementById("word-place").innerText = anagram;
 }
 
-/*function displayAnswer(answerWords) {
-    const answer = document.getElementById("solution");
-    answer.innerText = answerWords.join(", ");
-}*/
 
-/*function displayFinalScore(message, score) {
-    const finalScore = document.getElementById("final-score");
-    finalScore.innerText = `${message}: ${score}`;
-}*/
-
+/**
+ * Output letters into a grid or rack structure.
+ *
+ * @param {string} word - The letters to display.
+ * @param {string} base - Stem of the ID where letter displayed.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ * */
 function displayWord(word, base = "letter") {
-    /*
-     * Output letters into a grid or rack structure.
-     *
-     * */
     const letters = word.split("");
     const baseID = base;
     let countID = 1;
@@ -51,6 +38,22 @@ function displayWord(word, base = "letter") {
         square.textContent = letter;
         countID += 1;
     });
+}
+
+
+/**
+ * Check word is one of the answers to the anagram.
+ *
+ * @param {string} guess - The word entered by player.
+ * @param {array} answers - Possible answers to the anagram.
+ * @return {boolean} true if guess in answers, else false
+ */
+function checkAnswer(guess, answers) {
+    if (answers.includes(guess.toLowerCase())) {
+        return true;
+    }
+
+    return false;
 }
 
 
@@ -173,21 +176,7 @@ function removeFoundAnswer(answer, storage) {
 }
 
 
-/*
- * Checking answers
- *
- */
-function checkAnswer(guess, answers) {
-    /*
-     * Check the supplied guess is in the answers array.
-     *
-     * */
-    if (answers.includes(guess.toLowerCase())) {
-        return true;
-    }
 
-    return false;
-}
 
 
 /*
