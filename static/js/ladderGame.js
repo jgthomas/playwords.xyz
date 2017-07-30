@@ -10,9 +10,6 @@ function ladderData () {
     };
 }
 
-function storeLength(number, storage) {
-    ladder.lengths.push(number);
-}
 
 function displayLadderRung(number, word) {
     const wordLength = document.getElementById(`length${number}`);
@@ -33,11 +30,9 @@ function clearAllLadderRungs(numbers) {
 
 function ladderCleanup () {
     const guess = document.getElementById("guess").value
-    //saveWord(guess, ladder.words);
     storeItem(guess, ladder.words);
     displayLadderRung(ladder.wordLength, guess);
     clearGuessBox();
-    //storeLength(ladder.wordLength, ladder.lengths);
     storeItem(ladder.wordLength, ladder.lengths);
     ladder.wordLength++;
 }

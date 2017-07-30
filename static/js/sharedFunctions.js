@@ -10,10 +10,11 @@ const wordStorage = {};
 const currentAnagram = {anagram: "", solution: ""};
 
 
-/**
+
+/******************
  * UPDATING DISPLAY
  *
- */
+ ******************/
 
 /**
  * Update the displayed score.
@@ -27,10 +28,10 @@ function updateScoreDisplay(score) {
 
 
 
-/**
+/******************
  * CLEARING DISPLAY
  *
- */
+ ******************/
 
 /**
  * Remove the currently displayed anagram.
@@ -63,10 +64,10 @@ function clearGuessBox() {
 
 
 
-/**
+/******************
  * DISPLAYING WORDS
  *
- */
+ ******************/
 
 /**
  * Display single anagram.
@@ -100,50 +101,10 @@ function displayWord(word, base = "letter") {
 
 
 
-
-/**
- * Make comma-separated string of all possible answers.
- *
- * @param {array} answerWords - All possible answers.
- * @return {string} answers presented as a comma-separated string.
- */
-function getAnswer(answerWords) {
-    return answerWords.join(", ");
-}
-
-
-/**
- * Store an individual item.
- *
- * @param {string|number} item - A word or its length.
- * @param {array} storage - Storage location
- */
-function storeItem(item, storage) {
-    storage.push(item);
-}
-
-
-
-function saveWord(word, storage) {
-    storage.push(word);
-}
-
-function setUpGame(data) {
-    clearGuessBox();
-    storeAnagramSolution(data);
-    displayAnagram(currentAnagram.anagram);
-}
-
-function resetGame() {
-    clearGuessBox();
-    clearAnagramWord();
-}
-
-
-/**
+/*****************************
  * GETTING AND CHECKING VALUES
  *
- */
+ *****************************/
 
 /**
  * Get value of the specified element.
@@ -175,10 +136,32 @@ function checkAnswer(guess, answers) {
 
 
 
-/**
+/********************************
  * STORING AND RETRIEVING ANSWERS
  *
+ ********************************/
+
+/**
+ * Store an individual item.
+ *
+ * @param {string|number} item - A word or its length.
+ * @param {array} storage - Storage location
+ * @return {undefined} SIDE-EFFECTS ONLY
  */
+function storeItem(item, storage) {
+    storage.push(item);
+}
+
+
+/**
+ * Make comma-separated string of all possible answers.
+ *
+ * @param {array} answerWords - All possible answers.
+ * @return {string} answers presented as a comma-separated string.
+ */
+function getAnswer(answerWords) {
+    return answerWords.join(", ");
+}
 
 
 /**
@@ -268,11 +251,28 @@ function removeFoundAnswer(answer, storage) {
 
 
 
-/**
- * FACTORY FUNCTIONS 
+/*****************
+ * SHARED GAMEFLOW
  *
- */
+ *****************/
 
+function setUpGame(data) {
+    clearGuessBox();
+    storeAnagramSolution(data);
+    displayAnagram(currentAnagram.anagram);
+}
+
+function resetGame() {
+    clearGuessBox();
+    clearAnagramWord();
+}
+
+
+
+/*******************
+ * FACTORY FUNCTIONS
+ *
+ *******************/
 
 /**
  * Make AJAX request to server.
