@@ -2,7 +2,6 @@
 
 const ladder = {wordLength: 4, words: [], lengths: []};
 const ladderURL = "http://127.0.0.1:5000/ladder";
-//const ladderURL = "https://1ff4ef42.ngrok.io/ladder";
 
 
 function ladderData () {
@@ -34,15 +33,16 @@ function clearAllLadderRungs(numbers) {
 
 function ladderCleanup () {
     const guess = document.getElementById("guess").value
-    saveWord(guess, ladder.words);
+    //saveWord(guess, ladder.words);
+    storeItem(guess, ladder.words);
     displayLadderRung(ladder.wordLength, guess);
     clearGuessBox();
-    storeLength(ladder.wordLength, ladder.lengths);
+    //storeLength(ladder.wordLength, ladder.lengths);
+    storeItem(ladder.wordLength, ladder.lengths);
     ladder.wordLength++;
 }
 
 function ladderGame(data) {
-    //updateScoreDisplay(ladder.wordLength);
     setUpGame(data);
     const guess = document.getElementById("guess");
     const ladderGameFlow = gameFlowFactory(ladderURL,
@@ -65,9 +65,7 @@ function ladderGiveUp() {
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("play").addEventListener("click", () => {
-        //clearScoreDisplay();
         resetGame();
-        //clearFinalFeedback();
         fetchWrap(ladderURL, ladderData, ladderGame);
     });
 });

@@ -1,7 +1,6 @@
 "use strict";
 
 const anagramURL = "http://127.0.0.1:5000/anagram";
-//const anagramURL = "https://1ff4ef42.ngrok.io/anagram";
 
 
 function anagramData () {
@@ -36,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("play").addEventListener("click", () => {
         clearScoreDisplay();
         resetGame();
-        clearFinalFeedback();
         fetchWrap(anagramURL, anagramData, anagramGame);
     });
 });

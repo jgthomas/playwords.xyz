@@ -24,8 +24,67 @@ function categoryGuides() {
 }
 
 
+/**
+ * Display answers beginning with the supplied letter.
+ *
+ * @param {string} letter - Initial letter of the words to display.
+ * @param {object} storage - Object in which words are stored.
+ * @param {boolean} gameEnd - Indicates whether game is over.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
+function letterAnswers(letter, storage, gameEnd = false) {
+    if (gameEnd) {
+        var letterRow = document.getElementById(`answer_${letter}`);
+    } else {
+        var letterRow = document.getElementById(letter);
+    }
+    letterRow.textContent = startsWith(letter, storage).sort().join("  \u00A0");
+}
+
+
+/**
+ * Display answers beginning with every letter of the alphabet.
+ *
+ * Iterate through each letter in the alphabet. If there are any
+ * answers in storage beginning with a letter, display those words.
+ *
+ * @param {array} letters - The letters of the alphabet.
+ * @param {object} storage - Location where words are stored.
+ * @param {boolean} gameEnd - Indicates whether game is over.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
+function allLetterAnswers(letters, storage, gameEnd = false) {
+    letters.forEach( (letter) => {
+        if (storage[letter]) {
+            letterAnswers(letter, storage, gameEnd);
+        }
+    });
+}
+
+
+/**
+ * Clear all rows of answers after game.
+ *
+ * @param {array} letters - Letters of the alphabet.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
+function clearAllAnswers(letters) {
+    letters.forEach( (letter) => {
+        const userAnswer = document.getElementById(letter);
+        const restAnswer = document.getElementById(`answer_${letter}`);
+        if (userAnswer) {
+            userAnswer.textContent = "";
+        }
+        if (restAnswer) {
+            restAnswer.textContent = "";
+        }
+    });
+}
+
+
 function gridCleanup() {
-    const word = document.getElementById("guess").value
+    //const word = document.getElementById("guess").value
+    const word = getValue("guess");
     const firstLetter = word.charAt(0);
     storeAnswer(word, gridAnswers);
     letterAnswers(firstLetter, gridAnswers);
