@@ -68,6 +68,12 @@ body {
   flex: 1;
 }
 
+.final-score {
+        flex: 1;
+        color: cornflowerblue;
+        font-size: 200%;
+}
+
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;

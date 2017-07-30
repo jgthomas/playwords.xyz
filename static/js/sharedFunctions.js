@@ -26,6 +26,15 @@ function updateScoreDisplay(score) {
     document.getElementById("score").innerText = score;
 }
 
+/**
+ * Update the displayed score.
+ *
+ * @param {number} score - The score to display.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
+function updateScoreDisplay2(score, target = "score") {
+    document.getElementById(target).innerText = score;
+}
 
 
 /******************

@@ -8,8 +8,10 @@ const RACK_SCORES = {'a': 1, 'c': 3, 'b': 3, 'e': 1, 'd': 2, 'g': 2,
 
 const RACK_BONUS = 50;
 const RACK_LENGTH = 7;
+const MAX_ROUNDS = 14;
 
 const rack = {round: 1, bestScore: 0, bestAnswers: []};
+const rackScores = {player: 0, best: 0};
 
 const rackURL = "http://127.0.0.1:5000/rack2";
 
@@ -68,6 +70,10 @@ function rackCleanup() {
     const score = scoreWord(word);
     displayRoundResults(word, score, rack.round);
     rack.round += 1;
+    rackScores.player += score;
+    rackScores.best += rack.bestScore
+    updateScoreDisplay2(rackScores.player, "final-player-score");
+    updateScoreDisplay2(rackScores.best, "final-best-score");
     rack.bestScore = 0;
     rack.bestAnswers = [];
     clearGuessBox();
@@ -91,6 +97,10 @@ function rackGame(data) {
 
 
 function rackGiveUp() {
+    rack.round = 1;
+    rackScores.player = 0;
+    rackScores.best = 0;
+    clearGuessBox();
 }
 
 
