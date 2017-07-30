@@ -43,8 +43,8 @@ function scoreWord(word) {
 
 
 function displayRoundResults(word, score, round) {
-    const playerColumn = `round${score}a`;
-    const bestColumn = `round${score}b`;
+    const playerColumn = `round${round}a`;
+    const bestColumn = `round${round}b`;
     const playerWord = document.getElementById(`${playerColumn}-word`);
     const playerScore = document.getElementById(`${playerColumn}-score`);
     const bestWord = document.getElementById(`${bestColumn}-word`);
@@ -55,7 +55,7 @@ function displayRoundResults(word, score, round) {
     if (score == rack.bestScore) {
         bestWord.textContent = "\u2714";
         bestScore.textContent = "\u2714";
-        bestColumn.classList.toggle("tick");
+        //bestColumn.classList.add("tick");
     } else {
         bestWord.textContent = rack.bestAnswers[0];
         bestScore.textContent = rack.bestScore;
@@ -70,21 +70,23 @@ function rackCleanup() {
     rack.round += 1;
     rack.bestScore = 0;
     rack.bestAnswers = [];
+    clearGuessBox();
 }
 
 
 function rackGame(data) {
-    const [letters, answers, highScore, highWords] = data;
+    const [letters, answers, best] = data;
+    const [highScore, highWords] = best;
     rack.bestScore = highScore;
     storeItem(highWords, rack.bestAnswers);
     storeAnagramSolution([letters, answers]);
     displayWord(currentAnagram.anagram.toUpperCase());
     const submit = document.getElementById("submit-word");
-    /*const rackGameFlow = gameFlowFactory(rackURL,
+    const rackGameFlow = gameFlowFactory(rackURL,
                                          rackData,
                                          rackCleanup,
-                                         rackGame);*/
-    //submit.addEventListener("click", rackGameFlow);
+                                         rackGame);
+    submit.addEventListener("click", rackGameFlow);
 }
 
 
