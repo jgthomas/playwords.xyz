@@ -9,7 +9,7 @@ const RACK_SCORES = {'a': 1, 'c': 3, 'b': 3, 'e': 1, 'd': 2, 'g': 2,
 const RACK_BONUS = 50;
 const RACK_LENGTH = 7;
 
-const rack = {round: 1};
+const rack = {round: 1, bestScore: 0, bestAnswers: []};
 
 const rackURL = "http://127.0.0.1:5000/rack2";
 
@@ -42,22 +42,49 @@ function scoreWord(word) {
 }
 
 
+function displayRoundResults(word, score, round) {
+    const playerColumn = `round${score}a`;
+    const bestColumn = `round${score}b`;
+    const playerWord = document.getElementById(`${playerColumn}-word`);
+    const playerScore = document.getElementById(`${playerColumn}-score`);
+    const bestWord = document.getElementById(`${bestColumn}-word`);
+    const bestScore = document.getElementById(`${bestColumn}-score`);
+    playerWord.textContent = word;
+    playerScore.textContent = score;
+
+    if (score == rack.bestScore) {
+        bestWord.textContent = "\u2714";
+        bestScore.textContent = "\u2714";
+        bestColumn.classList.toggle("tick");
+    } else {
+        bestWord.textContent = rack.bestAnswers[0];
+        bestScore.textContent = rack.bestScore;
+    }
+}
+
+
 function rackCleanup() {
     const word = document.getElementById("guess").value
     const score = scoreWord(word);
+    displayRoundResults(word, score, rack.round);
+    rack.round += 1;
+    rack.bestScore = 0;
+    rack.bestAnswers = [];
 }
 
 
 function rackGame(data) {
-    const [letters, answers, high_score, high_words] = data;
+    const [letters, answers, highScore, highWords] = data;
+    rack.bestScore = highScore;
+    storeItem(highWords, rack.bestAnswers);
     storeAnagramSolution([letters, answers]);
-    displayWord(currentAnagram.anagram);
-    // get submit button element
+    displayWord(currentAnagram.anagram.toUpperCase());
+    const submit = document.getElementById("submit-word");
     /*const rackGameFlow = gameFlowFactory(rackURL,
                                          rackData,
                                          rackCleanup,
                                          rackGame);*/
-    // add event listener to submit with rackGameFlow callback
+    //submit.addEventListener("click", rackGameFlow);
 }
 
 

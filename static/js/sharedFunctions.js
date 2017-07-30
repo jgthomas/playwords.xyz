@@ -142,7 +142,7 @@ function checkAnswer(guess, answers) {
  ********************************/
 
 /**
- * Store an individual item.
+ * Store an individual item in an array.
  *
  * @param {string|number} item - A word or its length.
  * @param {array} storage - Storage location
