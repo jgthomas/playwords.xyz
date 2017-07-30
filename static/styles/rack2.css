@@ -46,11 +46,11 @@ body {
 
 .outer-wrap {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-items: center;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-items: flex-start;
   align-self: center;
-  width: 45%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -79,8 +79,17 @@ body {
   grid-template-columns: 1fr 1fr;
   background-color: #fff;
   color: #444;
-  align-self: center;
-  min-width: 100%
+  align-self: flex-start;
+  min-width: 60%
+}
+
+.wrapper2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: #fff;
+  color: #444;
+  align-self: flex-start;
+  min-width: 40%
 }
 
 .box {

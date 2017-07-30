@@ -65,17 +65,27 @@ function displayRoundResults(word, score, round) {
 }
 
 
+function updateRackScores(score) {
+    rackScores.player += score;
+    rackScores.best += rack.bestScore
+    updateScoreDisplay2(rackScores.player, "final-player-score");
+    updateScoreDisplay2(rackScores.best, "final-best-score");
+}
+
+
+function resetRackStore() {
+    rack.bestScore = 0;
+    rack.bestAnswers = [];
+}
+
+
 function rackCleanup() {
     const word = document.getElementById("guess").value
     const score = scoreWord(word);
     displayRoundResults(word, score, rack.round);
     rack.round += 1;
-    rackScores.player += score;
-    rackScores.best += rack.bestScore
-    updateScoreDisplay2(rackScores.player, "final-player-score");
-    updateScoreDisplay2(rackScores.best, "final-best-score");
-    rack.bestScore = 0;
-    rack.bestAnswers = [];
+    updateRackScores(score);
+    resetRackStore();
     clearGuessBox();
 }
 
@@ -101,6 +111,14 @@ function rackGiveUp() {
     rackScores.player = 0;
     rackScores.best = 0;
     clearGuessBox();
+}
+
+
+function pass() {
+    displayRoundResults("x", 0, rack.round);
+    rack.round += 1;
+    updateRackScores(0);
+    restRackStore();
 }
 
 

@@ -6,17 +6,19 @@
 {% endblock %}
 {% block main %}
   <div class="outer-wrap">
-    <div class="rack box-shadow-3d">
-      <div id="letter1" class="tile"></div>
-      <div id="letter2" class="tile"></div>
-      <div id="letter3" class="tile"></div>
-      <div id="letter4" class="tile"></div>
-      <div id="letter5" class="tile"></div>
-      <div id="letter6" class="tile"></div>
-      <div id="letter7" class="tile rightmost"></div>
+    <div class="wrapper2">
+      <div class="rack box-shadow-3d">
+        <div id="letter1" class="tile"></div>
+        <div id="letter2" class="tile"></div>
+        <div id="letter3" class="tile"></div>
+        <div id="letter4" class="tile"></div>
+        <div id="letter5" class="tile"></div>
+        <div id="letter6" class="tile"></div>
+        <div id="letter7" class="tile rightmost"></div>
+      </div>
+      <input id="guess" class="above-entry word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
+      <button id="submit-word" class="button" type="button">Submit</button>
     </div>
-    <input id="guess" class="above-entry word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
-    <button id="submit-word" class="button" type="button">Submit</button>
     <div class="wrapper">
       <div class="box box-title word-title">Word</div>
       <div class="box box-title best-title">Best</div>
