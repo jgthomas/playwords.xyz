@@ -1,13 +1,98 @@
+.word-box {
+        width: 100%;
+        display: block;
+        height: 5vh;
+}
+
+.anagram {
+        font-size: 350%;
+        color: slategrey;
+        font-weight: bold;
+}
+
+.center {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+}
+
+.vertical-center {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+}
+
 input[type="text"] {
         border-radius: 8px;
         outline: none;
-        width: 90%;
-        height: 1.5em;
+        width: 80%;
+        height: 1.25em;
         margin-left: auto;
         margin-right: auto;
+        color: slategrey;
+}
+
+input::placeholder {
+        color: lightgrey;
 }
 
 .box-margins {
         margin-top: 3%;
         margin-bottom: 3%
+}
+
+.extra-box-margin {
+        margin-top: 6%;
+}
+
+/* Button row */
+
+.button-row {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+.button {
+        background-color: cornflowerblue;
+        color: white;
+        border-radius: 5px;
+        /*font-size: 150%;*/
+        font-size: 3em;
+        /*padding: -1.5%*/;
+        text-decoration: none;
+        outline: none;
+        border: none;
+        width: 2.25em;
+        height: 2.25em;
+        border-radius: 50%;
+}
+
+.play-button {
+  flex: 0 0 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stop-button {
+  flex: 0 0 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+select {
+    outline: none;
+    width: 60%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #D2D5D6;
+    color: #777D80;
+    font-size: 150%;
+    border-radius: 8px;
+    margin-right: auto;
+    margin-left: auto;
 }

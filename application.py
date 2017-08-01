@@ -60,7 +60,7 @@ def account():
     return render_template("account.html")
 
 
-@app.route('/anagram', methods=['GET', 'POST'])
+@app.route('/anagram2', methods=['GET', 'POST'])
 def anagram():
     if request.method == 'POST':
         submitted = request.get_json(force=True)
@@ -68,7 +68,7 @@ def anagram():
         anagram = make_anagram(get_word(length, FULL_WORD_LIST))
         answers = anagram_answers(len(anagram), anagram, DICTIONARY)
         return jsonify(data(anagram, answers))
-    return render_template("anagram.html")
+    return render_template("anagram2.html")
 
 
 @app.route('/ladder', methods=["GET", "POST"])

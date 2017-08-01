@@ -1,6 +1,6 @@
 "use strict";
 
-const anagramURL = "http://127.0.0.1:5000/anagram";
+const anagramURL = "http://127.0.0.1:5000/anagram2";
 
 
 function anagramData () {
