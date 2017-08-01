@@ -144,6 +144,17 @@ function checkAnswer(guess, answers) {
 }
 
 
+/**
+ * Calculate players final percentage.
+ *
+ * @param {number} scoreA - Player score.
+ * @param {number} scoreB - Computer score.
+ * @return {number} percentage of computer score achieved by player.
+ */
+function finalPercentage(scoreA, scoreB) {
+    return (scoreA * 100) / scoreB;
+}
+
 
 /********************************
  * STORING AND RETRIEVING ANSWERS

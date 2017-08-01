@@ -44,6 +44,12 @@ function scoreWord(word) {
 }
 
 
+function displayFinalPercentage() {
+    finalPerc = document.getElementById("final-percentage");
+    finalPerc.textContent = finalPercentage(rackScores.player, rackScores.best);
+}
+
+
 function displayRoundResults(word, score, round) {
     const playerColumn = `round${round}a`;
     const bestColumn = `round${round}b`;
@@ -57,7 +63,6 @@ function displayRoundResults(word, score, round) {
     if (score == rack.bestScore) {
         bestWord.textContent = "\u2714";
         bestScore.textContent = "\u2714";
-        //bestColumn.classList.add("tick");
     } else {
         bestWord.textContent = rack.bestAnswers[0];
         bestScore.textContent = rack.bestScore;
@@ -91,25 +96,31 @@ function rackCleanup() {
 
 
 function rackGame(data) {
-    const [letters, answers, best] = data;
-    const [highScore, highWords] = best;
-    rack.bestScore = highScore;
-    storeItem(highWords, rack.bestAnswers);
-    storeAnagramSolution([letters, answers]);
-    displayWord(currentAnagram.anagram.toUpperCase());
-    const submit = document.getElementById("submit-word");
-    const rackGameFlow = gameFlowFactory(rackURL,
-                                         rackData,
-                                         rackCleanup,
-                                         rackGame);
-    submit.addEventListener("click", rackGameFlow);
+    while (rack.round < MAX_ROUNDS) {
+        const [letters, answers, best] = data;
+        const [highScore, highWords] = best;
+        rack.bestScore = highScore;
+        storeItem(highWords, rack.bestAnswers);
+        storeAnagramSolution([letters, answers]);
+        displayWord(currentAnagram.anagram.toUpperCase());
+        const submit = document.getElementById("submit-word");
+        const rackGameFlow = gameFlowFactory(rackURL,
+                                             rackData,
+                                             rackCleanup,
+                                             rackGame);
+        submit.addEventListener("click", rackGameFlow);
+    }
+
+    rackGiveUp();
 }
 
 
 function rackGiveUp() {
+    //displayFinalPercentage();
     rack.round = 1;
     rackScores.player = 0;
     rackScores.best = 0;
+    resetRackStore();
     clearGuessBox();
 }
 
@@ -118,12 +129,13 @@ function pass() {
     displayRoundResults("x", 0, rack.round);
     rack.round += 1;
     updateRackScores(0);
-    restRackStore();
+    resetRackStore();
 }
 
 
-/*document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("again").addEventListener("click", () => {
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("pass").addEventListener("click", () => {
+        pass();
     });
 });
 
@@ -131,7 +143,7 @@ function pass() {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("stop").addEventListener("click", () => {
     });
-});*/
+});
 
 
 document.addEventListener("DOMContentLoaded", () => {
