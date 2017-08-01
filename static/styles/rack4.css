@@ -30,20 +30,10 @@
 .score-word-output {
         flex: 2;
         display: grid;
-        grid-template-areas: 
-               "a a a b b b" 
-               "i i j j j j"
-               "k k l l l l";
-        align-items: stretch;
+        grid-template-columns: 1fr 1fr;
 }
 
-.funky-a {
-        grid-area: a;
-}
 
-.funky-b {
-        grid-area: b;
-}
 
 .funky-c {
         grid-area: c;
@@ -76,30 +66,6 @@
         align-content: center;
         text-align: center;
 }
-
-.funky-h {
-        grid-area: h;
-}
-
-.funky-i {
-        grid-area: i;
-}
-
-
-.funky-j {
-        grid-area: j;
-}
-
-
-.funky-k {
-        grid-area: k;
-}
-
-.funky-l {
-        grid-area: l;
-}
-
-
 
 
 
@@ -146,12 +112,6 @@
                 6px 6px 0px #999;
 }
 .box {
-  /*border-style: solid;
-  border-left-width: 1px;
-  border-right-width: 0;
-  border-bottom-width: 1px;
-  border-top-width: 0;
-  border-color: #444;*/
   padding: 20px;
   font-size: 150%;
   text-align: center;
@@ -167,10 +127,10 @@
   border-right-width: 1px;
 }
 .final-score {
-        flex: 1;
         color: cornflowerblue;
-        font-size: 150%;
+        font-size: 350%;
         font-weight: bold;
+        text-align: center;
 }
 .flex-bit {
   display: flex;
