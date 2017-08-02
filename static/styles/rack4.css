@@ -167,6 +167,24 @@
         color: lightgrey;
 }
 
+.correct {
+        font-size: 125%;
+        color: green;
+        font-weight: bolder;
+}
+
+.incorrect {
+        font-size: 125%;
+        color: lightgrey;
+        font-weight: bold;
+}
+
+.correction {
+        font-size: 125%;
+        color: slategray;
+        font-weight: bold;
+}
+
 
 @media only screen and (max-width: 680px) {
         .flex-main {

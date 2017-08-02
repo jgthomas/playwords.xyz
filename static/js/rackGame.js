@@ -63,9 +63,17 @@ function displayRoundResults(word, score, round) {
     if (score == rack.bestScore) {
         bestWord.textContent = "\u2714";
         bestScore.textContent = "\u2714";
+        playerWord.classList.add("correct");
+        playerScore.classList.add("correct");
+        bestWord.classList.add("correct");
+        bestScore.classList.add("correct");
     } else {
         bestWord.textContent = rack.bestAnswers[0];
         bestScore.textContent = rack.bestScore;
+        bestWord.classList.add("correction");
+        bestScore.classList.add("correction");
+        playerWord.classList.add("incorrect");
+        playerScore.classList.add("incorrect");
     }
 }
 
