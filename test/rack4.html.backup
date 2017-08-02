@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block head %}
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel=stylesheet href="{{ url_for('static', filename='styles/inputs.css') }}">
+  <link rel=stylesheet href="{{ url_for('static', filename='styles/rack4.css') }}">
+{% endblock %}
+{% block main %}
+    <div class="flex-main">
+      <div class="buttons-word-input">
+        <div class="funky-c box-margins">
+          <div class="rack box-shadow-3d">
+            <div id="letter1" class="tile"></div>
+            <div id="letter2" class="tile"></div>
+            <div id="letter3" class="tile"></div>
+            <div id="letter4" class="tile"></div>
+            <div id="letter5" class="tile"></div>
+            <div id="letter6" class="tile"></div>
+            <div id="letter7" class="tile rightmost"></div>
+          </div>
+        </div>
+        <div class="funky-d box-margins">
+          <input id="guess" class="guess box-margins" type="text" name="unscrambled" placeholder="find words...">
+        </div>
+        <div class="funky-e box-margins extra-box-margin">
+          <button id="submit-word" class="submit-button button box-margins" type="button">Word</button>
+        </div>
+        <div class="funky-f box-margins extra-box-margin">
+          <button id="pass" class="play-button button box-margins" type="button">Pass</button>
+        </div>
+        <div class="funky-g box-margins extra-box-margin">
+          <button id="stop" class="stop-button button box-margins" type="button">Stop</button>
+        </div>
+      </div>
+
+      <div class="score-word-output">
+        <div id="final-player-score" class="final-score box-margins">0</div>
+        <div id="final-best-score" class="final-score box-margins">0</div>
+        <div class="player-answers answers">
+          <div id="round1a-word"></div>
+          <div id="round1a-score"></div>
+        </div>
+        <div class="best-answers answers">
+          <div id="round1b-word"></div>
+          <div id="round1b-score"></div>
+        </div>
+      </div>
+
+    </div>
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ url_for('static', filename='js/rackGame.js') }}"></script>
+{% endblock %}
