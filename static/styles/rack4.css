@@ -27,14 +27,6 @@
         align-self: flex-start;
 }
 
-.score-word-output {
-        flex: 2;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-}
-
-
-
 .funky-c {
         grid-area: c;
 }
@@ -111,6 +103,21 @@
                 5px 5px 0px #999,
                 6px 6px 0px #999;
 }
+
+
+/* Answer box and scores */
+
+.score-word-output {
+        flex: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+}
+
+.answers {
+        display: grid;
+        grid-template-columns: 1fr 0.25fr 1fr 0.25fr;
+}
+
 .box {
   padding: 20px;
   font-size: 150%;
@@ -126,24 +133,20 @@
 .right-column {
   border-right-width: 1px;
 }
+
+.word-output {
+        text-align: center;
+}
+
 .final-score {
         color: cornflowerblue;
         font-size: 350%;
         font-weight: bold;
         text-align: center;
 }
-.flex-bit {
-  display: flex;
-  flex-direction: row;
-}
 
-.flex-word {
-  flex: 3;
-}
 
-.flex-score {
-  flex: 1;
-}
+
 @media only screen and (max-width: 680px) {
         .flex-main {
                 flex-direction: column-reverse;
