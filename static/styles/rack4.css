@@ -17,14 +17,21 @@
 
 
 .buttons-word-input {
-        flex: 1.25;
+        flex: 1;
         display: grid;
         grid-template-areas:               
+               "a a a b b b"
                "c c c c c c"
                "d d d d d d"
                "e e f f g g";
         align-items: stretch;
         align-self: flex-start;
+}
+.funky-a {
+        grid-area: a;
+}
+.funky-b {
+        grid-area: b;
 }
 
 .funky-c {
@@ -108,14 +115,19 @@
 /* Answer box and scores */
 
 .score-word-output {
-        flex: 2;
+        flex: 1;
         display: grid;
-        grid-template-columns: 1fr 1fr; 
+        grid-template-columns: 1fr 0.25fr 1.5fr 0.25fr;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        text-align: center;
+        width: 80%;
 }
 
 .answers {
         display: grid;
-        grid-template-columns: 1fr 0.25fr 1fr 0.25fr;
+        grid-template-columns: 0.5fr 0.25fr 1.5fr 0.25fr;
 }
 
 .box {
@@ -145,6 +157,15 @@
         text-align: center;
 }
 
+.player-answers {
+        font-weight: bold;
+        font-size: 150%;
+}
+
+.best-answers {
+        font-size: 125%;
+        color: lightgrey;
+}
 
 
 @media only screen and (max-width: 680px) {

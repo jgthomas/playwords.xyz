@@ -96,7 +96,7 @@ function rackCleanup() {
 
 
 function rackGame(data) {
-    while (rack.round < MAX_ROUNDS) {
+    if (rack.round <= MAX_ROUNDS) {
         const [letters, answers, best] = data;
         const [highScore, highWords] = best;
         rack.bestScore = highScore;
@@ -109,9 +109,9 @@ function rackGame(data) {
                                              rackCleanup,
                                              rackGame);
         submit.addEventListener("click", rackGameFlow);
+    } else {
+        rackGiveUp();
     }
-
-    rackGiveUp();
 }
 
 
@@ -133,7 +133,7 @@ function pass() {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("pass").addEventListener("click", () => {
         pass();
     });
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("stop").addEventListener("click", () => {
     });
-});
+});*/
 
 
 document.addEventListener("DOMContentLoaded", () => {
