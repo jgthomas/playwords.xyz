@@ -65,6 +65,11 @@ def get_score(word, letter_scores, bonus_level):
 def high_scorer(words, letter_scores, bonus_level):
     """ Return highest score and all words with that score. """
     scored = [(word, get_score(word, letter_scores, bonus_level)) for word in words]
-    high_score = max(operator.itemgetter(1)(list(zip(*scored))))
+    try:
+        high_score = max(operator.itemgetter(1)(list(zip(*scored))))
+    except IndexError:
+        high_score = 0
     top_words = [word for word, score in scored if score == high_score]
+    if not top_words:
+        top_words = ["\u2013"]
     return [high_score, top_words]
