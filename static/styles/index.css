@@ -10,84 +10,77 @@ body {
 }
 
 
-.game-link-block {
-        margin-top: 5%;
+.game-link-grid {
+        display: grid;
+        /*grid-gap: 5px;*/
+        grid-template-areas:
+               "a a a a a a"
+               "b b b b b b";
+        align-items: stretch;
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 2em;
+}
+
+.game-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        /*margin-top: 5px;*/
+        text-align: center;
+}
+
+#row-one {
+        grid-area: a;
+}
+
+#row-two {
+        grid-area: b;
 }
 
 .game-nav {
         text-align: center;
         text-decoration: none;
         color: white;
-        font-size: 200%;
+        font-size: 500%;
         border-radius: 8%;
-        width: 100%;
-        display: block;
-        padding: 1%;
-        margin-bottom: 2%;
+        /*width: 80%;*/
+        min-width: 600px;
+        max-width: 600px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 50px;
 }
 
 #navlink1 {
         background-color: darkred;
+        flex: 1;
 }
 
 #navlink2 {
         background-color: darkslateblue;
+        flex: 1;
 }
 
 #navlink3 {
         background-color: dodgerblue;
+        flex: 1;
 }
 
 #navlink4 {
         background-color: chocolate;
-}
-
-.games {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
- }
-
-.game {
-    flex: 1 0 500px;
-    box-sizing: border-box;
-    margin: 1rem .25em;
+        flex: 1;
 }
 
 
-@media screen and (min-width: 40em) {
-    .game {
-       max-width: calc(100% -  1em);
-    }
-}
 
-@media screen and (min-width: 70em) {
-    .game {
-       max-width: calc(50% -  1em);
-    }
-}
-
-@media screen and (min-width: 100em) {
-    .game {
-        max-width: calc(33% - 1em);
-    }
-}
-
-@media only screen and (max-device-width: 1366px) {
-        .game {
-                max-width: calc(33% - 1em);
-        }
-}
-
-@media only screen and (max-device-width: 1024px) {
-        .game {
-                max-width: calc(50% - 1em);
-        }
-}
-
-@media only screen and (max-device-width: 420px) {
-        .game {
-                max-width: calc(100% - 1em);
+@media only screen (max-width: 680px) {
+        .game-nav {
+                min-width: 80%;
+                max-width: 80%;
+                margin-right: auto;
+                margin-left: auto;
         }
 }

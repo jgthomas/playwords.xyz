@@ -5,7 +5,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 {% endblock %}
 {% block main %}
-<div class="games game-link-block">
+<!--<div class="games game-link-block">
   <div id="navlink1" class="game game-nav">
     <a class="game-nav" href="{{ url_for('anagram') }}">Anagram</a>
   </div>
@@ -18,7 +18,17 @@
   <div id="navlink4" class="game game-nav">
     <a class="game-nav" href="{{ url_for('rack') }}">Rack</a>
   </div>
-</div>
+</div>-->
+  <nav class="game-link-grid">
+    <nav id="row-one" class="game-row">
+      <a id="navlink1" class="game-nav" href="{{ url_for('anagram') }}">Anagram</a>
+      <a id="navlink2" class="game-nav" href="{{ url_for('ladder') }}">Ladder</a>
+    </nav>
+    <nav id="row-two" class="game-row">
+      <a id="navlink3" class="game-nav" href="{{ url_for('grid') }}">Grid</a>
+      <a id="navlink4" class="game-nav" href="{{ url_for('rack') }}">Rack</a>
+    </nav>
+  </nav>
 {% endblock %}
 {% block scripts %}
 {% endblock %}
