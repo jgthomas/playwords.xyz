@@ -1,0 +1,151 @@
+body {
+  font-size: 16px;
+  font-family: Sans-Serif;
+}
+
+
+/* TEMP */
+.main-site-nav {
+        display: none;
+}
+
+
+/* Outline */
+
+.outer-wrap {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-items: center;
+        align-self: center;
+        text-align: center;
+}
+
+.left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 3%;
+}
+
+.right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 3%;
+}
+
+
+/* Puzzle grid */
+
+
+.puzzle-grid {
+        flex: 0 0 33%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 3px;
+        background-color: dimgray;
+        width: 60%;
+        margin-right: auto;
+        margin-left: auto;
+}
+
+.puzzle-square {
+        background-color: ghostwhite;
+        font-size: 200%;
+        color: darkslategray;
+        font-weight: bold;
+        padding-bottom: 30%;
+        padding-top: 30%;
+}
+
+
+
+/* Rules and words-found count */
+
+.rules-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        border-bottom: 3px;
+        border-bottom-style: solid;
+        border-bottom-color: dimgray;
+        margin-bottom: 1em;
+        width: 75%;
+        margin-right: auto;
+        margin-left: auto;
+}
+
+.sidebar-header {
+        text-align: center;
+        font-weight: bold;
+}
+
+.sidebar-section {
+        margin-right 2em;
+        display: inline-block;
+}
+
+.sidebar-phrase {
+        text-align: center;
+}
+
+.sidebar-count {
+        text-align: center;
+        font-size: 2em;
+}
+
+#score {
+        color: #B22222;
+        font-weight: bold;
+}
+
+
+
+/* Feedback */
+
+.answer-letter {
+        font-size: 150%;
+        color: dimgray;
+        font-weight: bold;
+        text-align: left;
+        line-height: 1.5;
+        width: 75%;
+        margin-right: auto;
+        margin-left: auto;
+}
+
+.final-answer-letter {
+        color: royalblue;
+}
+
+
+
+@media only screen and (max-width: 961px) {
+        
+        .outer-wrap {
+                flex-direction: column;
+        }
+}
+
+@media only screen and (max-width: 740px) {
+        
+        .outer-wrap {
+                flex-direction: column-reverse;
+        }
+        
+        .puzzle-grid {
+                width: 75%;
+        }
+
+        .rules-bar {
+                width: 95%;
+        }
+
+        .answer-letter {
+                width: 95%;
+        }
+}

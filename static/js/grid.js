@@ -2,7 +2,7 @@
 
 const gridAnswers = {};
 const finalAnswers = {};
-const gridURL = "http://127.0.0.1:5000/grid";
+const gridURL = "http://127.0.0.1:5000/grid2";
 const gridLength = 9;
 
 
@@ -98,7 +98,7 @@ function gridCleanup() {
 function gridGame(data) {
     clearScoreDisplay();
     storeAnagramSolution(data);
-    displayWord(currentAnagram.anagram);
+    displayWord(currentAnagram.anagram.toUpperCase());
     categoryGuides();
     const guess = document.getElementById("guess");
     const gridGameFlow = gameFlowFactory(gridURL,
