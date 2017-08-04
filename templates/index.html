@@ -1,5 +1,8 @@
 {% extends "layout.html" %}
-
+{% block head %}
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel=stylesheet href="{{ url_for('static', filename='styles/index.css') }}">
+{% endblock %}
 {% block main %}
 <div class="games game-link-block">
   <div id="navlink1" class="game game-nav">
@@ -15,4 +18,6 @@
     <a class="game-nav" href="{{ url_for('rack') }}">Rack</a>
   </div>
 </div>
+{% endblock %}
+{% block scripts %}
 {% endblock %}

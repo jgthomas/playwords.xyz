@@ -1,0 +1,88 @@
+
+/* TEMP */
+.main-site-nav {
+        display: none;
+}
+
+
+.game-link-block {
+        margin-top: 5%;
+}
+
+.game-nav {
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        font-size: 200%;
+        border-radius: 8%;
+        width: 100%;
+        display: block;
+        padding: 1%;
+        margin-bottom: 2%;
+}
+
+#navlink1 {
+        background-color: darkred;
+}
+
+#navlink2 {
+        background-color: darkslateblue;
+}
+
+#navlink3 {
+        background-color: dodgerblue;
+}
+
+#navlink4 {
+        background-color: chocolate;
+}
+
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+ }
+
+.game {
+    flex: 1 0 500px;
+    box-sizing: border-box;
+    margin: 1rem .25em;
+}
+
+
+@media screen and (min-width: 40em) {
+    .game {
+       max-width: calc(100% -  1em);
+    }
+}
+
+@media screen and (min-width: 70em) {
+    .game {
+       max-width: calc(50% -  1em);
+    }
+}
+
+@media screen and (min-width: 100em) {
+    .game {
+        max-width: calc(33% - 1em);
+    }
+}
+
+@media only screen and (max-device-width: 1366px) {
+        .game {
+                max-width: calc(33% - 1em);
+        }
+}
+
+@media only screen and (max-device-width: 1024px) {
+        .game {
+                max-width: calc(50% - 1em);
+        }
+}
+
+@media only screen and (max-device-width: 420px) {
+        .game {
+                max-width: calc(100% - 1em);
+        }
+}
