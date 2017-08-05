@@ -68,7 +68,7 @@ function displayRoundResults(word, score, round) {
         bestWord.classList.add("correct");
         bestScore.classList.add("correct");
     } else {
-        bestWord.textContent = rack.bestAnswers[0];
+        bestWord.textContent = getAnswer(rack.bestAnswers[0]);
         bestScore.textContent = rack.bestScore;
         bestWord.classList.add("correction");
         bestScore.classList.add("correction");
@@ -120,6 +120,10 @@ function rackGame(data) {
     } else {
         rackGiveUp();
     }
+}
+
+
+function endOfGame() {
 }
 
 
