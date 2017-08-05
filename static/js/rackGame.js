@@ -141,14 +141,15 @@ function pass() {
 }
 
 
-/*document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("pass").addEventListener("click", () => {
         pass();
+        fetchWrap(rackURL, rackData, rackGame);
     });
 });
 
 
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("stop").addEventListener("click", () => {
     });
 });*/

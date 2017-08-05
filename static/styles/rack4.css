@@ -170,8 +170,8 @@
 
 .correct {
         font-size: 125%;
-        color: green;
-        font-weight: bolder;
+        color: #09BC8A;
+        font-weight: bold;
 }
 
 .incorrect {
