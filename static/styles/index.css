@@ -42,8 +42,6 @@ body {
 .game {
         display: flex;
         flex-direction: column;
-        min-width: 500px;
-        max-width: 500px;
 }
 
 .game-link {
@@ -88,6 +86,12 @@ body {
 }
 
 
+@media only screen and (min-width: 2450px) {
+        .game-link-grid {
+                width: 60%;
+        }
+
+}
 
 @media only screen and (max-width: 680px) {
         .game-link {
@@ -102,8 +106,8 @@ body {
         }
 }
 
-@media only screen and (max-width: 380px) {
-        .game-nav {
+@media only screen and (max-width: 360px) {
+        .game-link {
                 font-size: 300%;
         }
 }
