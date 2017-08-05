@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block head %}
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  {{ super() }}
   <link rel=stylesheet href="{{ url_for('static', filename='styles/index.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 {% endblock %}
