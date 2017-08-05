@@ -66,22 +66,22 @@ body {
 }
 
 #game-link-1 {
-        background-color: darkred;
+        background-color: #084887;
         flex: 1;
 }
 
 #game-link-2 {
-        background-color: darkslateblue;
+        background-color: #F06449;
         flex: 1;
 }
 
 #game-link-3 {
-        background-color: dodgerblue;
+        background-color: #F6AE2D;
         flex: 1;
 }
 
 #game-link-4 {
-        background-color: chocolate;
+        background-color: #F58A07;
         flex: 1;
 }
 
