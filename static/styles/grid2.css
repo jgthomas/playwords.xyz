@@ -122,6 +122,11 @@ body {
         color: royalblue;
 }
 
+.nine-letter-word {
+        color: firebrick;
+        font-size: 200%;
+}
+
 
 
 @media only screen and (max-width: 961px) {

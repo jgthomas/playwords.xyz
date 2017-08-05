@@ -5,6 +5,8 @@ const finalAnswers = {};
 const gridURL = "http://127.0.0.1:5000/grid2";
 const gridLength = 9;
 
+let nineLetterWords = [];
+
 
 function gridData() {
     return {method: "POST",
@@ -21,6 +23,21 @@ function categoryGuides() {
     document.getElementById("average").textContent = Math.ceil(numOfAnswers * average);
     document.getElementById("good").textContent = Math.ceil(numOfAnswers * good);
     document.getElementById("excellent").textContent = Math.ceil(numOfAnswers * excellent);
+}
+
+
+function getNineLetterWord(arr) {
+    const nines = arr.filter( (x) => {
+        return x.length === 9;
+    });
+
+    return nines;
+}
+
+
+function clearNineLetterWord() {
+    const nine = document.getElementById("nine-letter-word");
+    nine.textContent = "";
 }
 
 
@@ -97,7 +114,9 @@ function gridCleanup() {
 
 function gridGame(data) {
     clearScoreDisplay();
+    clearNineLetterWord();
     storeAnagramSolution(data);
+    nineLetterWords = getNineLetterWord(currentAnagram.solution);
     displayWord(currentAnagram.anagram.toUpperCase());
     categoryGuides();
     const guess = document.getElementById("guess");
@@ -113,6 +132,7 @@ function gridGame(data) {
 function gridGiveUp() {
     sortFinalAnswers(currentAnagram.solution, finalAnswers);
     allLetterAnswers(LETTERS, finalAnswers, true);
+    displayAnagram(getAnswer(nineLetterWords), "nine-letter-word");
     resetAnswers(gridAnswers);
     resetAnswers(finalAnswers);
     player.score = 0;

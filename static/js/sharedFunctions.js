@@ -82,10 +82,11 @@ function clearGuessBox() {
  * Display single anagram.
  *
  * @param {string} anagram - Letters to display.
+ * @param {string} where - ID where word to be displayed.
  * @return {undefined} SIDE-EFFECTS ONLY
  */
-function displayAnagram(anagram) {
-    document.getElementById("word-place").innerText = anagram;
+function displayAnagram(anagram, where = "word-place") {
+    document.getElementById(where).innerText = anagram;
 }
 
 
