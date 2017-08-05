@@ -12,7 +12,6 @@ body {
 
 .game-link-grid {
         display: grid;
-        /*grid-gap: 5px;*/
         grid-template-areas:
                "a a a a a a"
                "b b b b b b";
@@ -27,8 +26,7 @@ body {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: center;
-        /*margin-top: 5px;*/
+        justify-content: space-around;
         text-align: center;
 }
 
@@ -40,37 +38,51 @@ body {
         grid-area: b;
 }
 
-.game-nav {
+
+.game {
+        display: flex;
+        flex-direction: column;
+        min-width: 500px;
+        max-width: 500px;
+}
+
+.game-link {
         text-align: center;
         text-decoration: none;
         color: white;
+        border-radius: 8%;
         font-size: 450%;
         border-radius: 8%;
-        /*width: 80%;*/
         min-width: 500px;
         max-width: 500px;
         margin-right: auto;
         margin-left: auto;
         margin-top: 50px;
-        padding: 0.15em;
 }
 
-#navlink1 {
+.game-description {
+        font-size: 18px;
+        font-weight: normal;
+        color: slategrey;
+        margin-top: 5px;
+}
+
+#game-link-1 {
         background-color: darkred;
         flex: 1;
 }
 
-#navlink2 {
+#game-link-2 {
         background-color: darkslateblue;
         flex: 1;
 }
 
-#navlink3 {
+#game-link-3 {
         background-color: dodgerblue;
         flex: 1;
 }
 
-#navlink4 {
+#game-link-4 {
         background-color: chocolate;
         flex: 1;
 }
@@ -78,15 +90,17 @@ body {
 
 
 @media only screen and (max-width: 680px) {
-        .game-nav {
+        .game-link {
                 min-width: 95%;
                 max-width: 95%;
                 font-size: 400%;
-                margin-right: auto;
-                margin-left: auto;
+        }
+        
+        .game {
+                min-width: 95%;
+                max-width: 95%;
         }
 }
-
 
 @media only screen and (max-width: 380px) {
         .game-nav {
