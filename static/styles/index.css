@@ -44,14 +44,15 @@ body {
         text-align: center;
         text-decoration: none;
         color: white;
-        font-size: 500%;
+        font-size: 450%;
         border-radius: 8%;
         /*width: 80%;*/
-        min-width: 600px;
-        max-width: 600px;
+        min-width: 500px;
+        max-width: 500px;
         margin-right: auto;
         margin-left: auto;
         margin-top: 50px;
+        padding: 0.15em;
 }
 
 #navlink1 {
@@ -76,11 +77,19 @@ body {
 
 
 
-@media only screen (max-width: 680px) {
+@media only screen and (max-width: 680px) {
         .game-nav {
-                min-width: 80%;
-                max-width: 80%;
+                min-width: 95%;
+                max-width: 95%;
+                font-size: 400%;
                 margin-right: auto;
                 margin-left: auto;
+        }
+}
+
+
+@media only screen and (max-width: 380px) {
+        .game-nav {
+                font-size: 300%;
         }
 }
