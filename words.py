@@ -3,12 +3,8 @@
 from pyfunctory.nuggets import match_factory, ends_ss
 from pyfunctory.process import filter_data
 from pyfunctory.factories import make_partial, filter_by, compose
-from pyfunctory.atoms import (contains,
-                              is_length,
-                              longer_than,
-                              is_subset,
-                              can_be_made)
-
+from pyfunctory.compounds import can_be_made
+from pyfunctory.atoms import contains, is_length, longer_than, is_subset
 from constants import SHORT, PLURAL_SPECIAL_CASES
 
 
