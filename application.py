@@ -89,6 +89,7 @@ def grid():
         middle_letter = anagram[len(anagram) // 2]
         answers = puzzle_answers(anagram, DICTIONARY, letter=middle_letter)
         answers = plural_filter(answers, DICTIONARY)
+        print(data(anagram, answers))
         return jsonify(data(anagram, answers))
     return render_template("grid2.html")
 
