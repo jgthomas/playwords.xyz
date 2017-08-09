@@ -153,10 +153,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-/*document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("stop").addEventListener("click", () => {
+        rackGiveUp();
+        fetchWrap(rackURL, rackData, rackGame);
     });
-});*/
+});
 
 
 document.addEventListener("DOMContentLoaded", () => {
