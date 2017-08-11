@@ -79,7 +79,7 @@ def ladder():
         anagram = make_anagram(get_word(length, FULL_WORD_LIST))
         answers = anagram_answers(len(anagram), anagram, DICTIONARY)
         return jsonify(data(anagram, answers))
-    return render_template("ladder2.html")
+    return render_template("ladder.html")
 
 
 @app.route('/grid2', methods=["GET", "POST"])
