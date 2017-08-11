@@ -1,3 +1,17 @@
+MAIN PAGES
+index.html
+anagram2.html
+ladder2.html
+grid2.html
+rack4.html
+
+TO-DO
+login.html
+logout.html
+register.html
+account.html
+
+
 LAYOUT
 shared.css
 sharedFunctions.js
