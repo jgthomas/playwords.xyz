@@ -94,7 +94,7 @@ def grid():
     return render_template("grid.html")
 
 
-@app.route('/rack4', methods=["GET", "POST"])
+@app.route('/rack', methods=["GET", "POST"])
 def rack():
     if request.method == "POST":
         submitted = request.get_json(force=True)
@@ -104,4 +104,4 @@ def rack():
         high = high_scorer(answers, SCORES, RACK_HIGH)
         print(data(letters, answers, high))
         return jsonify(data(letters, answers, high))
-    return render_template("rack4.html")
+    return render_template("rack.html")

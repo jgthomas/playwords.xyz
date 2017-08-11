@@ -13,7 +13,7 @@ const MAX_ROUNDS = 14;
 const rack = {round: 1, bestScore: 0, bestAnswers: []};
 const rackScores = {player: 0, best: 0};
 
-const rackURL = "http://127.0.0.1:5000/rack4";
+const rackURL = "http://127.0.0.1:5000/rack";
 
 
 function rackData() {
