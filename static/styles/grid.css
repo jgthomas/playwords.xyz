@@ -109,8 +109,7 @@ body {
 
 .answer-letter {
         font-size: 150%;
-        color: dimgray;
-        font-weight: bold;
+        color: #09BC8A;
         text-align: left;
         line-height: 1.5;
         width: 75%;
@@ -119,12 +118,12 @@ body {
 }
 
 .final-answer-letter {
-        color: royalblue;
+        color: slategrey;
 }
 
 .nine-letter-word {
         color: #EE6C4D;
-        font-size: 200%;
+        font-size: 250%;
 }
 
 
