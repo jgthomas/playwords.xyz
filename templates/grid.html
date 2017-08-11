@@ -1,17 +1,32 @@
 {% extends "layout.html" %}
 {% block head %}
   {{ super() }}
-  <link rel=stylesheet href="{{ url_for('static', filename='styles/grid.css') }}">
+  <link rel=stylesheet href="{{ url_for('static', filename='styles/inputs.css') }}">
+  <link rel=stylesheet href="{{ url_for('static', filename='styles/grid2.css') }}">
 {% endblock %}
 {% block main %}
-  <div id="buttons" class="center fade-in">
-    <button id="again" class="button grid-game-button" type="button">New</button>
-    <button id="stop" class="button grid-game-button" type="button">Stop</button>
-  </div>
-  <input id="guess" class="above-entry word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
-  <div class="game-layout fade-in">
-    <div id="answers">
-      <div id="new-rules">
+  <div class="outer-wrap">
+    <div class="left">
+      <div id="buttons" class="button-row">
+        <button id="again" class="button" type="button">New</button>
+        <button id="stop" class="button" type="button">Stop</button>
+      </div>
+      <div class="puzzle-grid">
+        <div id="letter1" class="puzzle-square"></div>
+        <div id="letter2" class="puzzle-square"></div>
+        <div id="letter3" class="puzzle-square"></div>
+        <div id="letter4" class="puzzle-square"></div>
+        <div id="letter5" class="puzzle-square"></div>
+        <div id="letter6" class="puzzle-square"></div>
+        <div id="letter7" class="puzzle-square"></div>
+        <div id="letter8" class="puzzle-square"></div>
+        <div id="letter9" class="puzzle-square"></div>
+      </div>
+      <input id="guess" class="word-box box-margins" type="text" name="unscrambled" placeholder="Find words">
+      <div id="nine-letter-word" class="nine-letter-word"></div>
+    </div>
+    <div class="right">
+      <div class="rules-bar">
         <div class="sidebar-section">
           <p class="sidebar-header">Rules</p>
           <p class="sidebar-phrase">Four letters plus</p>
@@ -88,21 +103,9 @@
       <div id="z" class="answer-letter"></div>
       <div id="answer_z" class="answer-letter final-answer-letter"></div>
     </div>
-    <div id="word-grid">
-      <div id="letter1" class="letter-square"></div>
-      <div id="letter2" class="letter-square"></div>
-      <div id="letter3" class="letter-square"></div>
-      <div id="letter4" class="letter-square"></div>
-      <div id="letter5" class="letter-square"></div>
-      <div id="letter6" class="letter-square"></div>
-      <div id="letter7" class="letter-square"></div>
-      <div id="letter8" class="letter-square"></div>
-      <div id="letter9" class="letter-square"></div>
-    </div>
   </div>
-  <input id="guess" class="below-entry word-box box-margins fade-in" type="text" name="unscrambled" placeholder="Find words">
 {% endblock %}
 {% block scripts %}
   {{ super() }}
-  <script src="{{ url_for('static', filename='js/grid.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/gridGame.js') }}"></script>
 {% endblock %}

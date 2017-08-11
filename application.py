@@ -82,7 +82,7 @@ def ladder():
     return render_template("ladder.html")
 
 
-@app.route('/grid2', methods=["GET", "POST"])
+@app.route('/grid', methods=["GET", "POST"])
 def grid():
     if request.method == "POST":
         anagram = make_anagram(random.choice(NINE_LETTER_LIST))
@@ -91,7 +91,7 @@ def grid():
         answers = plural_filter(answers, DICTIONARY)
         print(data(anagram, answers))
         return jsonify(data(anagram, answers))
-    return render_template("grid2.html")
+    return render_template("grid.html")
 
 
 @app.route('/rack4', methods=["GET", "POST"])
