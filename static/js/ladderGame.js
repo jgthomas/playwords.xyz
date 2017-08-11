@@ -53,6 +53,10 @@ function ladderGiveUp() {
     ladder.words = [];
     resetGame();
     displayAnagram(getAnswer(currentAnagram.solution));
+}
+
+function clearOldGame() {
+    resetGame();
     clearAllLadderRungs(ladder.lengths);
     ladder.lengths = [];
 }
@@ -60,7 +64,7 @@ function ladderGiveUp() {
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("play").addEventListener("click", () => {
-        resetGame();
+        clearOldGame();
         fetchWrap(ladderURL, ladderData, ladderGame);
     });
 });
@@ -70,4 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("stop").addEventListener("click", () => {
         ladderGiveUp();
     });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+        fetchWrap(ladderURL, ladderData, ladderGame);
 });
