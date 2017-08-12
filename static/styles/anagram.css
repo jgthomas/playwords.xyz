@@ -53,13 +53,13 @@
 
 
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 961px) {
         .outer-wrap {
             flex-direction: column-reverse;
     }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 740px) {
         .outer-wrap {
                 flex-direction: column;
         }
