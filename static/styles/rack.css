@@ -183,14 +183,22 @@
 }
 
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 961px) {
+
         .flex-main {
-                flex-direction: column-reverse;
+                flex-direction: column;
         }
         
         .buttons-word-input, .score-word-output {
                 min-width: 90%;
                 margin-left: auto;
                 margin-right: auto;
-      }
+        }
+}
+
+@media only screen and (max-width: 740px) {
+
+        .flex-main {
+                flex-direction: column-reverse;
+        }
 }
