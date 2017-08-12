@@ -139,7 +139,11 @@ function rackGame(data) {
 }
 
 
-function endOfGame() {
+function clearAnswers(className) {
+    const targetClass = document.getElementsByClassName(className);
+    Array.prototype.slice.call(targetClass).forEach( (target) => {
+        target.textContent = "";
+    });
 }
 
 
@@ -170,8 +174,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("stop").addEventListener("click", () => {
+    document.getElementById("new").addEventListener("click", () => {
         rackGiveUp();
+        clearAnswers("player-answers");
+        clearAnswers("best-answers");
+        updateRackScores(0);
         fetchWrap(rackURL, rackData, rackGame);
     });
 });
