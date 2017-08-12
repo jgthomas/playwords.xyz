@@ -20,7 +20,8 @@
                "c c c c c c"
                "s s s s s s"
                "d d d d d d"
-               "e e f f g g";
+               "e e f f g g"
+               "p p p p p p";
         align-items: stretch;
         align-self: flex-start;
 }
@@ -73,6 +74,12 @@
         text-align: center;
 }
 
+.funky-p {
+        grid-area: p;
+        align-self: start;
+        align-content: center;
+        text-align: center;
+}
 
 .letter-scores {
         width: 95%;
@@ -199,6 +206,11 @@
 .correction {
         font-size: 125%;
         color: slategray;
+}
+
+.final-percentage {
+        color: #EE6C4D;
+        font-size: 250%;
 }
 
 

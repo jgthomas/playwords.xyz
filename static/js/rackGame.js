@@ -45,8 +45,15 @@ function scoreWord(word) {
 
 
 function displayFinalPercentage() {
-    finalPerc = document.getElementById("final-percentage");
-    finalPerc.textContent = finalPercentage(rackScores.player, rackScores.best);
+    const finalPerc = document.getElementById("final-percentage");
+    const score = finalPercentage(parseInt(rackScores.player), parseInt(rackScores.best));
+    finalPerc.textContent = `${Math.round(score)}%`;
+}
+
+
+function removeFinalPercentage() {
+    const finalPerc = document.getElementById("final-percentage");
+    finalPerc.textContent = "";
 }
 
 
@@ -134,6 +141,7 @@ function rackGame(data) {
                                              rackGame);
         submit.addEventListener("click", rackGameFlow);
     } else {
+        displayFinalPercentage();
         rackGiveUp();
     }
 }
@@ -148,7 +156,6 @@ function clearAnswers(className) {
 
 
 function rackGiveUp() {
-    //displayFinalPercentage();
     rack.round = 1;
     rackScores.player = 0;
     rackScores.best = 0;
@@ -179,6 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearAnswers("player-answers");
         clearAnswers("best-answers");
         updateRackScores(0);
+        removeFinalPercentage();
         fetchWrap(rackURL, rackData, rackGame);
     });
 });

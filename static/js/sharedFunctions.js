@@ -158,7 +158,11 @@ function checkAnswer(guess, answers) {
  * @return {number} percentage of computer score achieved by player.
  */
 function finalPercentage(scoreA, scoreB) {
-    return (scoreA * 100) / scoreB;
+    if (scoreA === 0 || scoreB === 0) {
+        return 0;
+    } else {
+        return (scoreA * 100) / scoreB;
+    }
 }
 
 
