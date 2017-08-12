@@ -18,6 +18,7 @@
         grid-template-areas:               
                "a a a b b b"
                "c c c c c c"
+               "s s s s s s"
                "d d d d d d"
                "e e f f g g";
         align-items: stretch;
@@ -32,6 +33,16 @@
 
 .funky-c {
         grid-area: c;
+}
+
+.funky-s {
+        grid-area: s;
+        align-self: center;
+        align-content: center;
+        justify-content: space-around;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
 }
 
 .funky-d {
@@ -63,6 +74,19 @@
 }
 
 
+.letter-scores {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 0.25em;
+        margin-bottom: 1em;
+        color: lightgrey;
+        font-weight: bolder;
+}
 
 .rack {
         width: 95%;
