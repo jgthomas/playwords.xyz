@@ -53,27 +53,26 @@
         text-align: center;
 }
 
+/* Buttons */
 .funky-e {
         grid-area: e;
-        align-self: start;
-        align-content: center;
-        text-align: center;
 }
 
 .funky-f {
         grid-area: f;
-        align-self: center;
-        align-content: center;
-        text-align: center;
 }
 
 .funky-g {
         grid-area: g;
-        align-self: end;
-        align-content: center;
-        text-align: center;
 }
 
+.rack-button {
+        justify-content: center;
+        text-align: center;
+        margin-top: 10%;
+}
+
+/* Percentage score */
 .funky-p {
         grid-area: p;
         align-self: start;
