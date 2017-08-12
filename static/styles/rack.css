@@ -128,19 +128,19 @@
 }
 
 .box {
-  padding: 20px;
-  font-size: 150%;
-  text-align: center;
+        padding: 20px;
+        font-size: 150%;
+        text-align: center;
 }
 
 .score-box {
-  padding: 20px;
-  font-size: 150%;
-  text-align: center;
+        padding: 20px;
+        font-size: 150%;
+        text-align: center;
 }
 
 .right-column {
-  border-right-width: 1px;
+        border-right-width: 1px;
 }
 
 .word-output {
@@ -149,8 +149,7 @@
 
 .final-score {
         color: cornflowerblue;
-        font-size: 350%;
-        font-weight: bold;
+        font-size: 300%;
         text-align: center;
 }
 
@@ -193,6 +192,10 @@
                 min-width: 90%;
                 margin-left: auto;
                 margin-right: auto;
+        }
+
+        .player-answers {
+                text-align: left;
         }
 }
 
