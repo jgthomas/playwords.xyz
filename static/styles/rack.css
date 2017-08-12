@@ -143,7 +143,7 @@
         margin-top: 5%;
         text-align: center;
         width: 80%;
-        line-height: 1.5;
+        line-height: 2.5;
 }
 
 .answers {
@@ -178,7 +178,6 @@
 }
 
 .player-answers {
-        font-weight: bold;
         font-size: 150%;
 }
 
@@ -190,19 +189,16 @@
 .correct {
         font-size: 125%;
         color: #09BC8A;
-        font-weight: bold;
 }
 
 .incorrect {
         font-size: 125%;
         color: lightgrey;
-        font-weight: bold;
 }
 
 .correction {
         font-size: 125%;
         color: slategray;
-        font-weight: bold;
 }
 
 
@@ -216,6 +212,10 @@
                 min-width: 90%;
                 margin-left: auto;
                 margin-right: auto;
+        }
+
+        .score-word-output {
+                margin-bottom: 20px;
         }
 
         .player-answers {
