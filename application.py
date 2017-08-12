@@ -78,6 +78,7 @@ def ladder():
         length = submitted["length"]
         anagram = make_anagram(get_word(length, FULL_WORD_LIST))
         answers = anagram_answers(len(anagram), anagram, DICTIONARY)
+        print(data(anagram, answers))
         return jsonify(data(anagram, answers))
     return render_template("ladder.html")
 

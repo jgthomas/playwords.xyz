@@ -2,6 +2,7 @@
 
 const ladder = {wordLength: 4, words: [], lengths: []};
 const ladderURL = "http://127.0.0.1:5000/ladder";
+const LONGEST_WORD = 15;
 
 
 function ladderData () {
@@ -38,13 +39,18 @@ function ladderCleanup () {
 }
 
 function ladderGame(data) {
-    setUpGame(data);
-    const guess = document.getElementById("guess");
-    const ladderGameFlow = gameFlowFactory(ladderURL,
-                                           ladderData,
-                                           ladderCleanup,
-                                           ladderGame);
-    guess.addEventListener("input", ladderGameFlow);
+    if (ladder.wordLength <= LONGEST_WORD) {
+        setUpGame(data);
+        const guess = document.getElementById("guess");
+        const ladderGameFlow = gameFlowFactory(ladderURL,
+                                               ladderData,
+                                               ladderCleanup,
+                                               ladderGame);
+        guess.addEventListener("input", ladderGameFlow);
+    } else {
+        ladderGiveUp();
+        displayAnagram("You Win!");
+    }
 }
 
 function ladderGiveUp() {
