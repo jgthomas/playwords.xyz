@@ -127,7 +127,7 @@ function rackGame(data) {
         storeAnagramSolution([letters, answers]);
         displayWord(currentAnagram.anagram.toUpperCase());
         displayWord(getEachLetterScore(letters), "score");
-        const submit = document.getElementById("submit-word");
+        const submit = document.getElementById("ok");
         const rackGameFlow = gameFlowFactory(rackURL,
                                              rackData,
                                              rackCleanup,
