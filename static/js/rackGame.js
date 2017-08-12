@@ -103,6 +103,12 @@ function rackCleanup() {
 }
 
 
+/**
+ * Get the score of each letter in the rack.
+ *
+ * @param {string} letters - The letters to score.
+ * @return {array} letterScores - Score for each letter in rack.
+ * */
 function getEachLetterScore(letters) {
     const letterScores = letters.split("").map( (letter) => {
         return RACK_SCORES[letter];
