@@ -103,6 +103,15 @@ function rackCleanup() {
 }
 
 
+function getEachLetterScore(letters) {
+    const letterScores = letters.split("").map( (letter) => {
+        return RACK_SCORES[letter];
+    });
+
+    return letterScores;
+}
+
+
 function rackGame(data) {
     if (rack.round <= MAX_ROUNDS) {
         const [letters, answers, best] = data;
@@ -111,6 +120,7 @@ function rackGame(data) {
         storeItem(highWords, rack.bestAnswers);
         storeAnagramSolution([letters, answers]);
         displayWord(currentAnagram.anagram.toUpperCase());
+        displayWord(getEachLetterScore(letters), "score");
         const submit = document.getElementById("submit-word");
         const rackGameFlow = gameFlowFactory(rackURL,
                                              rackData,

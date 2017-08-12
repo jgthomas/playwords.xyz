@@ -93,12 +93,17 @@ function displayAnagram(anagram, where = "word-place") {
 /**
  * Display letters in a grid or rack structure.
  *
- * @param {string} word - The letters to display.
+ * @param {string|array} word - The characters to display.
  * @param {string} base - Stem of the ID where letter displayed.
  * @return {undefined} SIDE-EFFECTS ONLY
  * */
 function displayWord(word, base = "letter") {
-    const letters = word.split("");
+    if (typeof(word) === "string") {
+        var letters = word.split("");
+    } else {
+        var letters = word;
+    }
+
     const baseID = base;
     let countID = 1;
     letters.forEach( (letter) => {
