@@ -38,7 +38,7 @@ body {
 }
 
 .topnav a:hover {
-        background-color: white;
+        background-color: ivory;
         color: dimgrey;
 }
 
@@ -70,7 +70,7 @@ body {
 
         a.icon:hover {
                 color: dimgrey;
-                background-color: white;
+                background-color: ivory;
         }
 }
 
@@ -84,7 +84,7 @@ body {
                 position: absolute;
                 right: 0;
                 top: 0;
-                background-color: white;
+                background-color: ivory;
                 color: dimgrey;
         }
         
@@ -105,7 +105,7 @@ body {
         }
         
         .topnav.responsive a:hover {
-                background-color: white;
+                background-color: ivory;
                 color: dimgrey;
         }
 }
