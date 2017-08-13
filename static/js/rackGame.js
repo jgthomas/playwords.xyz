@@ -149,8 +149,11 @@ function rackGame(data) {
 
 function clearAnswers(className) {
     const targetClass = document.getElementsByClassName(className);
-    Array.prototype.slice.call(targetClass).forEach( (target) => {
+    Array.from(targetClass).forEach( (target) => {
         target.textContent = "";
+        target.classList.remove("correct");
+        target.classList.remove("incorrect");
+        target.classList.remove("correction");
     });
 }
 
