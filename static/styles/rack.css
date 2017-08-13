@@ -183,6 +183,10 @@
         text-align: center;
 }
 
+#final-player-score {
+        color: #EE6C4D;
+}
+
 .player-answers {
         font-size: 150%;
 }
@@ -209,7 +213,8 @@
 
 .final-percentage {
         color: #EE6C4D;
-        font-size: 250%;
+        font-size: 300%;
+        margin-top: 2em;
 }
 
 
