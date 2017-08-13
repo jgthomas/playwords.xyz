@@ -70,8 +70,10 @@ body {
   border-right-width: 1px;
   border-left-width: 1px;
   border-top-width: 1px;
+  border-color: darkgrey;
   margin-left: 8%;
   margin-right: 8%;
+  color: #09BC8A;
 }
 
 .hidden-rung {
