@@ -8,7 +8,7 @@ const RACK_SCORES = {'a': 1, 'c': 3, 'b': 3, 'e': 1, 'd': 2, 'g': 2,
 
 const RACK_BONUS = 50;
 const RACK_LENGTH = 7;
-const MAX_ROUNDS = 14;
+const MAX_ROUNDS = 10;
 
 const rack = {round: 1, bestScore: 0, bestAnswers: []};
 const rackScores = {player: 0, best: 0};
