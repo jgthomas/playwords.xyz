@@ -177,6 +177,7 @@ function pass() {
     rack.round += 1;
     updateRackScores(0);
     resetRackStore();
+    clearGuessBox();
 
     if (rack.round > MAX_ROUNDS) {
         rackGiveUp();
