@@ -179,7 +179,7 @@ function pass() {
     resetRackStore();
     clearGuessBox();
 
-    if (rack.round > MAX_ROUNDS) {
+    if (rack.round >= MAX_ROUNDS) {
         rackGiveUp();
         gameEndCleanUp();
     }
