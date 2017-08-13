@@ -45,10 +45,6 @@ def make_anagram(word):
     return random.sample(list(word), len(word))
 
 
-#def data(anagram, answers):
-#    return ["".join(anagram), answers]
-
-
 def data(anagram, *answers):
     """ Combine all data into single list for conversion to JSON. """
     return ["".join(anagram), *[a for a in answers]]
