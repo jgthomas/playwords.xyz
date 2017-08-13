@@ -32,7 +32,7 @@ function clearAllLadderRungs(numbers) {
 function ladderCleanup () {
     const guess = document.getElementById("guess").value
     storeItem(guess, ladder.words);
-    displayLadderRung(ladder.wordLength, guess);
+    displayLadderRung(ladder.wordLength, guess.toLowerCase());
     clearGuessBox();
     storeItem(ladder.wordLength, ladder.lengths);
     ladder.wordLength++;
