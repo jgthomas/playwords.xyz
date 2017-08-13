@@ -16,7 +16,7 @@
         flex: 1;
         display: grid;
         grid-template-areas:               
-               "a a a b b b"
+               "a a x x b b"
                "c c c c c c"
                "s s s s s s"
                "d d d d d d"
@@ -25,17 +25,26 @@
         align-items: stretch;
         align-self: flex-start;
 }
+
+/* Scores and divider */
 .funky-a {
         grid-area: a;
 }
+
+.funky-x {
+        grid-area: x;
+}
+
 .funky-b {
         grid-area: b;
 }
 
+/* The word grid */
 .funky-c {
         grid-area: c;
 }
 
+/* Letter scores */
 .funky-s {
         grid-area: s;
         align-self: center;
@@ -46,6 +55,7 @@
         flex-direction: row;
 }
 
+/* Input box */
 .funky-d {
         grid-area: d;
         align-self: start;
