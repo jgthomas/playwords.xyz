@@ -101,10 +101,10 @@ function resetRackStore() {
 
 function rackCleanup() {
     const word = document.getElementById("guess").value
-    const score = scoreWord(word);
-    displayRoundResults(word, score, rack.round);
+    const wordScore = scoreWord(word);
+    displayRoundResults(word, wordScore, rack.round);
     rack.round += 1;
-    updateRackScores(score);
+    updateRackScores(wordScore);
     resetRackStore();
     clearGuessBox();
 }
