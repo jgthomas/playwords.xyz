@@ -164,11 +164,24 @@ function rackGiveUp() {
 }
 
 
+function gameEndCleanUp() {
+    clearAnswers("player-answers");
+    clearAnswers("best-answers");
+    updateRackScores(0);
+    removeFinalPercentage();
+}
+
+
 function pass() {
     displayRoundResults("x", 0, rack.round);
     rack.round += 1;
     updateRackScores(0);
     resetRackStore();
+
+    if (rack.round > MAX_ROUNDS) {
+        rackGiveUp();
+        gameEndCleanUp();
+    }
 }
 
 
@@ -183,10 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("new").addEventListener("click", () => {
         rackGiveUp();
-        clearAnswers("player-answers");
-        clearAnswers("best-answers");
-        updateRackScores(0);
-        removeFinalPercentage();
+        gameEndCleanUp();
         fetchWrap(rackURL, rackData, rackGame);
     });
 });
