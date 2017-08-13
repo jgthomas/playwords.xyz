@@ -93,6 +93,10 @@ body {
         text-align: center;
 }
 
+.rule {
+        color: cornflowerblue;
+}
+
 .sidebar-count {
         text-align: center;
         font-size: 2em;
