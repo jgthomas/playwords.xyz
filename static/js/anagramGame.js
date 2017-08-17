@@ -1,7 +1,7 @@
 "use strict";
 
-//const anagramURL = "http://127.0.0.1:5000/anagram";
-const anagramURL = "https://3b6d3d9c.ngrok.io/anagram";
+const anagramURL = "http://127.0.0.1:5000/anagram";
+//const anagramURL = "https://3b6d3d9c.ngrok.io/anagram";
 
 
 function anagramData () {

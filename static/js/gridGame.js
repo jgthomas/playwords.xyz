@@ -1,7 +1,7 @@
 "use strict";
 
-//const gridURL = "http://127.0.0.1:5000/grid";
-const gridURL = "https://3b6d3d9c.ngrok.io/grid";
+const gridURL = "http://127.0.0.1:5000/grid";
+//const gridURL = "https://3b6d3d9c.ngrok.io/grid";
 
 const gridAnswers = {};
 const finalAnswers = {};
@@ -103,7 +103,7 @@ function clearAllAnswers(letters) {
 
 function gridCleanup() {
     //const word = document.getElementById("guess").value
-    const word = getValue("guess");
+    const word = getValue("guess").toLowerCase();
     const firstLetter = word.charAt(0);
     storeAnswer(word, gridAnswers);
     letterAnswers(firstLetter, gridAnswers);

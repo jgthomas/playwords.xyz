@@ -1,7 +1,7 @@
 "use strict";
 
-//const rackURL = "http://127.0.0.1:5000/rack";
-const rackURL = "https://3b6d3d9c.ngrok.io/rack";
+const rackURL = "http://127.0.0.1:5000/rack";
+//const rackURL = "https://3b6d3d9c.ngrok.io/rack";
 
 const RACK_SCORES = {'a': 1, 'c': 3, 'b': 3, 'e': 1, 'd': 2, 'g': 2,
                      'f': 4, 'i': 1, 'h': 4, 'k': 5, 'j': 8, 'm': 3,

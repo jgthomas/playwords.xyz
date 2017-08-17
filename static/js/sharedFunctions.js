@@ -342,7 +342,7 @@ function fetchWrap(fetchURL, fetchData, gameFunction) {
 function gameFlowFactory(gameURL, gameData, gameCleanUp, gameFunction, repeat = true) {
     function gameFlow() {
         const guess = document.getElementById("guess").value;
-        if (checkAnswer(guess.toLowerCase(), currentAnagram.solution)) {
+        if (checkAnswer(guess, currentAnagram.solution)) {
             gameCleanUp();
             if (repeat) {
                 fetchWrap(gameURL, gameData, gameFunction);

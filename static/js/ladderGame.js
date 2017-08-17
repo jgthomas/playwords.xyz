@@ -1,7 +1,7 @@
 "use strict";
 
-//const ladderURL = "http://127.0.0.1:5000/ladder";
-const ladderURL = "https://3b6d3d9c.ngrok.io/ladder";
+const ladderURL = "http://127.0.0.1:5000/ladder";
+//const ladderURL = "https://3b6d3d9c.ngrok.io/ladder";
 
 const ladder = {wordLength: 4, words: [], lengths: []};
 const LONGEST_WORD = 15;
