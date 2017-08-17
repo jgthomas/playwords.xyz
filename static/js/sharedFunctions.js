@@ -124,7 +124,7 @@ function displayWord(word, base = "letter") {
 /**
  * Get value of the specified element.
  *
- * @param {object} elementID - ID of the element to query.
+ * @param {string} elementID - ID of the element to query.
  * @return {string} value - Value currently held by element.
  */
 function getValue(elementID) {
