@@ -1,8 +1,10 @@
 "use strict";
 
+//const gridURL = "http://127.0.0.1:5000/grid";
+const gridURL = "https://3b6d3d9c.ngrok.io/grid";
+
 const gridAnswers = {};
 const finalAnswers = {};
-const gridURL = "http://127.0.0.1:5000/grid";
 const gridLength = 9;
 
 let nineLetterWords = [];

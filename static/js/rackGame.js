@@ -1,5 +1,8 @@
 "use strict";
 
+//const rackURL = "http://127.0.0.1:5000/rack";
+const rackURL = "https://3b6d3d9c.ngrok.io/rack";
+
 const RACK_SCORES = {'a': 1, 'c': 3, 'b': 3, 'e': 1, 'd': 2, 'g': 2,
                      'f': 4, 'i': 1, 'h': 4, 'k': 5, 'j': 8, 'm': 3,
                      'l': 1, 'o': 1, 'n': 1, 'q': 10, 'p': 3, 's': 1,
@@ -13,7 +16,6 @@ const MAX_ROUNDS = 10;
 const rack = {round: 1, bestScore: 0, bestAnswers: []};
 const rackScores = {player: 0, best: 0};
 
-const rackURL = "http://127.0.0.1:5000/rack";
 
 
 function rackData() {
@@ -101,7 +103,7 @@ function resetRackStore() {
 
 function rackCleanup() {
     const word = document.getElementById("guess").value
-    const wordScore = scoreWord(word);
+    const wordScore = scoreWord(word.toLowerCase());
     displayRoundResults(word, wordScore, rack.round);
     rack.round += 1;
     updateRackScores(wordScore);
