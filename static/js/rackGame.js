@@ -1,7 +1,6 @@
 "use strict";
 
 const rackURL = "http://127.0.0.1:5000/rack";
-//const rackURL = "https://3b6d3d9c.ngrok.io/rack";
 
 const RACK_SCORES = {'a': 1, 'c': 3, 'b': 3, 'e': 1, 'd': 2, 'g': 2,
                      'f': 4, 'i': 1, 'h': 4, 'k': 5, 'j': 8, 'm': 3,
@@ -17,7 +16,9 @@ const rack = {round: 1, bestScore: 0, bestAnswers: []};
 const rackScores = {player: 0, best: 0};
 
 
-
+/**
+ * Data passed in to start each game-loop AJAX request.
+ */
 function rackData() {
     return {method: "POST",
               body: JSON.stringify({length: RACK_LENGTH.toString()})
@@ -46,6 +47,9 @@ function scoreWord(word) {
 }
 
 
+/**
+ * Display final percentage score.
+ */
 function displayFinalPercentage() {
     const finalPerc = document.getElementById("final-percentage");
     const score = finalPercentage(parseInt(rackScores.player), parseInt(rackScores.best));
@@ -53,12 +57,18 @@ function displayFinalPercentage() {
 }
 
 
+/**
+ * Clear final percentage for new game.
+ */
 function removeFinalPercentage() {
     const finalPerc = document.getElementById("final-percentage");
     finalPerc.textContent = "";
 }
 
 
+/**
+ * Format and output the results of each round.
+ */
 function displayRoundResults(word, score, round) {
     const playerColumn = `round${round}a`;
     const bestColumn = `round${round}b`;
@@ -87,6 +97,9 @@ function displayRoundResults(word, score, round) {
 }
 
 
+/**
+ * Update scores and score display after each round.
+ */
 function updateRackScores(score) {
     rackScores.player += score;
     rackScores.best += rack.bestScore
@@ -95,12 +108,18 @@ function updateRackScores(score) {
 }
 
 
+/**
+ * Reset rack scores for new game.
+ */
 function resetRackStore() {
     rack.bestScore = 0;
     rack.bestAnswers = [];
 }
 
 
+/**
+ * Run after each iteration of main game loop.
+ */
 function rackCleanup() {
     const word = document.getElementById("guess").value
     const wordScore = scoreWord(word.toLowerCase());
@@ -127,6 +146,63 @@ function getEachLetterScore(letters) {
 }
 
 
+/**
+ * Clear words, scores and feedback.
+ */
+function clearAnswers(className) {
+    const targetClass = document.getElementsByClassName(className);
+    Array.from(targetClass).forEach( (target) => {
+        target.textContent = "";
+        target.classList.remove("correct");
+        target.classList.remove("incorrect");
+        target.classList.remove("correction");
+    });
+}
+
+
+/**
+ * Run on player ending game loop.
+ */
+function rackGiveUp() {
+    rack.round = 1;
+    rackScores.player = 0;
+    rackScores.best = 0;
+    resetRackStore();
+    clearGuessBox();
+}
+
+
+/**
+ * Run on new game being started by player.
+ */
+function gameEndCleanUp() {
+    clearAnswers("player-answers");
+    clearAnswers("best-answers");
+    updateRackScores(0);
+    removeFinalPercentage();
+}
+
+
+/**
+ * Run when player passes on a rack of letters.
+ */
+function pass() {
+    displayRoundResults("x", 0, rack.round);
+    rack.round += 1;
+    updateRackScores(0);
+    resetRackStore();
+    clearGuessBox();
+
+    if (rack.round >= MAX_ROUNDS) {
+        rackGiveUp();
+        gameEndCleanUp();
+    }
+}
+
+
+/**
+ * Main game loop.
+ */
 function rackGame(data) {
     if (rack.round <= MAX_ROUNDS) {
         const [letters, answers, best] = data;
@@ -149,55 +225,12 @@ function rackGame(data) {
 }
 
 
-function clearAnswers(className) {
-    const targetClass = document.getElementsByClassName(className);
-    Array.from(targetClass).forEach( (target) => {
-        target.textContent = "";
-        target.classList.remove("correct");
-        target.classList.remove("incorrect");
-        target.classList.remove("correction");
-    });
-}
-
-
-function rackGiveUp() {
-    rack.round = 1;
-    rackScores.player = 0;
-    rackScores.best = 0;
-    resetRackStore();
-    clearGuessBox();
-}
-
-
-function gameEndCleanUp() {
-    clearAnswers("player-answers");
-    clearAnswers("best-answers");
-    updateRackScores(0);
-    removeFinalPercentage();
-}
-
-
-function pass() {
-    displayRoundResults("x", 0, rack.round);
-    rack.round += 1;
-    updateRackScores(0);
-    resetRackStore();
-    clearGuessBox();
-
-    if (rack.round >= MAX_ROUNDS) {
-        rackGiveUp();
-        gameEndCleanUp();
-    }
-}
-
-
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("pass").addEventListener("click", () => {
         pass();
         fetchWrap(rackURL, rackData, rackGame);
     });
 });
-
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("new").addEventListener("click", () => {
@@ -206,7 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
         fetchWrap(rackURL, rackData, rackGame);
     });
 });
-
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchWrap(rackURL, rackData, rackGame);

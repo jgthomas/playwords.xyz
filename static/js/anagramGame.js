@@ -1,20 +1,41 @@
 "use strict";
 
+
 const anagramURL = "http://127.0.0.1:5000/anagram";
-//const anagramURL = "https://3b6d3d9c.ngrok.io/anagram";
 
 
+/**
+ * Data passed in to start each game-loop AJAX request.
+ */
 function anagramData () {
     const wordLength = document.getElementById("word-length").value;
     return {method: "POST", body: JSON.stringify({length: wordLength})};
 }
 
+
+/**
+ * Run after each iteration of main game loop.
+ */
 function anagramCleanup () {
     player.score++;
     updateScoreDisplay(player.score);
     clearGuessBox();
 }
 
+
+/**
+ * Run on player ending game loop.
+ */
+function anagramGiveUp() {
+    player.score = 0;
+    resetGame();
+    displayAnagram(getAnswer(currentAnagram.solution));
+}
+
+
+/**
+ * Main game loop.
+ */
 function anagramGame(data) {
     setUpGame(data);
     const guess = document.getElementById("guess");
@@ -25,12 +46,6 @@ function anagramGame(data) {
     guess.addEventListener("input", anagramGameFlow);
 }
 
-function anagramGiveUp() {
-    player.score = 0;
-    resetGame();
-    displayAnagram(getAnswer(currentAnagram.solution));
-}
-
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("play").addEventListener("click", () => {
@@ -39,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
         fetchWrap(anagramURL, anagramData, anagramGame);
     });
 });
-
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("stop").addEventListener("click", () => {

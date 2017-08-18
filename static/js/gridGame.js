@@ -1,15 +1,16 @@
 "use strict";
 
 const gridURL = "http://127.0.0.1:5000/grid";
-//const gridURL = "https://3b6d3d9c.ngrok.io/grid";
 
 const gridAnswers = {};
 const finalAnswers = {};
 const gridLength = 9;
-
 let nineLetterWords = [];
 
 
+/**
+ * Data passed in to start each game-loop AJAX request.
+ */
 function gridData() {
     return {method: "POST",
               body: JSON.stringify({length: gridLength.toString()})
@@ -17,6 +18,9 @@ function gridData() {
 }
 
 
+/**
+ * Display average, good and excellent numbers of words found.
+ */
 function categoryGuides() {
     const numOfAnswers = currentAnagram.solution.length;
     const average = 0.25;
@@ -28,6 +32,11 @@ function categoryGuides() {
 }
 
 
+/**
+ * Extract all nine letter words from answers.
+ * @param {array} arr - The answers to word grid puzzle.
+ * @return {array} nines - All nine letter words.
+ */
 function getNineLetterWord(arr) {
     const nines = arr.filter( (x) => {
         return x.length === 9;
@@ -37,6 +46,9 @@ function getNineLetterWord(arr) {
 }
 
 
+/**
+ * Clear the displayed nine-letter word.
+ */
 function clearNineLetterWord() {
     const nine = document.getElementById("nine-letter-word");
     nine.textContent = "";
@@ -101,8 +113,10 @@ function clearAllAnswers(letters) {
 }
 
 
+/**
+ * Run after each iteration of main game loop.
+ */
 function gridCleanup() {
-    //const word = document.getElementById("guess").value
     const word = getValue("guess").toLowerCase();
     const firstLetter = word.charAt(0);
     storeAnswer(word, gridAnswers);
@@ -114,6 +128,22 @@ function gridCleanup() {
 }
 
 
+/**
+ * Run on player ending game loop.
+ */
+function gridGiveUp() {
+    sortFinalAnswers(currentAnagram.solution, finalAnswers);
+    allLetterAnswers(LETTERS, finalAnswers, true);
+    displayAnagram(getAnswer(nineLetterWords), "nine-letter-word");
+    resetAnswers(gridAnswers);
+    resetAnswers(finalAnswers);
+    player.score = 0;
+}
+
+
+/**
+ * Main game loop.
+ */
 function gridGame(data) {
     clearScoreDisplay();
     clearNineLetterWord();
@@ -131,16 +161,6 @@ function gridGame(data) {
 }
 
 
-function gridGiveUp() {
-    sortFinalAnswers(currentAnagram.solution, finalAnswers);
-    allLetterAnswers(LETTERS, finalAnswers, true);
-    displayAnagram(getAnswer(nineLetterWords), "nine-letter-word");
-    resetAnswers(gridAnswers);
-    resetAnswers(finalAnswers);
-    player.score = 0;
-}
-
-
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("again").addEventListener("click", () => {
         fetchWrap(gridURL, gridData, gridGame);
@@ -148,13 +168,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("stop").addEventListener("click", () => {
         gridGiveUp();
     });
 });
-
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchWrap(gridURL, gridData, gridGame);
