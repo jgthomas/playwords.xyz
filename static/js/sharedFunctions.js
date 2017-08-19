@@ -24,8 +24,6 @@ function displayUpdate(target, newValue) {
     document.getElementById(target).textContent = newValue;
 }
 
-
-
 /**
  * Reset the answer input field.
  *
