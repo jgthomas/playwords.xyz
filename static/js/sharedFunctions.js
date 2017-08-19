@@ -5,9 +5,14 @@ const LETTERS = ["a", "b", "c", "d", "e", "f",
                  "m", "n", "o", "p", "q", "r",
                  "s", "t", "u", "v", "w", "x", "y", "z"];
 
+const EMPTY_STRING = "";
+const NON_BREAKING_SPACE = "\u00A0";
+const ZERO = 0;
+
 const player = {score: 0};
 const wordStorage = {};
 const currentAnagram = {anagram: "", solution: ""};
+
 
 
 
@@ -34,6 +39,18 @@ function updateScoreDisplay(score) {
  */
 function updateScoreDisplay2(score, target = "score") {
     document.getElementById(target).innerText = score;
+}
+
+
+/**
+ * Update a single element on the screen.
+ *
+ * @param {string} target - ID of element to update.
+ * @param {string|number} update - New value to display in element.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
+function updateDisplay(target, update) {
+    document.getElementById(target).textContent = update;
 }
 
 
@@ -71,6 +88,16 @@ function clearGuessBox() {
     document.getElementById("guess").value = "";
 }
 
+
+/**
+ * Reset a single display element to its initial value.
+ * @param {string} target - ID of element to reset.
+ * @param {string|number} resetValue - Contents of reset element.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
+function resetDisplay(target, resetValue) {
+    document.getElementById(target).textContent = resetValue;
+}
 
 
 /******************
