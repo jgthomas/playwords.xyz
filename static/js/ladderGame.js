@@ -47,9 +47,9 @@ function clearAllLadderRungs(numbers) {
  * Run after each iteration of main game loop.
  */
 function ladderCleanup () {
-    const guess = document.getElementById("guess").value
+    const guess = document.getElementById("guess").value.toLowerCase();
     storeItem(guess, ladder.words);
-    displayLadderRung(ladder.wordLength, guess.toLowerCase());
+    displayLadderRung(ladder.wordLength, guess);
     clearGuessBox();
     storeItem(ladder.wordLength, ladder.lengths);
     ladder.wordLength++;
@@ -60,11 +60,10 @@ function ladderCleanup () {
  * Run on player ending game loop.
  */
 function ladderGiveUp() {
-    const score = ladder.wordLength - 1;
     ladder.wordLength = 4;
     ladder.words = [];
-    resetGame();
-    displayAnagram(getAnswer(currentAnagram.solution));
+    clearGuessBox();
+    displayUpdate("word-place", getAnswer(currentAnagram.solution));
 }
 
 
@@ -72,7 +71,8 @@ function ladderGiveUp() {
  * Run on new game being started by player.
  */
 function clearOldGame() {
-    resetGame();
+    clearGuessBox();
+    displayUpdate("word-place", NON_BREAKING_SPACE);
     clearAllLadderRungs(ladder.lengths);
     ladder.lengths = [];
 }
@@ -83,7 +83,8 @@ function clearOldGame() {
  */
 function ladderGame(data) {
     if (ladder.wordLength <= LONGEST_WORD) {
-        setUpGame(data);
+        storeAnagramSolution(data);
+        displayUpdate("word-place", currentAnagram.anagram);
         const guess = document.getElementById("guess");
         const ladderGameFlow = gameFlowFactory(ladderURL,
                                                ladderData,
@@ -92,7 +93,7 @@ function ladderGame(data) {
         guess.addEventListener("input", ladderGameFlow);
     } else {
         ladderGiveUp();
-        displayAnagram("You Win!");
+        displayUpdate("word-place", VICTORY_MESSAGE);
     }
 }
 
