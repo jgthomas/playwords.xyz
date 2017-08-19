@@ -14,6 +14,17 @@ const wordStorage = {};
 const currentAnagram = {anagram: "", solution: ""};
 
 
+/**
+ * Update a single element on the screen.
+ *
+ * @param {string} target - ID of element to update.
+ * @param {string|number} update - New value to display in element.
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
+function displayUpdate(target, newValue) {
+    document.getElementById(target).textContent = newValue;
+}
+
 
 
 /******************
@@ -39,18 +50,6 @@ function updateScoreDisplay(score) {
  */
 function updateScoreDisplay2(score, target = "score") {
     document.getElementById(target).innerText = score;
-}
-
-
-/**
- * Update a single element on the screen.
- *
- * @param {string} target - ID of element to update.
- * @param {string|number} update - New value to display in element.
- * @return {undefined} SIDE-EFFECTS ONLY
- */
-function updateDisplay(target, update) {
-    document.getElementById(target).textContent = update;
 }
 
 

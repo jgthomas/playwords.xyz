@@ -18,7 +18,7 @@ function anagramData () {
  */
 function anagramCleanup () {
     player.score++;
-    updateScoreDisplay(player.score);
+    displayUpdate("score", player.score);
     clearGuessBox();
 }
 
