@@ -1,6 +1,8 @@
 "use strict";
 
+
 const rackURL = "http://127.0.0.1:5000/rack";
+
 
 const RACK_SCORES = {'a': 1, 'c': 3, 'b': 3, 'e': 1, 'd': 2, 'g': 2,
                      'f': 4, 'i': 1, 'h': 4, 'k': 5, 'j': 8, 'm': 3,
@@ -11,6 +13,8 @@ const RACK_SCORES = {'a': 1, 'c': 3, 'b': 3, 'e': 1, 'd': 2, 'g': 2,
 const RACK_BONUS = 50;
 const RACK_LENGTH = 7;
 const MAX_ROUNDS = 10;
+const TICK_MARK = "\u2714";
+const PASS_SYMBOL = "-";
 
 const rack = {round: 1, bestScore: 0, bestAnswers: []};
 const rackScores = {player: 0, best: 0};
@@ -48,25 +52,6 @@ function scoreWord(word) {
 
 
 /**
- * Display final percentage score.
- */
-function displayFinalPercentage() {
-    const finalPerc = document.getElementById("final-percentage");
-    const score = finalPercentage(parseInt(rackScores.player), parseInt(rackScores.best));
-    finalPerc.textContent = `${Math.round(score)}%`;
-}
-
-
-/**
- * Clear final percentage for new game.
- */
-function removeFinalPercentage() {
-    const finalPerc = document.getElementById("final-percentage");
-    finalPerc.textContent = "";
-}
-
-
-/**
  * Format and output the results of each round.
  */
 function displayRoundResults(word, score, round) {
@@ -80,8 +65,8 @@ function displayRoundResults(word, score, round) {
     playerScore.textContent = score;
 
     if (score == rack.bestScore) {
-        bestWord.textContent = "\u2714";
-        bestScore.textContent = "\u2714";
+        bestWord.textContent = TICK_MARK;
+        bestScore.textContent = TICK_MARK;
         playerWord.classList.add("correct");
         playerScore.classList.add("correct");
         bestWord.classList.add("correct");
@@ -103,22 +88,22 @@ function displayRoundResults(word, score, round) {
 function updateRackScores(score) {
     rackScores.player += score;
     rackScores.best += rack.bestScore
-    updateScoreDisplay2(rackScores.player, "final-player-score");
-    updateScoreDisplay2(rackScores.best, "final-best-score");
+    displayUpdate("final-player-score", rackScores.player);
+    displayUpdate("final-best-score", rackScores.best);
 }
 
 
 /**
- * Reset rack scores for new game.
+ * Reset rack for new game.
  */
-function resetRackStore() {
+function resetRack() {
     rack.bestScore = 0;
     rack.bestAnswers = [];
 }
 
 
 /**
- * Run after each iteration of main game loop.
+ * Run after each iteration of game loop.
  */
 function rackCleanup() {
     const word = document.getElementById("guess").value
@@ -126,7 +111,7 @@ function rackCleanup() {
     displayRoundResults(word, wordScore, rack.round);
     rack.round += 1;
     updateRackScores(wordScore);
-    resetRackStore();
+    resetRack();
     clearGuessBox();
 }
 
@@ -167,7 +152,7 @@ function rackGiveUp() {
     rack.round = 1;
     rackScores.player = 0;
     rackScores.best = 0;
-    resetRackStore();
+    resetRack();
     clearGuessBox();
 }
 
@@ -179,7 +164,7 @@ function gameEndCleanUp() {
     clearAnswers("player-answers");
     clearAnswers("best-answers");
     updateRackScores(0);
-    removeFinalPercentage();
+    displayUpdate("final-percentage", EMPTY_STRING);
 }
 
 
@@ -187,10 +172,10 @@ function gameEndCleanUp() {
  * Run when player passes on a rack of letters.
  */
 function pass() {
-    displayRoundResults("x", 0, rack.round);
+    displayRoundResults(PASS_SYMBOL, 0, rack.round);
     rack.round += 1;
     updateRackScores(0);
-    resetRackStore();
+    resetRack();
     clearGuessBox();
 
     if (rack.round >= MAX_ROUNDS) {
@@ -219,7 +204,8 @@ function rackGame(data) {
                                              rackGame);
         submit.addEventListener("click", rackGameFlow);
     } else {
-        displayFinalPercentage();
+        const percentage = finalPercentage(rackScores.player, rackScores.best);
+        displayUpdate("final-percentage", `${Math.round(percentage)}%`);
         rackGiveUp();
     }
 }

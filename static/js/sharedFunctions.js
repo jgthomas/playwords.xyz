@@ -16,6 +16,11 @@ const wordStorage = {};
 const currentAnagram = {anagram: "", solution: ""};
 
 
+/*******************
+ * MODIFYING DISPLAY
+ *
+ *******************/
+
 /**
  * Update a single element on the screen.
  *
@@ -27,95 +32,14 @@ function displayUpdate(target, newValue) {
     document.getElementById(target).textContent = newValue;
 }
 
+
 /**
  * Reset the answer input field.
  *
  * @return {undefined} SIDE-EFFECTS ONLY
  */
 function clearGuessBox() {
-    document.getElementById("guess").value = "";
-}
-
-
-/******************
- * UPDATING DISPLAY
- *
- ******************/
-
-/**
- * Update the displayed score.
- *
- * @param {number} score - The score to display.
- * @return {undefined} SIDE-EFFECTS ONLY
- */
-function updateScoreDisplay(score) {
-    document.getElementById("score").innerText = score;
-}
-
-/**
- * Update the displayed score.
- *
- * @param {number} score - The score to display.
- * @return {undefined} SIDE-EFFECTS ONLY
- */
-function updateScoreDisplay2(score, target = "score") {
-    document.getElementById(target).innerText = score;
-}
-
-
-/******************
- * CLEARING DISPLAY
- *
- ******************/
-
-/**
- * Remove the currently displayed anagram.
- *
- * @return {undefined} SIDE-EFFECTS ONLY
- */
-function clearAnagramWord() {
-    document.getElementById("word-place").innerText = "\u00A0";
-}
-
-
-/**
- * Reset the displayed score to zero.
- *
- * @return {undefined} SIDE-EFFECTS ONLY
- */
-function clearScoreDisplay() {
-    document.getElementById("score").innerText = 0;
-}
-
-
-
-
-
-/**
- * Reset a single display element to its initial value.
- * @param {string} target - ID of element to reset.
- * @param {string|number} resetValue - Contents of reset element.
- * @return {undefined} SIDE-EFFECTS ONLY
- */
-function resetDisplay(target, resetValue) {
-    document.getElementById(target).textContent = resetValue;
-}
-
-
-/******************
- * DISPLAYING WORDS
- *
- ******************/
-
-/**
- * Display single anagram.
- *
- * @param {string} anagram - Letters to display.
- * @param {string} where - ID where word to be displayed.
- * @return {undefined} SIDE-EFFECTS ONLY
- */
-function displayAnagram(anagram, where = "word-place") {
-    document.getElementById(where).innerText = anagram;
+    document.getElementById("guess").value = EMPTY_STRING;
 }
 
 
@@ -180,7 +104,7 @@ function checkAnswer(guess, answers) {
 
 
 /**
- * Calculate players final percentage.
+ * Calculate player's final percentage.
  *
  * @param {number} scoreA - Player score.
  * @param {number} scoreB - Computer score.
@@ -306,24 +230,6 @@ function resetAnswers(storage) {
 function removeFoundAnswer(answer, storage) {
     const index = storage.indexOf(answer);
     storage.splice(index, 1);
-}
-
-
-
-/*****************
- * SHARED GAMEFLOW
- *
- *****************/
-
-function setUpGame(data) {
-    clearGuessBox();
-    storeAnagramSolution(data);
-    displayAnagram(currentAnagram.anagram);
-}
-
-function resetGame() {
-    clearGuessBox();
-    clearAnagramWord();
 }
 
 
