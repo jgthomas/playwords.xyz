@@ -5,7 +5,6 @@ const LETTERS = ["a", "b", "c", "d", "e", "f",
                  "m", "n", "o", "p", "q", "r",
                  "s", "t", "u", "v", "w", "x", "y", "z"];
 
-const EMPTY_STRING = "";
 const NON_BREAKING_SPACE = "\u00A0";
 const ZERO = 0;
 
