@@ -6,7 +6,7 @@ const gridURL = "http://127.0.0.1:5000/grid";
 
 const AVERAGE = 0.25;
 const GOOD = 0.4;
-const EXCELLENT = 0.4;
+const EXCELLENT = 0.5;
 
 const gridAnswers = {};
 const finalAnswers = {};
