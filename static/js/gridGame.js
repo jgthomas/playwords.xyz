@@ -1,6 +1,12 @@
 "use strict";
 
+
 const gridURL = "http://127.0.0.1:5000/grid";
+
+
+const AVERAGE = 0.25;
+const GOOD = 0.4;
+const EXCELLENT = 0.4;
 
 const gridAnswers = {};
 const finalAnswers = {};
@@ -21,17 +27,14 @@ function gridData() {
 /**
  * Display average, good and excellent numbers of words found.
  */
-function categoryGuides() {
+function displayCategoryGuides() {
     const numOfAnswers = currentAnagram.solution.length;
-    const average = 0.25;
-    const good = 0.4;
-    const excellent = 0.5;
     document.getElementById("average")
-        .textContent = Math.ceil(numOfAnswers * average);
+        .textContent = Math.ceil(numOfAnswers * AVERAGE);
     document.getElementById("good")
-        .textContent = Math.ceil(numOfAnswers * good);
+        .textContent = Math.ceil(numOfAnswers * GOOD);
     document.getElementById("excellent")
-        .textContent = Math.ceil(numOfAnswers * excellent);
+        .textContent = Math.ceil(numOfAnswers * EXCELLENT);
 }
 
 
@@ -50,15 +53,6 @@ function getNineLetterWord(arr) {
 
 
 /**
- * Clear the displayed nine-letter word.
- */
-function clearNineLetterWord() {
-    const nine = document.getElementById("nine-letter-word");
-    nine.textContent = "";
-}
-
-
-/**
  * Display answers beginning with the supplied letter.
  *
  * @param {string} letter - Initial letter of the words to display.
@@ -72,7 +66,9 @@ function letterAnswers(letter, storage, gameEnd = false) {
     } else {
         var letterRow = document.getElementById(letter);
     }
-    letterRow.textContent = startsWith(letter, storage).sort().join("  \u00A0");
+    //letterRow.textContent = startsWith(letter, storage).sort().join("  \u00A0");
+    letterRow.textContent = startsWith(letter, storage)
+        .sort().join(`  ${NON_BREAKING_SPACE}`);
 }
 
 
@@ -126,7 +122,7 @@ function gridCleanup() {
     letterAnswers(firstLetter, gridAnswers);
     removeFoundAnswer(word, currentAnagram.solution);
     player.score++;
-    updateScoreDisplay(player.score);
+    displayUpdate("score", player.score);
     clearGuessBox();
 }
 
@@ -137,7 +133,8 @@ function gridCleanup() {
 function gridGiveUp() {
     sortFinalAnswers(currentAnagram.solution, finalAnswers);
     allLetterAnswers(LETTERS, finalAnswers, true);
-    displayAnagram(getAnswer(nineLetterWords), "nine-letter-word");
+    displayUpdate("nine-letter-word", getAnswer(nineLetterWords));
+    clearGuessBox();
     resetAnswers(gridAnswers);
     resetAnswers(finalAnswers);
     player.score = 0;
@@ -148,12 +145,10 @@ function gridGiveUp() {
  * Main game loop.
  */
 function gridGame(data) {
-    clearScoreDisplay();
-    clearNineLetterWord();
     storeAnagramSolution(data);
     nineLetterWords = getNineLetterWord(currentAnagram.solution);
     displayWord(currentAnagram.anagram.toUpperCase());
-    categoryGuides();
+    displayCategoryGuides();
     const guess = document.getElementById("guess");
     const gridGameFlow = gameFlowFactory(gridURL,
                                          gridData,
@@ -166,8 +161,10 @@ function gridGame(data) {
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("again").addEventListener("click", () => {
-        fetchWrap(gridURL, gridData, gridGame);
+        displayUpdate("score", ZERO);
+        displayUpdate("nine-letter-word", EMPTY_STRING);
         clearAllAnswers(LETTERS);
+        fetchWrap(gridURL, gridData, gridGame);
     });
 });
 

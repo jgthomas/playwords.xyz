@@ -7,6 +7,8 @@ const LETTERS = ["a", "b", "c", "d", "e", "f",
 
 const NON_BREAKING_SPACE = "\u00A0";
 const ZERO = 0;
+const EMPTY_STRING = "";
+
 const VICTORY_MESSAGE = "You Win!";
 
 const player = {score: 0};
