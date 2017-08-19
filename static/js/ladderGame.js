@@ -63,7 +63,7 @@ function ladderGiveUp() {
     ladder.wordLength = 4;
     ladder.words = [];
     clearGuessBox();
-    displayUpdate("word-place", getAnswer(currentAnagram.solution));
+    displayUpdate("word-display", getAnswer(currentAnagram.solution));
 }
 
 
@@ -72,7 +72,7 @@ function ladderGiveUp() {
  */
 function clearOldGame() {
     clearGuessBox();
-    displayUpdate("word-place", NON_BREAKING_SPACE);
+    displayUpdate("word-display", NON_BREAKING_SPACE);
     clearAllLadderRungs(ladder.lengths);
     ladder.lengths = [];
 }
@@ -84,7 +84,7 @@ function clearOldGame() {
 function ladderGame(data) {
     if (ladder.wordLength <= LONGEST_WORD) {
         storeAnagramSolution(data);
-        displayUpdate("word-place", currentAnagram.anagram);
+        displayUpdate("word-display", currentAnagram.anagram);
         const guess = document.getElementById("guess");
         const ladderGameFlow = gameFlowFactory(ladderURL,
                                                ladderData,
@@ -93,7 +93,7 @@ function ladderGame(data) {
         guess.addEventListener("input", ladderGameFlow);
     } else {
         ladderGiveUp();
-        displayUpdate("word-place", VICTORY_MESSAGE);
+        displayUpdate("word-display", VICTORY_MESSAGE);
     }
 }
 
