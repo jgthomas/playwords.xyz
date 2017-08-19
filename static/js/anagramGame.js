@@ -24,12 +24,12 @@ function anagramCleanup () {
 
 
 /**
- * Run on player ending game loop.
+ * Run on player ending game.
  */
 function anagramGiveUp() {
     player.score = 0;
-    clearGuessBox();
     displayUpdate("word-display", getAnswer(currentAnagram.solution));
+    clearGuessBox();
 }
 
 
@@ -37,7 +37,6 @@ function anagramGiveUp() {
  * Main game loop.
  */
 function anagramGame(data) {
-    clearGuessBox();
     storeAnagramSolution(data);
     displayUpdate("word-display", currentAnagram.anagram);
     const guess = document.getElementById("guess");
@@ -51,7 +50,6 @@ function anagramGame(data) {
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("play").addEventListener("click", () => {
-        clearGuessBox();
         displayUpdate("score", ZERO);
         displayUpdate("word-display", NON_BREAKING_SPACE);
         fetchWrap(anagramURL, anagramData, anagramGame);

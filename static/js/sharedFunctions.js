@@ -26,6 +26,16 @@ function displayUpdate(target, newValue) {
 
 
 
+/**
+ * Reset the answer input field.
+ *
+ * @return {undefined} SIDE-EFFECTS ONLY
+ */
+function clearGuessBox() {
+    document.getElementById("guess").value = "";
+}
+
+
 /******************
  * UPDATING DISPLAY
  *
@@ -77,14 +87,7 @@ function clearScoreDisplay() {
 }
 
 
-/**
- * Reset the answer input field.
- *
- * @return {undefined} SIDE-EFFECTS ONLY
- */
-function clearGuessBox() {
-    document.getElementById("guess").value = "";
-}
+
 
 
 /**
