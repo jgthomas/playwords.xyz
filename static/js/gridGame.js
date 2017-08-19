@@ -26,9 +26,12 @@ function categoryGuides() {
     const average = 0.25;
     const good = 0.4;
     const excellent = 0.5;
-    document.getElementById("average").textContent = Math.ceil(numOfAnswers * average);
-    document.getElementById("good").textContent = Math.ceil(numOfAnswers * good);
-    document.getElementById("excellent").textContent = Math.ceil(numOfAnswers * excellent);
+    document.getElementById("average")
+        .textContent = Math.ceil(numOfAnswers * average);
+    document.getElementById("good")
+        .textContent = Math.ceil(numOfAnswers * good);
+    document.getElementById("excellent")
+        .textContent = Math.ceil(numOfAnswers * excellent);
 }
 
 
