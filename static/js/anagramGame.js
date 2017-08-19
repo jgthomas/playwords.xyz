@@ -14,7 +14,7 @@ function anagramData () {
 
 
 /**
- * Run after each iteration of main game loop.
+ * Run after each iteration of game loop.
  */
 function anagramCleanup () {
     player.score++;
