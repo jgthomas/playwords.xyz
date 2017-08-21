@@ -48,7 +48,8 @@ body {
   width: 60%;
   align-items: center;
   justify-items: stretch;
-  padding: 3%;
+  /*padding: 3%;*/
+  padding: 0.25em;
 }
 
 .ladder-box {
@@ -57,7 +58,8 @@ body {
   border-style: solid;
   border-color: #444;
   border-width: 0;
-  padding: 4%;
+  /*padding: 4%;*/
+  padding: 0.5em;
 }
 
 .ladder-length {
@@ -167,13 +169,16 @@ body {
 /* Media queries */
 
 @media only screen and (max-width: 961px) {
-  .outer-wrap {
-  flex-direction: column-reverse;
-}
+        .outer-wrap {
+                flex-direction: column-reverse;
+        }
 }
 
 @media only screen and (max-width: 740px) {
-  .outer-wrap {
-  flex-direction: column;
-}
+        .outer-wrap {
+                flex-direction: column;
+        }
+        .ladder {
+                width: 90%;
+        }
 }
