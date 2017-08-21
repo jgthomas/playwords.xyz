@@ -49,6 +49,8 @@ body {
         grid-gap: 3px;
         background-color: dimgray;
         width: 60%;
+        height: 60%;
+        align-items: stretch;
         margin-right: auto;
         margin-left: auto;
 }
@@ -58,8 +60,10 @@ body {
         font-size: 200%;
         color: darkslategray;
         font-weight: bold;
-        padding-bottom: 30%;
-        padding-top: 30%;
+        /*padding-bottom: 30%;
+        padding-top: 30%;*/
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
 }
 
 
