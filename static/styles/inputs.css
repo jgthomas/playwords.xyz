@@ -63,10 +63,7 @@ input::placeholder {
 .button {
         background-color: cornflowerblue;
         color: white;
-        border-radius: 5px;
-        /*font-size: 150%;*/
         font-size: 200%;
-        /*padding: -1.5%*/;
         text-decoration: none;
         outline: none;
         border: none;
@@ -76,13 +73,13 @@ input::placeholder {
 }
 
 .play-button {
-  flex: 0 0 10%;
+  /*flex: 0 0 10%;*/
   margin-left: auto;
   margin-right: auto;
 }
 
 .stop-button {
-  flex: 0 0 10%;
+  /*flex: 0 0 10%;*/
   margin-left: auto;
   margin-right: auto;
 }
