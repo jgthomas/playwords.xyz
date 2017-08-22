@@ -41,30 +41,42 @@ body {
 
 /* Puzzle grid */
 
-
 .puzzle-grid {
-        flex: 0 0 33%;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        /*grid-template-rows: 1fr 1fr 1fr;*/
-        grid-gap: 3px;
-        background-color: dimgray;
-        width: 60%;
-        /*height: 60%;*/
-        /*align-items: stretch;*/
+        width: 50%;
         margin-right: auto;
         margin-left: auto;
 }
 
+.puzzle {
+        display: grid;
+        grid-gap: 1px;
+        background-color: slategrey;
+        grid-template-columns: repeat(3, 1fr)
+}
+
+.puzzle>div {
+        position: relative;
+}
+
+.puzzle>div:before {
+        display: table;
+        padding-top: 100%;
+        content: '';
+}
+
 .puzzle-square {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: ghostwhite;
         font-size: 200%;
         color: darkslategray;
         font-weight: bold;
-        padding-bottom: 30%;
-        padding-top: 30%;
-        /*padding-top: 1.5em;
-        padding-bottom: 1.5em;*/
 }
 
 
