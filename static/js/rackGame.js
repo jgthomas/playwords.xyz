@@ -1,8 +1,8 @@
 "use strict";
 
 
-//const rackURL = "http://127.0.0.1:5000/rack";
-const rackURL = "https://playwords.xyz/rack";
+const rackURL = "http://127.0.0.1:5000/rack";
+//const rackURL = "https://playwords.xyz/rack";
 
 
 const RACK_SCORES = {'a': 1, 'c': 3, 'b': 3, 'e': 1, 'd': 2, 'g': 2,
@@ -107,8 +107,8 @@ function resetRack() {
  * Run after each iteration of game loop.
  */
 function rackCleanup() {
-    const word = document.getElementById("guess").value
-    const wordScore = scoreWord(word.toLowerCase());
+    const word = document.getElementById("guess").value.toLowerCase();
+    const wordScore = scoreWord(word);
     displayRoundResults(word, wordScore, rack.round);
     rack.round += 1;
     updateRackScores(wordScore);
