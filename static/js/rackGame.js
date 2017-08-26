@@ -1,8 +1,8 @@
 "use strict";
 
 
-const rackURL = "http://127.0.0.1:5000/rack";
-//const rackURL = "https://playwords.xyz/rack";
+//const rackURL = "http://127.0.0.1:5000/rack";
+const rackURL = "https://playwords.xyz/rack";
 
 
 const RACK_SCORES = {'a': 1, 'c': 3, 'b': 3, 'e': 1, 'd': 2, 'g': 2,
