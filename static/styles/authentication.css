@@ -1,0 +1,50 @@
+.center-div{
+    margin: 0 auto;
+    width: 80%;
+    max-width: 500px;
+}
+
+.sign-button {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.btn-primary {
+    background-color: cornflowerblue;
+    border: none;
+    text-decoration: none;
+    width: 70%;
+    max-width: 450px;
+    height: 2.25em;
+    font-size: 1.5em;
+}
+
+label {
+    color: cornflowerblue;
+    font-size: 1.15em;
+}
+
+.form-control:focus {
+  color: cornflowerblue;
+  border: 1px solid cornflowerblue;
+}
+
+.form-control {
+    margin-bottom: 1em;
+    height: 2.5em;
+    font-size: 1.5em;
+}
+
+.form-title {
+    color: cornflowerblue;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2.15em;
+}
+
+.checkbox {
+    width: 70%;
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block head %}
+  <link rel="stylesheet" media="screen" href ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/authentication.css') }}">
+{% endblock %}
+{% block main %}
+{% endblock %}
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/authentication.js') }}"></script>
+{% endblock %}

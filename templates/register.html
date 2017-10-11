@@ -1,1 +1,30 @@
-<p>Register to come</p>
+{% extends "authentication.html" %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block main %}
+<h2 class="form-title">Register</h2>
+    <form>
+      <div class="row">
+        <div class="form-group center-div">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" required="true">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group center-div">
+          <label for="pwd">Password</label>
+          <input type="password" class="form-control" id="pwd" required="true">
+        </div>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" value="" id="show-pass">Show Password</label>
+      </div>
+      <div class="sign-button">
+        <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+      </div>
+    </form>
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+{% endblock %}
