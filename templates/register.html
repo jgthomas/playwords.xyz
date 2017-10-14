@@ -4,17 +4,17 @@
 {% endblock %}
 {% block main %}
 <h2 class="form-title">Register</h2>
-    <form>
+    <form action="{{ url_for('register') }}" method="post">
       <div class="row">
         <div class="form-group center-div">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" required="true">
+          <input type="email" class="form-control" name="email" id="email" required="true">
         </div>
       </div>
       <div class="row">
         <div class="form-group center-div">
           <label for="pwd">Password</label>
-          <input type="password" class="form-control" id="pwd" required="true">
+          <input type="password" class="form-control" name="password" id="pwd" required="true">
         </div>
       </div>
       <div class="checkbox">

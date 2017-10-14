@@ -1,23 +1,31 @@
 import random
+import datetime as dt
+from tempfile import mkdtemp
 
 from flask import (Flask,
                    render_template,
                    jsonify,
                    request,
-                   url_for, session)
+                   redirect,
+                   url_for,
+                   session)
+from flask_session import Session
+from passlib.apps import custom_app_context as pwd_context
 
 from pyfunctory.process import load_data
+from dbase.dbase import Database
 
+from queries import (CREATE_PERSON,
+                     ADD_PERSON,
+                     SELECT_PERSON)
 from words import (anagram_answers,
                    puzzle_answers,
                    plural_filter)
-
 from functions import (get_word,
                        make_anagram,
                        data,
                        draw_letters,
                        high_scorer)
-
 from constants import (WORD_FILE,
                        WORD_LENGTH,
                        NINE_LETTER_WORD_FILE,
@@ -28,6 +36,14 @@ from constants import (WORD_FILE,
 
 
 app = Flask(__name__)
+
+SESSION_TYPE = "filesystem"
+SESSION_PERMANENT = False
+SESSION_FILE_DIR = mkdtemp()
+app.config.from_object(__name__)
+Session(app)
+
+db = Database('playwords.db')
 
 
 FULL_WORD_LIST = load_data(WORD_FILE)
@@ -40,24 +56,53 @@ def index():
     return render_template("index.html")
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    session.clear()
+
+    if request.method == 'POST':
+        email = request.form.get("email")
+        user_data = db.execute(SELECT_PERSON, email)
+
+        if len(user_data) != 1 or not pwd_context.verify(request.form.get("password"), user_data[0]["password"]):
+            pass
+
+        session["player_id"] = user_data[0]["player_id"]
+        return redirect(url_for("index"))
     return render_template("login.html")
 
 
 @app.route('/logout')
 def logout():
-    return render_template("logout.html")
+    session.clear()
+    return redirect(url_for("index"))
 
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
+    session.clear()
+
+    if request.method == 'POST':
+        email = request.form.get("email")
+        print(email)
+        password = request.form.get("password")
+        print(password)
+        hashed_password = pwd_context.hash(password)
+        join_date = dt.datetime.now().date()
+
+        db.execute(CREATE_PERSON)
+        db.execute(ADD_PERSON, email, hashed_password, join_date)
+
+        user_data = db.execute(SELECT_PERSON, email)
+        session["player_id"] = user_data[0]["player_id"]
+        return redirect(url_for("index"))
     return render_template("register.html")
 
 
 @app.route('/account')
 def account():
-    return render_template("account.html")
+    player_id = session["player_id"]
+    return render_template("account.html", player_id=player_id)
 
 
 @app.route('/anagram', methods=['GET', 'POST'])

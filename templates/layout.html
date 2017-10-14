@@ -7,7 +7,7 @@
 {% endblock %}
 <body>
   <nav id="topnav" class="topnav">
-    {% if session.user_id %}
+    {% if session.player_id %}
     <nav class="profile-nav">
       <a id="home" href="{{ url_for('index') }}">Home</a>
       <a id="profile" href="{{ url_for('account') }}">Profile</a>

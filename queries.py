@@ -1,10 +1,10 @@
 # PLAYER queries
 
 CREATE_PERSON = """CREATE TABLE IF NOT EXISTS person (
-                       player_id  INTEGER PRIMARY KEY NOT NULL, 
-                       username   TEXT UNIQUE NOT NULL, 
-                       password   TEXT NOT NULL, 
-                       join_date  DATE NOT NULL)"""
+                       player_id   INTEGER PRIMARY KEY NOT NULL,
+                       email       TEXT UNIQUE NOT NULL,
+                       password    TEXT NOT NULL,
+                       join_date   DATE NOT NULL)"""
 
 
 GET_ALL_PERSON = """SELECT *
@@ -14,10 +14,10 @@ GET_ALL_PERSON = """SELECT *
 
 SELECT_PERSON = """SELECT *
                      FROM person
-                    WHERE username=?"""
+                    WHERE email=?"""
 
 
-ADD_PERSON = """INSERT INTO person (username, password, join_date)
+ADD_PERSON = """INSERT INTO person (email, password, join_date)
                 VALUES (?, ?, ?)"""
 
 
