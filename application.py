@@ -9,7 +9,9 @@ from flask import (Flask,
                    redirect,
                    url_for,
                    session)
+
 from flask_session import Session
+
 from passlib.apps import custom_app_context as pwd_context
 
 from pyfunctory.process import load_data
@@ -18,14 +20,17 @@ from dbase.dbase import Database
 from queries import (CREATE_PERSON,
                      ADD_PERSON,
                      SELECT_PERSON)
+
 from words import (anagram_answers,
                    puzzle_answers,
                    plural_filter)
+
 from functions import (get_word,
                        make_anagram,
                        data,
                        draw_letters,
                        high_scorer)
+
 from constants import (WORD_FILE,
                        WORD_LENGTH,
                        NINE_LETTER_WORD_FILE,
