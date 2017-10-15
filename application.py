@@ -77,7 +77,7 @@ def login():
         login_id = request.form.get("login_id")
         password = request.form.get("password")
 
-        # Assume login with player name...
+        # Try to login with player name...
         user_data = db.execute(SELECT_PERSON_NAME, login_id)
 
         # ...then try email
@@ -88,6 +88,7 @@ def login():
             pass
 
         session["player_id"] = user_data[0]["player_id"]
+        session["player_name"] = user_data[0]["player_name"]
         return redirect(url_for("index"))
     return render_template("login.html")
 
@@ -120,8 +121,8 @@ def register():
 
 @app.route('/account')
 def account():
-    player_id = session["player_id"]
-    return render_template("account.html", player_id=player_id)
+    player_name = session["player_name"]
+    return render_template("account.html", player_name=player_name)
 
 
 @app.route('/anagram', methods=['GET', 'POST'])
