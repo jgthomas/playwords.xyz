@@ -2,6 +2,7 @@
 
 CREATE_PERSON = """CREATE TABLE IF NOT EXISTS person (
                        player_id   INTEGER PRIMARY KEY NOT NULL,
+                       player_name TEXT UNIQUE NOT NULL,
                        email       TEXT UNIQUE NOT NULL,
                        password    TEXT NOT NULL,
                        join_date   DATE NOT NULL)"""
@@ -11,14 +12,16 @@ GET_ALL_PERSON = """SELECT *
                       FROM person"""
 
 
-
 SELECT_PERSON = """SELECT *
                      FROM person
                     WHERE email=?"""
 
+SELECT_PERSON_NAME = """SELECT *
+                          FROM person
+                         WHERE player_name=?"""
 
-ADD_PERSON = """INSERT INTO person (email, password, join_date)
-                VALUES (?, ?, ?)"""
+ADD_PERSON = """INSERT INTO person (player_name, email, password, join_date)
+                VALUES (?, ?, ?, ?)"""
 
 
 

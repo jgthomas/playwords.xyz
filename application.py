@@ -19,7 +19,8 @@ from dbase.dbase import Database
 
 from queries import (CREATE_PERSON,
                      ADD_PERSON,
-                     SELECT_PERSON)
+                     SELECT_PERSON,
+                     SELECT_PERSON_NAME)
 
 from words import (anagram_answers,
                    puzzle_answers,
@@ -66,10 +67,24 @@ def login():
     session.clear()
 
     if request.method == 'POST':
-        email = request.form.get("email")
-        user_data = db.execute(SELECT_PERSON, email)
 
-        if len(user_data) != 1 or not pwd_context.verify(request.form.get("password"), user_data[0]["password"]):
+        if not request.form.get("login_id"):
+            pass
+
+        if not request.form.get("password"):
+            pass
+
+        login_id = request.form.get("login_id")
+        password = request.form.get("password")
+
+        # Assume login with player name...
+        user_data = db.execute(SELECT_PERSON_NAME, login_id)
+
+        # ...then try email
+        if not user_data:
+            user_data = db.execute(SELECT_PERSON, login_id)
+
+        if len(user_data) != 1 or not pwd_context.verify(password, user_data[0]["password"]):
             pass
 
         session["player_id"] = user_data[0]["player_id"]
@@ -88,15 +103,14 @@ def register():
     session.clear()
 
     if request.method == 'POST':
+        player_name = request.form.get("player_name")
         email = request.form.get("email")
-        print(email)
         password = request.form.get("password")
-        print(password)
         hashed_password = pwd_context.hash(password)
         join_date = dt.datetime.now().date()
 
         db.execute(CREATE_PERSON)
-        db.execute(ADD_PERSON, email, hashed_password, join_date)
+        db.execute(ADD_PERSON, player_name, email, hashed_password, join_date)
 
         user_data = db.execute(SELECT_PERSON, email)
         session["player_id"] = user_data[0]["player_id"]
