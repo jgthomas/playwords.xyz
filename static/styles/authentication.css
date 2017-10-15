@@ -13,8 +13,9 @@
     background-color: cornflowerblue;
     border: none;
     text-decoration: none;
-    width: 70%;
-    max-width: 450px;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 1em;
     height: 2.25em;
     font-size: 1.5em;
 }
