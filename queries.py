@@ -20,6 +20,10 @@ SELECT_PERSON_NAME = """SELECT *
                           FROM person
                          WHERE player_name=?"""
 
+SELECT_PERSON_ID = """SELECT *
+                        FROM person
+                       WHERE player_id=?"""
+
 ADD_PERSON = """INSERT INTO person (player_name, email, password, join_date)
                 VALUES (?, ?, ?, ?)"""
 

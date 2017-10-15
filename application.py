@@ -15,12 +15,13 @@ from flask_session import Session
 from passlib.apps import custom_app_context as pwd_context
 
 from pyfunctory.process import load_data
-from dbase.dbase import Database
 
+from dbase.dbase import Database
 from queries import (CREATE_PERSON,
                      ADD_PERSON,
                      SELECT_PERSON,
-                     SELECT_PERSON_NAME)
+                     SELECT_PERSON_NAME,
+                     SELECT_PERSON_ID)
 
 from words import (anagram_answers,
                    puzzle_answers,
@@ -88,7 +89,7 @@ def login():
             pass
 
         session["player_id"] = user_data[0]["player_id"]
-        session["player_name"] = user_data[0]["player_name"]
+        #session["player_name"] = user_data[0]["player_name"]
         return redirect(url_for("index"))
     return render_template("login.html")
 
@@ -121,8 +122,11 @@ def register():
 
 @app.route('/account')
 def account():
-    player_name = session["player_name"]
-    return render_template("account.html", player_name=player_name)
+    player, *_ = db.execute(SELECT_PERSON_ID, session["player_id"])
+    #current_player, *_ = user_data
+    #player_name = session["player_name"]
+    return render_template("account.html",
+                           player_name=player["player_name"])
 
 
 @app.route('/anagram', methods=['GET', 'POST'])
