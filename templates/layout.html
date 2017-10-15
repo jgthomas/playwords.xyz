@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html>
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
 {% block head %}
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="{{ url_for('static', filename='styles/shared.css') }}" rel=stylesheet>
 {% endblock %}
-<body>
+{% block content %}
   <nav id="topnav" class="topnav">
     {% if session.player_id %}
     <nav class="profile-nav">
@@ -34,5 +35,4 @@
     <script src="{{ url_for('static', filename='js/sharedFunctions.js') }}"></script>
     <script src="{{ url_for('static', filename='js/siteNavigation.js') }}"></script>
   {% endblock %}
-</body>
-</html>
+{% endblock %}

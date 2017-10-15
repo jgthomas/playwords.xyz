@@ -11,6 +11,10 @@ from flask import (Flask,
                    session)
 
 from flask_session import Session
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField
+from wtforms.validators import InputRequired, Email, Length
+from flask_bootstrap import Bootstrap
 
 from passlib.apps import custom_app_context as pwd_context
 
@@ -43,6 +47,8 @@ from constants import (WORD_FILE,
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'mytestkey'
+Bootstrap(app)
 
 SESSION_TYPE = "filesystem"
 SESSION_PERMANENT = False
@@ -51,6 +57,12 @@ app.config.from_object(__name__)
 Session(app)
 
 db = Database('playwords.db')
+
+
+class RegisterForm(FlaskForm):
+    player_name = StringField('Player Name', validators=[InputRequired(), Length(min=5)])
+    email = StringField('Email', validators=[InputRequired(), Email(message='Valid email required')])
+    password = PasswordField('Password', validators=[InputRequired(), Length(min=8)])
 
 
 FULL_WORD_LIST = load_data(WORD_FILE)
@@ -101,14 +113,22 @@ def logout():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    session.clear()
+    form = RegisterForm()
 
-    if request.method == 'POST':
-        player_name = request.form.get("player_name")
-        email = request.form.get("email")
-        password = request.form.get("password")
+    print("first here")
+    if form.validate_on_submit():
+        #player_name = request.form.get("player_name")
+        #email = request.form.get("email")
+        #password = request.form.get("password")
+        player_name = form.player_name.data
+        print(player_name)
+        print("here")
+        email = form.email.data
+        password = form.password.data
         hashed_password = pwd_context.hash(password)
         join_date = dt.datetime.now().date()
+
+        session.clear()
 
         db.execute(CREATE_PERSON)
         db.execute(ADD_PERSON, player_name, email, hashed_password, join_date)
@@ -116,7 +136,8 @@ def register():
         user_data = db.execute(SELECT_PERSON, email)
         session["player_id"] = user_data[0]["player_id"]
         return redirect(url_for("index"))
-    return render_template("register.html")
+    print("last here")
+    return render_template("register.html", form=form)
 
 
 @app.route('/account')

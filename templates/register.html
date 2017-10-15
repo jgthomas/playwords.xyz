@@ -1,36 +1,20 @@
-{% extends "authentication.html" %}
+{% extends "layout.html" %}
 {% block head %}
+  <link rel="stylesheet" media="screen" href ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/authentication.css') }}"
 {% endblock %}
 {% block main %}
 <h2 class="form-title">Register</h2>
-    <form action="{{ url_for('register') }}" method="post">
-      <div class="row">
-        <div class="form-group center-div">
-          <label for="player_name">Player Name</label>
-          <input type="text" class="form-control" name="player_name" id="player_name" required="true">
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group center-div">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" name="email" id="email" required="true">
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group center-div">
-          <label for="pwd">Password</label>
-          <input type="password" class="form-control" name="password" id="pwd" required="true">
-        </div>
-      </div>
-      <div class="checkbox">
-        <label><input type="checkbox" value="" id="show-pass">Show Password</label>
-      </div>
-      <div class="sign-button">
+    <form action="{{ url_for('register') }}" method="post" class="form-group center-div">
+      <dl>
+        {{ wtf.quick_form(form) }}
         <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
-      </div>
+      </dl>
     </form>
 {% endblock %}
 {% block scripts %}
   {{ super() }}
+  <script src="{{ url_for('static', filename='js/authentication.js') }}"></script>
 {% endblock %}
