@@ -90,12 +90,7 @@ def login():
         player_name = request.form.get("player_name")
         password = request.form.get("password")
 
-        # Try to login with player name...
         user_data = db.execute(SELECT_PERSON_NAME, player_name)
-
-        # ...then try email
-        #if not user_data:
-        #    user_data = db.execute(SELECT_PERSON, login_id)
 
         if len(user_data) != 1 or not pwd_context.verify(password, user_data[0]["password"]):
             pass
@@ -116,9 +111,6 @@ def register():
     form = RegisterForm()
 
     if form.validate_on_submit():
-        #player_name = request.form.get("player_name")
-        #email = request.form.get("email")
-        #password = request.form.get("password")
         player_name = form.player_name.data
         email = form.email.data
         password = form.password.data
@@ -133,7 +125,6 @@ def register():
         user_data = db.execute(SELECT_PERSON, email)
         session["player_id"] = user_data[0]["player_id"]
         return redirect(url_for("index"))
-    print("last here")
     return render_template("register.html", form=form)
 
 
