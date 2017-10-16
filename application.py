@@ -81,21 +81,21 @@ def login():
 
     if request.method == 'POST':
 
-        if not request.form.get("login_id"):
+        if not request.form.get("player_name"):
             pass
 
         if not request.form.get("password"):
             pass
 
-        login_id = request.form.get("login_id")
+        player_name = request.form.get("player_name")
         password = request.form.get("password")
 
         # Try to login with player name...
-        user_data = db.execute(SELECT_PERSON_NAME, login_id)
+        user_data = db.execute(SELECT_PERSON_NAME, player_name)
 
         # ...then try email
-        if not user_data:
-            user_data = db.execute(SELECT_PERSON, login_id)
+        #if not user_data:
+        #    user_data = db.execute(SELECT_PERSON, login_id)
 
         if len(user_data) != 1 or not pwd_context.verify(password, user_data[0]["password"]):
             pass
@@ -115,14 +115,11 @@ def logout():
 def register():
     form = RegisterForm()
 
-    print("first here")
     if form.validate_on_submit():
         #player_name = request.form.get("player_name")
         #email = request.form.get("email")
         #password = request.form.get("password")
         player_name = form.player_name.data
-        print(player_name)
-        print("here")
         email = form.email.data
         password = form.password.data
         hashed_password = pwd_context.hash(password)
