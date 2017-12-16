@@ -59,10 +59,12 @@ input::placeholder {
         margin-left: auto;
         margin-right: auto;
         justify-content: space-between;
+        align-items: center;
         margin-bottom: 1em;
+        text-align: center;
 }
 
-.button {
+.game-button {
         background-color: cornflowerblue;
         color: white;
         font-size: 200%;
@@ -71,20 +73,22 @@ input::placeholder {
         border: none;
         width: 3em;
         height: 2.25em;
-        border-radius: 50%;
+        border-radius: 5%;
+        text-align: center;
+        text-align: -webkit-center;
+        margin-left: auto;
+        margin-right: auto;
+        display: inline-block;
+        text-decoration: none;
 }
 
-.play-button {
-  /*flex: 0 0 10%;*/
-  margin-left: auto;
-  margin-right: auto;
+.game-link {
+        text-decoration: none;
+        text-align: center;
+        color: white;
+        display: block;
 }
 
-.stop-button {
-  /*flex: 0 0 10%;*/
-  margin-left: auto;
-  margin-right: auto;
-}
 
 select {
     outline: none;
