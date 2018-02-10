@@ -5,6 +5,7 @@
 
 .game-name {
         font-size: 150%;
+        margin-left: 2em;
 }
 
 .game-score-grid {
@@ -35,7 +36,7 @@
         grid-area: b;
 }
 
-#gird-score {
+#grid-score {
         grid-area: c;
 }
 
