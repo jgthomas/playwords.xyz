@@ -2,3 +2,43 @@
         text-align: center;
         font-size: 200%;
 }
+
+.game-name {
+        font-size: 150%;
+}
+
+.game-score-grid {
+        display: grid;
+        grid-template-areas:
+                "a a a a a a"
+                "b b b b b b"
+                "c c c c c c"
+                "d d d d d d";
+        align-items: stretch;
+        grid-row-gap: 2.25em;
+        width: 60%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 4em;
+}
+
+.grid-row {
+        border-width: 5px;
+        border-style: solid;
+}
+
+#anagram-score {
+        grid-area: a;
+}
+
+#ladder-score {
+        grid-area: b;
+}
+
+#gird-score {
+        grid-area: c;
+}
+
+#rack-score {
+        grid-area: d;
+}
