@@ -45,6 +45,8 @@ from constants import (WORD_FILE,
                        SCORES,
                        RACK_HIGH)
 
+from sign_up import login_required
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mytestkey'
@@ -129,6 +131,7 @@ def register():
 
 
 @app.route('/account')
+@login_required
 def account():
     player, *_ = db.execute(SELECT_PERSON_ID, session["player_id"])
     return render_template("account.html",
