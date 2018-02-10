@@ -1,8 +1,8 @@
 "use strict";
 
 
-//const ladderURL = "http://127.0.0.1:5000/ladder";
-const ladderURL = "https://playwords.xyz/ladder";
+const ladderURL = "http://127.0.0.1:5000/ladder";
+//const ladderURL = "https://playwords.xyz/ladder";
 
 const ladder = {wordLength: 4, words: [], lengths: []};
 const LONGEST_WORD = 15;
