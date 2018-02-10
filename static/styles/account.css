@@ -1,11 +1,13 @@
 .account-name {
         text-align: center;
-        font-size: 200%;
+        font-size: 300%;
+        margin-bottom: 2em;
 }
 
 .game-name {
-        font-size: 150%;
+        font-size: 175%;
         margin-left: 2em;
+        font-weight: normal;
 }
 
 .game-score-grid {
@@ -24,22 +26,31 @@
 }
 
 .grid-row {
+        color: white;
         border-width: 5px;
         border-style: solid;
 }
 
 #anagram-score {
         grid-area: a;
+        border-color: #084887;
+        color: #084887;
 }
 
 #ladder-score {
         grid-area: b;
+        border-color: #F06449;
+        color: #F06449;
 }
 
 #grid-score {
         grid-area: c;
+        border-color: #F6AE2D;
+        color: #F6AE2D;
 }
 
 #rack-score {
         grid-area: d;
+        border-color: #F58A07;
+        color: #F58A07;
 }
