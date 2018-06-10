@@ -27,7 +27,9 @@ from queries import (CREATE_PERSON,
                      SELECT_PERSON_NAME,
                      SELECT_PERSON_ID,
                      PLAYER_NAME_EXISTS,
-                     EMAIL_EXISTS)
+                     EMAIL_EXISTS,
+                     CREATE_GAME,
+                     ADD_GAME)
 
 from words import (anagram_answers,
                    puzzle_answers,
@@ -101,6 +103,7 @@ def login():
             error = "Invalid player name or password"
         else:
             session["player_id"] = user_data[0]["player_id"]
+            print(f"player_id: {session['player_id']}")
             return redirect(url_for("index"))
     return render_template("login.html", error = error)
 
@@ -152,14 +155,18 @@ def account():
 
 @app.route('/save_score', methods=['POST'])
 def save_score():
-    submitted = request.get_json(force=True)
-    game = submitted["game"]
-    score = submitted["score"]
-    print(f"game: {game}")
-    print(f"score: {score}")
-    if valid_game(game) and valid_score(score):
-        return jsonify(status="data saved")
-    return jsonify(status="no data")
+    if session.get("player_id"):
+        submitted = request.get_json(force=True)
+        game = submitted["game"]
+        score = submitted["score"]
+        print(f"game: {game}")
+        print(f"score: {score}")
+        db.execute(CREATE_GAME)
+        if valid_game(game) and valid_score(score):
+            db.execute(ADD_GAME, game, score, dt.datetime.now().time(), session.get("player_id"))
+            return jsonify(status="data saved")
+        return jsonify(status="invalid data")
+    return jsonify(status="not logged in")
 
 
 @app.route('/anagram', methods=['GET', 'POST'])
