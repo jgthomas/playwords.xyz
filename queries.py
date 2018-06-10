@@ -1,3 +1,15 @@
+# TEST queries
+
+PLAYER_NAME_EXISTS = """SELECT EXISTS (SELECT 1
+                                         FROM person
+                                        WHERE player_name=?
+                                        LIMIT 1)"""
+
+EMAIL_EXISTS = """SELECT EXISTS (SELECT 1
+                                   FROM person
+                                  WHERE email=?
+                                  LIMIT 1)"""
+
 # PLAYER queries
 
 CREATE_PERSON = """CREATE TABLE IF NOT EXISTS person (
