@@ -69,3 +69,11 @@ def high_scorer(words, letter_scores, bonus_level):
     if not top_words:
         top_words = ["\u2013"]
     return [high_score, top_words]
+
+
+def valid_game(game):
+    return game >= 0 and game <= 3
+
+
+def valid_score(score):
+    return score >= 0
