@@ -80,26 +80,25 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     session.clear()
+    error = None
 
     if request.method == 'POST':
 
         if not request.form.get("player_name"):
-            pass
-
-        if not request.form.get("password"):
-            pass
-
-        player_name = request.form.get("player_name")
-        password = request.form.get("password")
-
-        user_data = db.execute(SELECT_PERSON_NAME, player_name)
+            error = "You must enter a username to login"
+        elif not request.form.get("password"):
+            error = "You must enter a username to login"
+        else:
+            player_name = request.form.get("player_name")
+            password = request.form.get("password")
+            user_data = db.execute(SELECT_PERSON_NAME, player_name)
 
         if len(user_data) != 1 or not pwd_context.verify(password, user_data[0]["password"]):
-            pass
-
-        session["player_id"] = user_data[0]["player_id"]
-        return redirect(url_for("index"))
-    return render_template("login.html")
+            error = "Invalid player name or password"
+        else:
+            session["player_id"] = user_data[0]["player_id"]
+            return redirect(url_for("index"))
+    return render_template("login.html", error = error)
 
 
 @app.route('/logout')
