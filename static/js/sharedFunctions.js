@@ -9,7 +9,12 @@ const NON_BREAKING_SPACE = "\u00A0";
 const ZERO = 0;
 const EMPTY_STRING = "";
 
+const GAMES = {anagram: 0, ladder: 1, grid: 2, rack: 3};
+
 const VICTORY_MESSAGE = "You Win!";
+
+const saveScoreURL = "http://127.0.0.1:5000/save_score";
+//const anagramURL = "https://playwords.xyz/save_score";
 
 const player = {score: 0};
 const wordStorage = {};
@@ -258,6 +263,14 @@ function fetchWrap(fetchURL, fetchData, gameFunction) {
         .catch( (error) => {
             console.log(error);
         });
+}
+
+
+function scoreSubmission(fetchData) {
+    fetch(saveScoreURL, fetchData)
+    .then(response => response.json())
+    .catch(error => console.log("Error: ", error))
+    .then(response => console.log("Success: ", response));
 }
 
 
