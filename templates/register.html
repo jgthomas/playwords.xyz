@@ -7,7 +7,14 @@
 {% endblock %}
 {% block main %}
 <h2 class="form-title">Register</h2>
+    {% if error_name %}
+    <h3 class="form-error">{{ error_name }}</h3>
+    {% endif %}
+    {% if error_email %}
+    <h3 class="form-error">{{ error_email }}</h3>
+    {% endif %}
     <form action="{{ url_for('register') }}" method="post" class="form-group center-div">
+      {{ form.csrf_token }}
       <dl>
         {{ wtf.quick_form(form) }}
         <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
