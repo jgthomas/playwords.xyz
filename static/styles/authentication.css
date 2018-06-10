@@ -43,6 +43,13 @@ label {
     margin-bottom: 2.15em;
 }
 
+.form-error {
+    color: #F06449;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2.15em;
+}
+
 .checkbox {
     width: 70%;
     max-width: 500px;
