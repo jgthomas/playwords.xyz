@@ -122,11 +122,11 @@ def register():
         hashed_password = pwd_context.hash(password)
         join_date = dt.datetime.now().date()
 
-        name_taken = [val for val in db.execute(PLAYER_NAME_EXISTS, player_name)[0].values()][0]
+        name_taken = sum(val for val in db.execute(PLAYER_NAME_EXISTS, player_name)[0].values())
         if name_taken:
             error_name = f"Player name '{player_name}' is already in use"
 
-        email_used = [val for val in db.execute(EMAIL_EXISTS, email)[0].values()][0]
+        email_used = sum(val for val in db.execute(EMAIL_EXISTS, email)[0].values())
         if email_used:
             error_email = f"Email address '{email}' is already in use"
 
