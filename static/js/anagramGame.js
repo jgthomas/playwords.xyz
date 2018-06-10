@@ -14,6 +14,11 @@ function anagramData () {
 }
 
 
+function submitScoreData() {
+    return {method: "POST", body: JSON.stringify({game: GAMES.anagram, score: player.score})};
+}
+
+
 /**
  * Run after each iteration of game loop.
  */
@@ -28,6 +33,8 @@ function anagramCleanup () {
  * Run on player ending game.
  */
 function anagramGiveUp() {
+    scoreData = submitScoreData();
+    scoreSubmission(scoreData);
     player.score = 0;
     displayUpdate("word-display", getAnswer(currentAnagram.solution));
     clearGuessBox();
