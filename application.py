@@ -37,7 +37,9 @@ from functions import (get_word,
                        make_anagram,
                        data,
                        draw_letters,
-                       high_scorer)
+                       high_scorer,
+                       valid_game,
+                       valid_score)
 
 from constants import (WORD_FILE,
                        WORD_LENGTH,
@@ -146,6 +148,18 @@ def account():
     player, *_ = db.execute(SELECT_PERSON_ID, session["player_id"])
     return render_template("account.html",
                            player_name=player["player_name"])
+
+
+@app.route('/save_score', methods=['POST'])
+def save_score():
+    submitted = request.get_json(force=True)
+    game = submitted["game"]
+    score = submitted["score"]
+    print(f"game: {game}")
+    print(f"score: {score}")
+    if valid_game(game) and valid_score(score):
+        return jsonify(status="data saved")
+    return jsonify(status="no data")
 
 
 @app.route('/anagram', methods=['GET', 'POST'])
