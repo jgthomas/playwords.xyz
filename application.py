@@ -25,7 +25,9 @@ from queries import (CREATE_PERSON,
                      ADD_PERSON,
                      SELECT_PERSON,
                      SELECT_PERSON_NAME,
-                     SELECT_PERSON_ID)
+                     SELECT_PERSON_ID,
+                     PLAYER_NAME_EXISTS,
+                     EMAIL_EXISTS)
 
 from words import (anagram_answers,
                    puzzle_answers,
@@ -109,6 +111,8 @@ def logout():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    error_name = None
+    error_email = None
     form = RegisterForm()
 
     if form.validate_on_submit():
@@ -118,15 +122,22 @@ def register():
         hashed_password = pwd_context.hash(password)
         join_date = dt.datetime.now().date()
 
-        session.clear()
+        name_taken = [val for val in db.execute(PLAYER_NAME_EXISTS, player_name)[0].values()][0]
+        if name_taken:
+            error_name = f"Player name '{player_name}' is already in use"
 
-        db.execute(CREATE_PERSON)
-        db.execute(ADD_PERSON, player_name, email, hashed_password, join_date)
+        email_used = [val for val in db.execute(EMAIL_EXISTS, email)[0].values()][0]
+        if email_used:
+            error_email = f"Email address '{email}' is already in use"
 
-        user_data = db.execute(SELECT_PERSON, email)
-        session["player_id"] = user_data[0]["player_id"]
-        return redirect(url_for("index"))
-    return render_template("register.html", form=form)
+        if not name_taken and not email_used:
+            session.clear()
+            db.execute(CREATE_PERSON)
+            db.execute(ADD_PERSON, player_name, email, hashed_password, join_date)
+            user_data = db.execute(SELECT_PERSON, email)
+            session["player_id"] = user_data[0]["player_id"]
+            return redirect(url_for("index"))
+    return render_template("register.html", form=form, error_name = error_name, error_email = error_email)
 
 
 @app.route('/account')
