@@ -15,7 +15,9 @@ function anagramData () {
 
 
 function submitScoreData() {
-    return {method: "POST", body: JSON.stringify({game: GAMES.anagram, score: player.score})};
+    return {method: "POST",
+            body: JSON.stringify({game: GAMES.anagram, score: player.score}),
+            credentials: "same-origin"};
 }
 
 
@@ -33,7 +35,7 @@ function anagramCleanup () {
  * Run on player ending game.
  */
 function anagramGiveUp() {
-    scoreData = submitScoreData();
+    const scoreData = submitScoreData();
     scoreSubmission(scoreData);
     player.score = 0;
     displayUpdate("word-display", getAnswer(currentAnagram.solution));
