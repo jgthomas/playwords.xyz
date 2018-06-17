@@ -29,7 +29,8 @@ from queries import (CREATE_PERSON,
                      PLAYER_NAME_EXISTS,
                      EMAIL_EXISTS,
                      CREATE_GAME,
-                     ADD_GAME)
+                     ADD_GAME,
+                     BEST_SCORE)
 
 from words import (anagram_answers,
                    puzzle_answers,
@@ -150,6 +151,8 @@ def register():
 @login_required
 def account():
     player, *_ = db.execute(SELECT_PERSON_ID, session["player_id"])
+    anagram_best = db.execute(BEST_SCORE, 0, session.get("player_id"))[0]["best_score"]
+    print(anagram_best)
     return render_template("account.html",
                            player_name=player["player_name"])
 
